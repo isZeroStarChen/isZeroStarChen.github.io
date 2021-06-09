@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="后天考试修罗场，继续冲，加油！！！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统大题复习">
+<meta property="og:url" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="后天考试修罗场，继续冲，加油！！！！！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E8%BD%AC%E6%8D%A2.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/3%E9%A1%B5%E6%A1%86.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/4%E9%A1%B5%E6%A1%86.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC32%E9%A2%98.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC47%E9%A2%98.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC14%E9%A2%98.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC26%E9%A2%98.png">
+<meta property="og:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC38%E9%A2%98.png">
+<meta property="article:published_time" content="2021-05-25T00:48:10.000Z">
+<meta property="article:modified_time" content="2021-06-02T11:59:11.923Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E8%BD%AC%E6%8D%A2.png">
+
+<link rel="canonical" href="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统大题复习 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统大题复习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-25 08:48:10" itemprop="dateCreated datePublished" datetime="2021-05-25T08:48:10+08:00">2021-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-02 19:59:11" itemprop="dateModified" datetime="2021-06-02T19:59:11+08:00">2021-06-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">考试</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>后天考试修罗场，继续冲，加油！！！！！</p>
+<span id="more"></span>
+
+<h1 id="操作系统大题复习"><a href="#操作系统大题复习" class="headerlink" title="操作系统大题复习"></a>操作系统大题复习</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>1、操作系统的俩大主要作用是什么？ </p>
+<p>答：</p>
+<p>​        资源管理器(resource managers )和扩展机器(extended machines)</p>
+<p> 9、在建立一个操作系统时有几个设计目的，例如资源利用、及时性、健壮性等。请列举俩个可能相互矛盾的设计目的。</p>
+<p>答：</p>
+<p>​        ①并发性和高效性。一方面系统希望进程并发进行，另一方面，面对有限的资源有需要控制总线的优先权，使其及时完成，达到最大效率。</p>
+<p>​        ②用windows系统来体现一个矛盾：管理员权限。尽管有的时候运用管理员权限对系统进行删除、改写等操作，但还是会被提醒说权限不够</p>
+<p> 15、假设一个计算机系统有高速缓存、内存(RAM)以及磁盘，操作系统用虚拟内存。读取缓存中的一个词需要1ns，RAM需要10ns，磁盘需要10ms。如果缓存的命中率是95%，内存的命中率是99%(缓存失效时)，读取一个词的平均时间是多少？</p>
+<p>答：</p>
+<p>​        0.95x1+0.05x0.99x10+0.05x0.01x10x10<sup>6</sup>=5001.445 ns</p>
+<p>23、有一个文件，其文件描述符是fd，内含下列字节序列：3，1，4，1，5，9，2，6，5，3，5。有如下系统调用：</p>
+<p>lseek(fd,3,SEEK_SET);</p>
+<p>read(fd,&amp;buffer,4):</p>
+<p>其中lseek调用寻找文件中的字节3。在读操作完成之后buffer中的内容是什么？</p>
+<p>解析：</p>
+<p>​        lseek函数将读写位置指向fd文件头后，增加了3个位移量至第四个字节处。用read函数从fd读取4个字节存入缓冲区。</p>
+<p>答：</p>
+<p>​        1，5，9，2</p>
+<p>33、下面是单位转换的练习：</p>
+<p>​        (a)一纳年是多少秒？</p>
+<p>​        (b)微米常称为micron。那么megiamicron是多长？</p>
+<p>​        (c)1PB存储器中有多少字节？</p>
+<p>​        (d)地球的质量是6000 yottagram，换算成kilogram是多少？</p>
+<p><img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E8%BD%AC%E6%8D%A2.png" alt="转换"></p>
+<p>答：</p>
+<p>​        (a)：一纳年 = 365x24x3600x10<sup>-9</sup>=3.1536x10<sup>-2</sup>s</p>
+<p>​        (b): megiamicron = micronx10<sup>6</sup>=10<sup>-6</sup> * 10<sup>6</sup>=1m</p>
+<p>​        (c): 2<sup>50</sup></p>
+<p>​        (d): 6000x10<sup>7*3</sup></p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>6、一个计算机的RAM有4GB，其中操作系统占512MB.所有进程都占256MB(为了简化计算)并且特征相同。要是CPU利用率达到99%，最大I/O等待是多少？</p>
+<p>答：</p>
+<p>​        4GB=4x2<sup>10</sup>=4096MB 最大进程总容量：4096-512=3584MB 最多进程数：3584/256=14</p>
+<p>设最大I/O等待是x，则有1-x<sup>14</sup>&gt;99%，解得x&lt;72%</p>
+<p>18、在用户态实现线程的最大优点是什么？最大缺点是什么？</p>
+<p>答：</p>
+<p>​        最大优点是：用户级线程可以在不支持线程的操作系统上实现，效率快</p>
+<p>​        最大缺点是：如果一个阻塞，那就全部阻塞。</p>
+<p>45、有5个批处理作业A~E，它们几乎同时到达一个计算中心。估计它们的运行时间分别为10、6、2、4和8分钟。其优先级(由外部设定)分别为3、5、2、1和4，其中5为最高优先级。对于下列每种调度算法，计算其平均进程周转时间，可忽略进程切换的开销。</p>
+<p>​        (a)轮转法</p>
+<p>​        (b)优先级调度</p>
+<p>​        (c)先来先服务(按照10、6、2、4、8次序进行)</p>
+<p>​        (d)最短作业优先</p>
+<p>解析：</p>
+<p>​            轮转法：用批处理作业最少所花费的时间乘以批处理作业的个数，得到每步轮转所需要花费的时间。在完成每步完成轮转后，重新选取最少花费时间乘以剩余批处理作业时间个数，进行计算。</p>
+<p>​            优先级调度：根据优先级进行计算，排在下一优先级要加上一优先级所花费的时间</p>
+<p>​            先来先服务：按照题目所给的排列顺序直接进行计算</p>
+<p>​            最短作业优先：按照批处理作业时间从低到高排列进行计算。</p>
+<p>答：</p>
+<p>​        (a) (10+18+24+28+30)/5=22</p>
+<p>​        (b) (6+14+24+26+30)/5=20</p>
+<p>​        (c) (10+16+18+22+30)/5=19.2</p>
+<p>​        (d)(2+6+12+20+30)/5=14</p>
+<p>60、假设某大学准备把美国最高法院的信条“平等但隔离其本身就是不平等“既运用在种族上也运用在性别上，从而结束校园内长期使用的浴室按性别隔离的做法。但是，为了迁就传统习惯，学校颁布法令：当有一个女生在浴室里时，其他女生可以进入，但是男生不行，反之亦然。每个浴室的门上有一个滑动标记，表示当前处于以下三种可能状态之一：</p>
+<p>​    1、空</p>
+<p>​    2、有女生</p>
+<p>​    3、有男生</p>
+<p>用你喜欢的程序设计语言编写下面的过程，可以随意使用计数器和同步计数：</p>
+<p>woman_wants_to_enter,man_wants_to_enter,woman_leaves,man_leaves</p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> samaphore;</span><br><span class="line">semaphore mutex = <span class="number">1</span>;</span><br><span class="line">semaphore br = <span class="number">1</span>; <span class="comment">//br指浴室资源</span></span><br><span class="line">semaphore man = <span class="number">1</span>;</span><br><span class="line">semaphore woman = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">woman</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(woman_wants_to_enter)</span><br><span class="line">	&#123;</span><br><span class="line">		down(&amp;mutex);</span><br><span class="line">		<span class="keyword">if</span>(man == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			woman_enter;</span><br><span class="line">			woman = woman +<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			up(&amp;mutex);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(woman == <span class="number">1</span>)	down(&amp;br);</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">		woman_in_bathroom();</span><br><span class="line">		down(&amp;mutex);</span><br><span class="line">		woman = woman - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(woman==<span class="number">0</span>) up(&amp;br)</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">		woman_leave();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">man</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(man_wants_to_enter)</span><br><span class="line">	&#123;</span><br><span class="line">		down(&amp;mutex);</span><br><span class="line">		<span class="keyword">if</span>(woman == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			man_enter;</span><br><span class="line">			man = man +<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			up(&amp;mutex);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(man == <span class="number">1</span>)	down(&amp;br);</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">		man_in_bathroom();</span><br><span class="line">		down(&amp;mutex);</span><br><span class="line">		man = man - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(man==<span class="number">0</span>) up(&amp;br)</span><br><span class="line">		up(&amp;mutex);</span><br><span class="line">		man_leave();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><p>4、在一个交换系统中，按内存地址排列的空闲区大小是10MB、4MB、20MB、18MB、7MB、9MB、12MB和15MB。对于连续段的请求：</p>
+<p>​        (a)12MB</p>
+<p>​        (b)10MB</p>
+<p>​        (c)9MB</p>
+<p>使用首次适配算法，将找出哪个空闲区？使用最佳适配、最差适配和下次适配算法呢？</p>
+<p>解析：</p>
+<p>​    首次适配算法是按照题目所给空闲区顺序，从头找到最近的大于等于请求数的空闲区，如果找到，又再次从头开始</p>
+<p>​    最佳适配算法找最接近空闲区大小的空闲区</p>
+<p>​    最差适配算法找最大的空闲区，然后用最大的空闲区减去所需要的连续段请求，得到一个新的空闲区空间，再重新排序，以此类推。</p>
+<p>​    下次适配算法找是按照题目所给空闲区顺序，从头找到最近的大于等于请求数的空闲区，如果找到，就继续从当前位置开始</p>
+<p>答：</p>
+<p>​    首次适配算法：找出20MB、10MB、18MB</p>
+<p>​    最佳适配算法：找出12MB、10MB、9MB</p>
+<p>​    最差适配算法：找出20MB、18MB、15MB</p>
+<p>​    下次适配算法：找出20MB、18MB、9MB</p>
+<p>19、一个32位地址的计算机使用俩级页表。虚拟地址被分为9位的第一级页表域、11位的二级页表域和一个偏移量，页面大小是多少？在地址空间中一共有多少个页面？</p>
+<p>答：</p>
+<p>​        偏移量等于32-9-11=12位，页面大小等于2<sup>12</sup>b=4kb，页面数为虚拟页面的位数即2<sup>20</sup>个页面。</p>
+<p>28、如果将FIFO(先进先出页面置换算法)用到4个页框和8个页面上，若初始时页框为空，访问序列串为0172327103，请问会发生多少次缺页中断？如果使用LRU(最近最久未使用算法)呢？OPT(最佳页面置换算法)呢？或者是三个页框呢？</p>
+<p>解析：</p>
+<p>​    FIFO(先进先出页面置换算法)是先进入的页面就先换出。</p>
+<p>​    LRU(最近最久未使用算法)是将最久未使用的页面置换出去，但当有中断时，造成的该元素就算已经使用过。</p>
+<p>​    OPT(最佳页面置换算法)是倒序从页面中找最晚出现的页框元素。</p>
+<p>答：</p>
+<p>​        <img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/3%E9%A1%B5%E6%A1%86.png" alt="3页框"></p>
+<p>​        <img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/4%E9%A1%B5%E6%A1%86.png" alt="4页框"></p>
+<p>32、在图3-20.c的工作集时钟算法中，表针指向那个R=0的页面。如果i=400，那这个页面将被移除吗？如果i=1000呢？</p>
+<p>​    <img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC32%E9%A2%98.png" alt="第32题"></p>
+<p>答：</p>
+<p>​    初始页面为1213，当前实际时间为2204，2204-1213=991&gt;400。所以i=400时，页面会被移除。当i=1000时，991&lt;1000，页面不会被换掉。</p>
+<p>36、一个计算机有4个页框，载入时间、最近一次访问时间和每个页的R位和M位如下图所示(时间以一个时钟周期为单位)：</p>
+<table>
+<thead>
+<tr>
+<th align="center">页面</th>
+<th align="center">载入时间</th>
+<th align="center">最近一次访问时间</th>
+<th align="center">R</th>
+<th align="center">M</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">126</td>
+<td align="center">280</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">230</td>
+<td align="center">265</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">140</td>
+<td align="center">270</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">110</td>
+<td align="center">285</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>(a)NRU算法将置换哪个页面？</p>
+<p>(b)FIFO算法将置换哪个页面？</p>
+<p>(c)LRU算法将置换哪个页面？</p>
+<p>(d)第二次机会算法将置换哪个页面？</p>
+<p>解析：</p>
+<p>​    常见页面置换算法如下：</p>
+<p>​    NRU(最近未使用算法)是根据R、M状态把页面分成四类，把编号最小的类随机选择一个页面置换。</p>
+<p>​    FIFO(先进先出页面置换算法)是先进入的页面就先换出，即淘汰最老的页面。</p>
+<p>​    LRU(最近最久未使用算法)是将最久未使用的页面置换出去，但当有中断时，造成的该元素就算已经使用过。</p>
+<p>​    第二次机会算法是先检查该页面是否被使用，如果未被使用，即R、M=0，就替换该页面，如果在被使用，就保留该页面。</p>
+<p>答：(a)置换2、(b)置换3、(c)置换1、(d)置换2</p>
+<p>47、一个程序中有俩个段，段0中为指令，段1中为读/写数据。段0有读/执行保护，段1有读/写保护。内存是按需分页式虚拟内存系统，他的虚拟地址是4位页号，10位偏移量。页表和保护如下所示(表中的数字均为十进制)：<img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC47%E9%A2%98.png" alt="第47题"></p>
+<p>答：</p>
+<p>​    (a)读取，段1，符合保护要求，内存地址为（14，3）； </p>
+<p>​    (b)存储，段0，违反保护要求，保护错误； </p>
+<p>​    (c)读取，段1，符合保护要求，页框在磁盘，发生缺页中断； </p>
+<p>​    (d)跳转，段1，违反保护要求，保护错误。</p>
+<h2 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h2><p>21、说明硬链接优于符号链接的一个优点，并说明符号链接优于硬链接的一个优点。</p>
+<p>答：</p>
+<p>​        硬链接优于符号链接的一个优点：节省空间，符号链接优于硬链接的优点：可以跨文件系统建立连接。</p>
+<p>23、考虑一个块大小为4KB、使用自由列表(freelist method)的4TB的磁盘，多少个块地址可以被存进一个块中？</p>
+<p>答：</p>
+<p>​        磁盘上的块数：4TB/4KB=2<sup>30</sup>，趋近于32，32bit=4byte。所以会有4KB/4byte=2<sup>10</sup>个块地址。</p>
+<p>36、考虑图4-21背后的思想，目前磁盘平均寻道时间为6ms，旋转速率为15000rpm,每道为1048576字节。对于大小各位1KB、2KB、4KB的磁盘块，传送速率各是多少？</p>
+<p>解析：读取一个k字节的块所需要的时间t=寻道时间+旋转延迟+传送时间。</p>
+<p>​            传送速率(单个字节)v=k/t</p>
+<p>答：</p>
+<p>​        旋转周期 = 1 / 15000 (min) = 1 / 15000 x 60 (s)=1 / 15000 x 60 x 10<sup>3</sup> ms= 4 ms</p>
+<p>​        旋转延迟 = 4 ms x 1/2 = 2 ms</p>
+<p>​        假设传送k个字节，则有传送时间 = (k / 1048576 ) x 4 ms</p>
+<p>​        时间t = 寻道时间+旋转延迟+传送时间=6ms+2ms+ (k / 1048576 ) x 4</p>
+<p>​        k = 1KB = 2<sup>10</sup> byte(字节) ,t = 8.004, v = k/t= 127.936</p>
+<p>​        k = 2KB = 2<sup>11</sup> byte(字节) ,t = 8.008, v = k/t= 255.744</p>
+<p>​        k = 4KB = 2<sup>12</sup> byte(字节) ,t = 8.016, v = k/t= 510.978</p>
+<p>40、一个UNIX系统使用4KB的磁盘块和4字节磁盘地址。如果每个i节点中有10个直接表项以及一个一次间接块、一个二次间接块和一个三次间接块，那么文件最大为多大？</p>
+<p>解析：</p>
+<p>​        用磁盘块除以磁盘地址的结果2<sup>n</sup>，其中n为指针个数，那么一次间接块就有2<sup>n</sup>个指针，二次间接块就有2<sup>2n</sup>，三次间接块就有2<sup>3n</sup>个指针。磁盘块个数=一次间接块指针个数+二次间接块指针个数+三次间接块指针个数+直接表项。文件大小 = 磁盘块个数x磁盘块大小。</p>
+<p>答：</p>
+<p>​        4KB/4byte = 2<sup>10</sup>，所以i结点有10个指针。一次间接块有2<sup>10</sup>个指针，二次间接块有2<sup>20</sup>个指针，三次间接块有2<sup>30</sup>个指针。</p>
+<p>​        磁盘块个数 10 + 2<sup>10</sup>+2<sup>20</sup>+2<sup>30</sup> = 1074791434</p>
+<p>​        文件大小 = 磁盘块个数x磁盘块大小=(10 + 2<sup>10</sup>+2<sup>20</sup>+2<sup>30</sup>)x4KB=1074791434x4KB=4.004TB=4TB</p>
+<h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><p>13、请解释OS如何帮助安装新的驱动程序而无须重新编译OS。</p>
+<p>答：</p>
+<p>​        UNIX通过以下的方法实现。有一个由设备编号索引的表，每个表项是一个C结构，其中包含指向打开、关闭、读取和写入功能的指针，以及来自设备的其他一些东西。要安装新设备，必须在此表中新建一个条目，并将指针填充到新加载的设备驱动程序中。</p>
+<p>28、考虑一个包含16个磁头和400个柱面的磁盘。该磁盘分成4个100柱面的区域，不同的区域分别包含160个、200个、240个和280个扇区。假设每个扇区包含512字节，相邻柱面间的平均寻道时间为1ms，并且磁盘转速为7200rpm。计算磁盘容量，最优磁道斜进以及最大数据传输率。</p>
+<p>解析：</p>
+<p>​        存储容量 = 磁头数 x 磁道(柱面)数 x 每道(柱)扇区数 x 每扇区字节数</p>
+<p>​        计算最优磁道时，先计算在平均寻道时间内，磁盘转过的角度，再用磁盘转过的大小乘以每个区域的扇区数。</p>
+<p>​        最大数据传输率是最外层区域内的磁头正在读取/写入时获得的速率。= 扇区数 x 每扇区字节数 x 磁盘转速</p>
+<p>答：</p>
+<p>​        磁盘容量 = 16x100x(160+200+240+280)x512=720896000</p>
+<p>​        7200rpm = 120 r/s。在1ms的平均寻道时间内，磁盘转过的角度为10<sup>-3</sup>x120=0.12。</p>
+<p>所以区域1转过：0.12x160=19.2个扇区，区域2转过：0.12x200=24.0个扇区，区域3转过：0.12x240=28.8个扇区，区域4转过：0.12x280=33.6个扇区。所以对于4个区域柱面来说，最优磁道斜进分别为19.2、24.0、28.8、33.6。</p>
+<p>​        最大数据传输率 = 280x512x120=17203200 byte/s = 16.4025 MB/s</p>
+<p>31、磁盘请求以柱面10、22、20、2、40、6和38的次序进入磁盘驱动器。寻道时每个柱面移动需要6ms，以下各算法所需的寻道时间是多少？在各情形下，假设磁臂起始于柱面20。</p>
+<p>​        (a)先来先服务</p>
+<p>​        (b)最近柱面优先</p>
+<p>​        (c)电梯算法(初始向上移动)</p>
+<p>​        (d)改进型电梯算法(始终向上移动)</p>
+<p>答：</p>
+<p>​        (a)10+12+2+18+38+34+32=146个柱面，时间t = 146x6 = 876 ms </p>
+<p>​        (b)2+12+4+4+36+2=60个柱面，时间t = 60x6 = 360 ms</p>
+<p>​        (c)2+16+2+30+4+4=58个柱面，时间t = 58x6 = 348 ms</p>
+<p>​        (d)2+16+2+38+4+4=66个柱面，时间t = 66x6 = 396 ms</p>
+<p>50、一台瘦客户端用于显示一个网页，该网页包含一个动画卡通，卡通大小为400x160像素，以每秒10帧的速度播放。显示该卡通会消耗100Mb/s快速以太网带宽多大的部分？</p>
+<p>答：</p>
+<p>​        显示大小为400×160×3(R、G、B) = 192000 byte，10帧每秒也就是1920000 byte/s = 15360000b/s，所以会消耗15.36%的以太网。(100Mb/s是指每秒100百万位，即10<sup>8</sup> b/s。)</p>
+<h2 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h2><p>14、考虑系统的如下状态，有四个进程P1、P2、P3、P4，以及五种类型的资源RS1、RS2、RS3、RS4和RS5。</p>
+<p><img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC14%E9%A2%98.png" alt="第14题"></p>
+<p>答：</p>
+<p>21、仔细考察图6-11b，如果D再多请求1个单位，会导致安全状态还是不安全状态？如果换成C提出同样的请求，情形会怎么样？</p>
+<p>答：</p>
+<p>26、</p>
+<p><img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC26%E9%A2%98.png" alt="第26题"></p>
+<p>答：</p>
+<p>38、</p>
+<p><img src="/2021/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0/%E7%AC%AC38%E9%A2%98.png" alt="第38题"></p>
+<p>答：</p>
+<p>​        如果两个程序都先请求Woofer，计算机将取消请求；请求狗窝情况相同；若一人请求Woofer，一人请求狗窝，最终将动物及其房屋分开，分配从头开始；故将形成活锁。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i># 课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/23/%E7%AC%AC%E4%B9%9D%E5%B1%8A%E6%B3%B0%E8%BF%AA%E6%9D%AF%E6%AF%94%E8%B5%9B/" rel="prev" title="第九届泰迪杯比赛">
+      <i class="fa fa-chevron-left"></i> 第九届泰迪杯比赛
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/02/%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/" rel="next" title="计组复习">
+      计组复习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E9%A2%98%E5%A4%8D%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">操作系统大题复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="nav-number">1.2.</span> <span class="nav-text">第二章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="nav-number">1.3.</span> <span class="nav-text">第三章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0"><span class="nav-number">1.4.</span> <span class="nav-text">第四章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0"><span class="nav-number">1.5.</span> <span class="nav-text">第五章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0"><span class="nav-number">1.6.</span> <span class="nav-text">第六章</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

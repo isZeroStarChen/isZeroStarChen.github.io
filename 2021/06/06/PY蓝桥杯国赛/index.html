@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="尽管没参加，还是想试着做一下看看自己到底能做出多少。最近心态不正常，烦啊！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PY蓝桥杯国赛">
+<meta property="og:url" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="尽管没参加，还是想试着做一下看看自己到底能做出多少。最近心态不正常，烦啊！！！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题A带宽.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题B纯质数.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题C完全日期.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题D最小权值.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题E大写.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题F123.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/%E8%AF%95%E9%A2%98H%E5%92%8C%E4%B8%8E%E4%B9%98%E7%A7%AF.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题I二进制问题.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题J翻转括号序列1.png">
+<meta property="og:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题J翻转括号序列2.png">
+<meta property="article:published_time" content="2021-06-06T14:38:10.000Z">
+<meta property="article:modified_time" content="2021-06-09T23:35:03.890Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题A带宽.png">
+
+<link rel="canonical" href="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PY蓝桥杯国赛 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PY蓝桥杯国赛
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-06 22:38:10" itemprop="dateCreated datePublished" datetime="2021-06-06T22:38:10+08:00">2021-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-10 07:35:03" itemprop="dateModified" datetime="2021-06-10T07:35:03+08:00">2021-06-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>尽管没参加，还是想试着做一下看看自己到底能做出多少。最近心态不正常，烦啊！！！</p>
+<span id="more"></span>
+
+<h2 id="第一部分：填空题"><a href="#第一部分：填空题" class="headerlink" title="第一部分：填空题"></a>第一部分：填空题</h2><h3 id="试题A：带宽"><a href="#试题A：带宽" class="headerlink" title="试题A：带宽"></a>试题A：带宽</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题A带宽.png" alt="试题A带宽" style="zoom:80%;">
+
+<p>这道题目类似于计组和操作系统的知识题吧，Mbps是兆比特每秒，其中8Mbps=1MB/s，所以答案为25MB。</p>
+<h3 id="试题B：纯质数"><a href="#试题B：纯质数" class="headerlink" title="试题B：纯质数"></a>试题B：纯质数</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题B纯质数.png" alt="试题B纯质数" style="zoom:75%;">
+
+<p>如图，根据题意，纯质数是所有十进制数位都是质数的质数，而在单个十进制数为质数的数有2,3,5,7。那么我们可以从以下俩个角度去考虑求纯质数。第一种方法是先将从1到20210605中的所有质数都全部求出，再进行筛选其中十进制数位为质数的数的个数；第二种则是先将从1到20210615中只含2,3,5,7数字的数求出，再在这些数中筛选出是质数的数。</p>
+<p>在这里需要强调的两个地方，在求质数的时候，假设需要判断的数是n，我们无需将其遍历n，我们可以用质数的定义来选择性的遍历。质数的定义是一个数的因数只有1和它本身。那么我们可以选择遍历从2到n<sup>0.5</sup>(即n开根号)，如果在遍历这个范围的时候，发现有数字i可以满足n%i==0(n对i取模等于0==n可以被i整除)，即i为n的因数，那么就是说n不为质数；反之，n为质数。第二个地方则是，因为数据范围过于巨大，千万不要在跑数据的时候选择打印出每一个正在运行的数字，那样的话程序运行的速度会特别特别慢。代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Prime</span>(<span class="params">n</span>):</span></span><br><span class="line">    m=<span class="built_in">int</span>(sqrt(n))+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,m):</span><br><span class="line">        <span class="keyword">if</span> n%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Chun</span>(<span class="params">n</span>):</span></span><br><span class="line">    re=[<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;5&#x27;</span>,<span class="string">&#x27;7&#x27;</span>]</span><br><span class="line">    s=<span class="built_in">str</span>(n)</span><br><span class="line">    <span class="keyword">if</span> s.count(re[<span class="number">0</span>])+s.count(re[<span class="number">1</span>])+s.count(re[<span class="number">2</span>])+s.count(re[<span class="number">3</span>])==<span class="built_in">len</span>(s):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="built_in">sum</span>=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20210606</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">if</span> (Prime(i) <span class="keyword">and</span> Chun(i)):</span><br><span class="line">        <span class="built_in">sum</span>+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#简单解(先求包含2357的数，再挑其中的质数)</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Prime</span>(<span class="params">n</span>):</span></span><br><span class="line">    m=<span class="built_in">int</span>(math.sqrt(n))+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,m):</span><br><span class="line">        <span class="keyword">if</span> n%i==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">s = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">7777777</span>): </span><br><span class="line">    <span class="comment">#遍历到7777777的原因是在20210605这个范围内，仅含有2，3，5，7的最大数字就是7777777</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">str</span>(i).count(<span class="string">&#x27;2&#x27;</span>)+<span class="built_in">str</span>(i).count(<span class="string">&#x27;3&#x27;</span>)+<span class="built_in">str</span>(i).count(<span class="string">&#x27;5&#x27;</span>)+<span class="built_in">str</span>(i).count(<span class="string">&#x27;7&#x27;</span>)!=<span class="built_in">len</span>(<span class="built_in">str</span>(i)):</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        <span class="keyword">if</span> Prime(i):</span><br><span class="line">            s+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p>最终结果为1903。</p>
+<h3 id="试题C：完全日期"><a href="#试题C：完全日期" class="headerlink" title="试题C：完全日期"></a>试题C：完全日期</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题C完全日期.png" alt="试题C完全日期" style="zoom:80%;">
+
+<p>如题，如果我们选择采用很傻瓜的用三个for循环，范围分别是(2001,2022)，(1,13)，(1,32)来代表从2001年1月1日到2021年12月31日，会发现还需要来掌控每个月份的天数不一样以及有无闰年的存在。这样的话过于麻烦，由时间，联想到Python中的time库，我们可以定义两个三元元组(2001,1,1)和(2021,12,31)再将其变成date类型，最后使用date.year,date.month,date.day获取年份，月份，天数。然后可以采用一个timedelta对象，累加从规定的2001年1月1日到2021年12月31日。</p>
+<p>按照题目所给的意思，我们需要对其判断年月日的每个数字相加最终得到的和是不是一个完全平方数，那么判断一个数是不是完全平方数，在Python里面，我们可以用math库中的sqrt()方法求开根号。如果一个数m是完全平方数的话，那么sqrt(m)==int(sqrt(m))。例如数字2不是完全平方数，sqrt(2)=1.414，int(sqrt(2))=1。那么解决了怎么判断一个数是不是完全平方数之后，我们需要求出每个时间的年月日的数字相加之和，对此，可以将年月日统一转换成字符串类型(str)，再定义一个对字符串中数字求和的函数即可。最终代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">n</span>):</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> n:</span><br><span class="line">        s+=<span class="built_in">int</span>(i)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line">date1=date(<span class="number">2001</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">date2=date(<span class="number">2021</span>,<span class="number">12</span>,<span class="number">31</span>)</span><br><span class="line">one=timedelta(days=<span class="number">1</span>)</span><br><span class="line">m=<span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> date1!=date2:</span><br><span class="line">    year=date1.year</span><br><span class="line">    month=date1.month</span><br><span class="line">    day=date1.day</span><br><span class="line">    re = <span class="built_in">str</span>(year) + <span class="built_in">str</span>(month) + <span class="built_in">str</span>(day)</span><br><span class="line">    <span class="keyword">if</span> sqrt(fun(re)) == <span class="built_in">int</span>(sqrt(fun(re))):</span><br><span class="line">        m+=<span class="number">1</span></span><br><span class="line">    date1+=one</span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
+
+<p>最终结果为977。</p>
+<h3 id="试题D：最小权值"><a href="#试题D：最小权值" class="headerlink" title="试题D：最小权值"></a>试题D：最小权值</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题D最小权值.png" alt="试题D最小权值" style="zoom:65%;">
+
+<p>这题不会，树和图都不会，等以后会了再进行操作。</p>
+<h3 id="试题E：大写"><a href="#试题E：大写" class="headerlink" title="试题E：大写"></a>试题E：大写</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题E大写.png" alt="试题E大写" style="zoom:75%;">
+
+<p>这题应该就是所谓的签到题了，感觉有点离谱，一句话可以写完。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">input</span>().upper())</span><br></pre></td></tr></table></figure>
+
+<p>完美解决这道程序编写题。</p>
+<h3 id="试题F：123"><a href="#试题F：123" class="headerlink" title="试题F：123"></a>试题F：123</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题F123.png" alt="试题F123" style="zoom:80%;">
+
+<p>按照题目意思，我将其理解成第一行是1，第二行是12，第三行是123，第四行是1234，以此类推。题目所说的数列的第n项，就是所理解的第n行，而第n行的元素则是1，2，···，n。再回到题目，题目所要求的是根据给的两个数x、y，求出数列中第x个数到第y个数的和。在这里有一个特殊情况看是当x==y的时候，直接求出第x个数的大小就可以了。</p>
+<p>那么要求第x个数到第y个数的和，我们需要先知道第x个数在第几行的第几个数。第一行元素个数为1，第二行是2，第n行是n，然后计算到第n行出现了多少个数，也就是从1到n-1一个等差数列进行求和。那么第x个数，我们就可以根据其最近的等差数列的和，求出第x数所在的行数以及第多少多少行中的位数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">local</span>(<span class="params">m,n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> m == n:</span><br><span class="line">        x=<span class="built_in">int</span>(sqrt(<span class="number">2</span>*m))</span><br><span class="line">        x1=<span class="built_in">int</span>(m - <span class="number">0.5</span>*(x*(x-<span class="number">1</span>)))</span><br><span class="line">        <span class="keyword">return</span> x1</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        re=<span class="built_in">list</span>()</span><br><span class="line">        x=<span class="built_in">int</span>(sqrt(<span class="number">2</span>*m))</span><br><span class="line">        y=<span class="built_in">int</span>(sqrt(<span class="number">2</span>*n))</span><br><span class="line">        x1=<span class="built_in">int</span>(m - <span class="number">0.5</span>*(x*(x-<span class="number">1</span>)))</span><br><span class="line">        y1=<span class="built_in">int</span>(n - <span class="number">0.5</span>*(y*(y-<span class="number">1</span>)))</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(x1,x+<span class="number">1</span>):</span><br><span class="line">            re.append(i)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,y1+<span class="number">1</span>):</span><br><span class="line">            re.append(j)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(re)</span><br><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(a):</span><br><span class="line">    b,c = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">    <span class="built_in">print</span>(local(b,c))</span><br></pre></td></tr></table></figure>
+
+<h3 id="试题G：冰山"><a href="#试题G：冰山" class="headerlink" title="试题G：冰山"></a>试题G：冰山</h3><p>题目太长，也超过了四个小时的时间，就干脆不想写了。。。</p>
+<h3 id="试题H：和与乘积"><a href="#试题H：和与乘积" class="headerlink" title="试题H：和与乘积"></a>试题H：和与乘积</h3><p><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/%E8%AF%95%E9%A2%98H%E5%92%8C%E4%B8%8E%E4%B9%98%E7%A7%AF.png" alt="试题H和与乘积"></p>
+<p>按照题目，我们直接将其所给的整数放入一个列表中，由于是要求区间内数据之和等于数据之积的区间个数，那么一直从列表中一直循环就可以了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sam</span>(<span class="params">m</span>):</span></span><br><span class="line">    y = <span class="number">0</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    x = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m,a):</span><br><span class="line">        s+=b[i]</span><br><span class="line">        x*=b[i]</span><br><span class="line">        <span class="keyword">if</span> s==x:</span><br><span class="line">            y+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">b = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">re = <span class="built_in">list</span>()</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(a):</span><br><span class="line">    re.append(sam(j))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(re))</span><br></pre></td></tr></table></figure>
+
+<h3 id="试题I：二进制问题"><a href="#试题I：二进制问题" class="headerlink" title="试题I：二进制问题"></a>试题I：二进制问题</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题I二进制问题.png" alt="试题I二进制问题" style="zoom:80%;">
+
+<p>我们可以用一个for循环遍历1到N，然后将每个遍历的数转换成二进制再将转换出的二进制以字符串的形式进行存储，最后再用字符串的count()方法进行对是否有K个1进行判断，代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">N,K = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">c = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,N+<span class="number">1</span>):</span><br><span class="line">    s = <span class="built_in">str</span>(<span class="built_in">bin</span>(i))</span><br><span class="line">    <span class="keyword">if</span> s.count(<span class="string">&quot;1&quot;</span>) == K:</span><br><span class="line">        c+=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+
+<h3 id="试题J：翻转括号序列"><a href="#试题J：翻转括号序列" class="headerlink" title="试题J：翻转括号序列"></a>试题J：翻转括号序列</h3><img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题J翻转括号序列1.png" alt="试题J翻转括号序列1" style="zoom:75%;">
+
+<img src="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/试题J翻转括号序列2.png" alt="试题J翻转括号序列2" style="zoom:75%;">
+
+<p>先输入一个括号序列长度和操作次数，其中操作分为俩种，一种是反转括号序列，另一种是返回从所给位置开始到第几个位置结束有最多的合法序列，没有就返回0。</p>
+<p>在进行后者操作时，我们可以将从所给位置开始的元素存放到列表里，如果第一个元素是“)”，那就说明没有合法序列，直接返回0。相反，如果第一个元素是“(”，那么从这个元素开始我们就可以将其存放到列表里，然后遇到元素“)”，我们则将尾部的元素“(”消除。同时查看列表中元素“(”的个数和下一元素是否是”)”，如果“(”的个数等于0的时候，下一元素是“)”，那么直接返回当前位置的值，如果如果“(”的个数等于0的时候，下一元素是“(”，那则继续存放。当括号序列元素全部存储的时候，我们对其进行一个判断，如果此时正好“(”的个数等于0，则返回尾部位置，如果不等于0，那就直接返回0。具体代码如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">n , m =<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">a = <span class="built_in">input</span>()</span><br><span class="line"><span class="keyword">while</span> m:</span><br><span class="line">    b = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">    <span class="keyword">if</span> b[<span class="number">0</span>] == <span class="number">1</span>:</span><br><span class="line">        c = a[b[<span class="number">1</span>]-<span class="number">1</span>:b[<span class="number">2</span>]]</span><br><span class="line">        c=c.replace(<span class="string">&quot;(&quot;</span>,<span class="string">&quot; &quot;</span>)</span><br><span class="line">        c=c.replace(<span class="string">&quot;)&quot;</span>,<span class="string">&quot;(&quot;</span>)</span><br><span class="line">        c=c.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;)&quot;</span>)</span><br><span class="line">        a = a[<span class="number">0</span>:b[<span class="number">1</span>]-<span class="number">1</span>]+c+a[b[<span class="number">2</span>]:]</span><br><span class="line">        <span class="comment">#print(a)   打印翻转后的括号序列</span></span><br><span class="line">    <span class="keyword">elif</span> b[<span class="number">0</span>] == <span class="number">2</span>:</span><br><span class="line">        re=<span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">if</span> a[b[<span class="number">1</span>]-<span class="number">1</span>] == <span class="string">&#x27;(&#x27;</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(b[<span class="number">1</span>]-<span class="number">1</span>,<span class="built_in">len</span>(a)):</span><br><span class="line">                <span class="keyword">if</span> a[i] == <span class="string">&#x27;(&#x27;</span>:</span><br><span class="line">                    re.append(a[i])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    re.pop(-<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">if</span> re.count(<span class="string">&#x27;(&#x27;</span>) == <span class="number">0</span> <span class="keyword">and</span> i == <span class="built_in">len</span>(a)-<span class="number">1</span>:</span><br><span class="line">                        <span class="built_in">print</span>(i+<span class="number">1</span>)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">elif</span> re.count(<span class="string">&#x27;(&#x27;</span>) == <span class="number">0</span> <span class="keyword">and</span> a[i+<span class="number">1</span>] == <span class="string">&#x27;)&#x27;</span>:</span><br><span class="line">                        <span class="built_in">print</span>(i+<span class="number">1</span>)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">elif</span> i == <span class="built_in">len</span>(a)-<span class="number">1</span> <span class="keyword">and</span> re.count(<span class="string">&#x27;(&#x27;</span>) != <span class="number">0</span>:</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">&quot;0&quot;</span>)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;0&quot;</span>)</span><br><span class="line">    m-=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>感觉国赛比省赛稍微简单一点，因为省赛有挺多题不会的。这次没有报名，不过估计报名了省赛也拿不到省一也打不了国赛，还是菜，菜是原罪。希望慢慢改进自己的代码能力，继续加油。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/02/%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0/" rel="prev" title="计组复习">
+      <i class="fa fa-chevron-left"></i> 计组复习
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%A1%AB%E7%A9%BA%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">第一部分：填空题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98A%EF%BC%9A%E5%B8%A6%E5%AE%BD"><span class="nav-number">1.1.</span> <span class="nav-text">试题A：带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98B%EF%BC%9A%E7%BA%AF%E8%B4%A8%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">试题B：纯质数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98C%EF%BC%9A%E5%AE%8C%E5%85%A8%E6%97%A5%E6%9C%9F"><span class="nav-number">1.3.</span> <span class="nav-text">试题C：完全日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98D%EF%BC%9A%E6%9C%80%E5%B0%8F%E6%9D%83%E5%80%BC"><span class="nav-number">1.4.</span> <span class="nav-text">试题D：最小权值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98E%EF%BC%9A%E5%A4%A7%E5%86%99"><span class="nav-number">1.5.</span> <span class="nav-text">试题E：大写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98F%EF%BC%9A123"><span class="nav-number">1.6.</span> <span class="nav-text">试题F：123</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98G%EF%BC%9A%E5%86%B0%E5%B1%B1"><span class="nav-number">1.7.</span> <span class="nav-text">试题G：冰山</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98H%EF%BC%9A%E5%92%8C%E4%B8%8E%E4%B9%98%E7%A7%AF"><span class="nav-number">1.8.</span> <span class="nav-text">试题H：和与乘积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98I%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%97%AE%E9%A2%98"><span class="nav-number">1.9.</span> <span class="nav-text">试题I：二进制问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%95%E9%A2%98J%EF%BC%9A%E7%BF%BB%E8%BD%AC%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"><span class="nav-number">1.10.</span> <span class="nav-text">试题J：翻转括号序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">2.</span> <span class="nav-text">最后</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

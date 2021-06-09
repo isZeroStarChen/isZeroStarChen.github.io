@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="没办法，鸽子又要开始飞了，怎么能鸽了呢，唉，生活不易，小鸽叹气，终究还是不称职的小鸽子。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理02-系统概论(下)">
+<meta property="og:url" content="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="没办法，鸽子又要开始飞了，怎么能鸽了呢，唉，生活不易，小鸽叹气，终究还是不称职的小鸽子。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211528322-963891826.png">
+<meta property="og:image" content="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211714912-675145341.png">
+<meta property="og:image" content="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211738845-1383120606.png">
+<meta property="article:published_time" content="2021-03-23T14:31:56.000Z">
+<meta property="article:modified_time" content="2021-04-05T13:26:26.550Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211528322-963891826.png">
+
+<link rel="canonical" href="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机组成原理02-系统概论(下) | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机组成原理02-系统概论(下)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-23 22:31:56" itemprop="dateCreated datePublished" datetime="2021-03-23T22:31:56+08:00">2021-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-05 21:26:26" itemprop="dateModified" datetime="2021-04-05T21:26:26+08:00">2021-04-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>没办法，鸽子又要开始飞了，怎么能鸽了呢，唉，生活不易，小鸽叹气，终究还是不称职的小鸽子。</p>
+<span id="more"></span>
+
+<h1 id="计算机系统概论"><a href="#计算机系统概论" class="headerlink" title="计算机系统概论"></a>计算机系统概论</h1><h3 id="计算机的工作步骤"><a href="#计算机的工作步骤" class="headerlink" title="计算机的工作步骤"></a>计算机的工作步骤</h3><p>计算机的工作过程，为了进一步了解计算机的工作过程，则需要分析一个比上文现代计算机的结构框图更细化的计算机组成框图。</p>
+<p><img src="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211528322-963891826.png" alt="1967993-20210307211528322-963891826"></p>
+<p>其中：M:存储器，R:寄存器，A:地址，D:数据，MAR:存储器地址寄存器，MDR:存储器数据寄存器，ALU:算术逻辑单元，CU:控制单元，CPU:中央处理器(可看作由ALU和CU组成)，ACC:累加器，MQ:乘商寄存器，PC:程序计数器，IR:指令寄存器，X:操作数寄存器。</p>
+<h4 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h4><p>主存储器的基本组成如上图所示，其中存储体M由很多存储单元构成，每个存储单元又包含若干个存储元件，每个存储元件可以存储0/1一个二进制码。一个存储单元可以存储一串二进制代码，这串二进制代码被称为一个存储字，存储字的位数(二进制代码的位数)则是存储字长。</p>
+<p>我们可以把存储体看作一栋大楼，那么存储单元就可以看作很多房间，存储元件则是每个房间中的床位，存储元件里所存储的二进制码则又可以表示这个床位是否有人。</p>
+<p>而MAR(存储器地址寄存器)用来存放想要访问的存储单元的地址，也反映存储单元的个数，MDR(存储器数据寄存器)用来存放即将取出的代码或存入的代码，反映存储字长。</p>
+<h4 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h4><p>运算器的基本组成如上图所示</p>
+<h4 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h4><p>控制器的基本组成如上图所示，控制器是计算机的神经中枢，由它指挥各部件自动、协调的工作。完成一条指令，基本要经过三个过程：取指过程、分析过程、执行过程；也就是常说的完成一条指令操作的取指、分析、执行三个阶段。</p>
+<p>控制器由PC、IR、CU三部件组成，PC存放即将执行指令的地址(每次执行完之后会自动计数加一，也就是下一条指令的地址)，IR存放即将执行的指令(可以理解为IR内容来自MDR，PC内容来自MAR),CU则是一个控制单元，先分析需要完成的操作，再控制所对应的对象进行操作。</p>
+<h4 id="主机完成一条指令过程的举例"><a href="#主机完成一条指令过程的举例" class="headerlink" title="主机完成一条指令过程的举例"></a>主机完成一条指令过程的举例</h4><p>1&gt;取数指令</p>
+<p><img src="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211714912-675145341.png" alt="1967993-20210307211714912-675145341"></p>
+<h2 id="计算机硬件的主要技术指标"><a href="#计算机硬件的主要技术指标" class="headerlink" title="计算机硬件的主要技术指标"></a>计算机硬件的主要技术指标</h2><h3 id="机器字长"><a href="#机器字长" class="headerlink" title="机器字长"></a>机器字长</h3><p>机器字长是CPU一次能处理数据的位数(与CPU中的寄存器位数有关)</p>
+<h3 id="存储容量"><a href="#存储容量" class="headerlink" title="存储容量"></a>存储容量</h3><p>存储容量分为主存容量和辅存容量(这里主要讲解主存容量)。</p>
+<p>主存容量指主存中存放二进制数的总位数，其存储容量=存储单元个数x存储字长。(存储字长是由MDR的位数决定，存储单元个数由MAR的位数决定。)在现代计算机中常以字节数来描述容量的大小(因为一个字节已经被定义为8位二进制代码，所以用字节数就可以反映主存容量)。</p>
+<p>例如：MAR位数为10，MDR位数为8，那么总共的容量就应该是1K x 8位；其中存储单元个数是2的10次方，存储字长是8。</p>
+<p>辅存容量通常也用字节数表示。</p>
+<h3 id="运算速度"><a href="#运算速度" class="headerlink" title="运算速度"></a>运算速度</h3><p>运算速度可以从以下几个因素去衡量</p>
+<p><img src="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8602-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E4%B8%8B/1967993-20210307211738845-1383120606.png" alt="1967993-20210307211738845-1383120606"></p>
+<p>通过主频去考虑运算速度时，实际上是考虑它的机器周期，一个机器周期一共有四个时钟周期，时钟周期的倒数就是主频。我们把执行一条指令所需要的时间叫做指令周期，执行一条指令需要划分为若干个阶段，而执行每个阶段所需要的时间则是机器周期。</p>
+<p>总的来说：一个指令周期包含若干个机器周期，一个机器周期则包含四个时钟周期，时钟周期的倒数就是主频。</p>
+<p>(PS：有无在学计算机组成原理的大佬，带带孩子吧，球球了)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i># 课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8601-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" rel="prev" title="计算机组成原理01-系统概论">
+      <i class="fa fa-chevron-left"></i> 计算机组成原理01-系统概论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8603-%E6%A6%82%E8%AE%BA%E6%80%9D%E8%80%83/" rel="next" title="计算机组成原理03-概论思考">
+      计算机组成原理03-概论思考 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">计算机系统概论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.0.1.</span> <span class="nav-text">计算机的工作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">主存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">运算器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%AE%8C%E6%88%90%E4%B8%80%E6%9D%A1%E6%8C%87%E4%BB%A4%E8%BF%87%E7%A8%8B%E7%9A%84%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">主机完成一条指令过程的举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E7%9A%84%E4%B8%BB%E8%A6%81%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">计算机硬件的主要技术指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%97%E9%95%BF"><span class="nav-number">1.1.1.</span> <span class="nav-text">机器字长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">存储容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E9%80%9F%E5%BA%A6"><span class="nav-number">1.1.3.</span> <span class="nav-text">运算速度</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
