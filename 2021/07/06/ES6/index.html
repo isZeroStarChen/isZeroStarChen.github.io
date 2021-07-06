@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ES6新特性如React.js、Vue.js、angular.js等都使用到了ES6的新特性。 了解ES6ES6全称为ECMAScript 6的简称，是JavaScript语言的下一代标准。目标是JavaScript语言可以用于编写复杂的大型应用程序，成为企业级开发语言。 ES6是一个历史名词，也是一个泛指，含义是5.1版本以后的JavaScript的下一代标准，涵盖了ES2015、ES2016、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="http://example.com/2021/07/06/ES6/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="ES6新特性如React.js、Vue.js、angular.js等都使用到了ES6的新特性。 了解ES6ES6全称为ECMAScript 6的简称，是JavaScript语言的下一代标准。目标是JavaScript语言可以用于编写复杂的大型应用程序，成为企业级开发语言。 ES6是一个历史名词，也是一个泛指，含义是5.1版本以后的JavaScript的下一代标准，涵盖了ES2015、ES2016、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/关键字var.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/关键字let.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/关键字const.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/ES6字符串.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/数组解构.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/对象解构.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/ES6函数优化.jpg">
+<meta property="og:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/ES6箭头函数.jpg">
+<meta property="article:published_time" content="2021-07-06T02:10:53.000Z">
+<meta property="article:modified_time" content="2021-07-06T04:25:56.498Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/06/ES6/Blog/blog/source_posts/ES6/关键字var.jpg">
+
+<link rel="canonical" href="http://example.com/2021/07/06/ES6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ES6 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/06/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-06 10:10:53 / 修改时间：12:25:56" itemprop="dateCreated datePublished" datetime="2021-07-06T10:10:53+08:00">2021-07-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ES6新特性"><a href="#ES6新特性" class="headerlink" title="ES6新特性"></a>ES6新特性</h2><p>如React.js、Vue.js、angular.js等都使用到了ES6的新特性。</p>
+<h3 id="了解ES6"><a href="#了解ES6" class="headerlink" title="了解ES6"></a>了解ES6</h3><p>ES6全称为ECMAScript 6的简称，是JavaScript语言的下一代标准。目标是JavaScript语言可以用于编写复杂的大型应用程序，成为企业级开发语言。</p>
+<p>ES6是一个历史名词，也是一个泛指，含义是5.1版本以后的JavaScript的下一代标准，涵盖了ES2015、ES2016、ES2017等，而ES2015则是正式名称，特指当年发布的正式版本的语言标准。</p>
+<h3 id="ES6中let和const"><a href="#ES6中let和const" class="headerlink" title="ES6中let和const"></a>ES6中let和const</h3><h4 id="以往的关键字var"><a href="#以往的关键字var" class="headerlink" title="以往的关键字var"></a>以往的关键字var</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ES6新特性的学习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(i);</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&quot;循环外：&quot;</span>+i);</span></span><br><span class="line"><span class="handlebars"><span class="xml">	<span class="comment">&lt;!--在ES6之前，var是唯一的声明变量关键字--&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">    <span class="comment">&lt;!--使用var，有的时候定义的变量有时会莫名其妙地成为全局变量。--&gt;</span></span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>根据输出的结果，发现循环外的i的值原本应该是0，现在输出了5，显然var作用域太大，不适合。</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\关键字var.jpg" alt="关键字var"></p>
+<h4 id="ES6的关键字let和const"><a href="#ES6的关键字let和const" class="headerlink" title="ES6的关键字let和const"></a>ES6的关键字let和const</h4><p>将上文代码中的var改成let之后，运行结果如下，我们发现let声明的对象，只在let命令所在的代码块有效，这样变量的作用域就限制在了循环内部。</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\关键字let.jpg" alt="关键字let"></p>
+<p>将上文代码的关键字修改成const，代码重新更改，代码和结果：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a=1;</span><br><span class="line">console.log(&quot;a = &quot;,a);</span><br><span class="line">//给a重新赋值</span><br><span class="line">a = 2</span><br><span class="line">console.log(&quot;a = &quot;,a);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\关键字const.jpg" alt="关键字const"></p>
+<p>关键字const声明的变量是常量，它的值不能被修改，一旦用const声明，值一直都会是初始值，一旦想要更改，就会报错。</p>
+<h3 id="ES6字符串的扩展"><a href="#ES6字符串的扩展" class="headerlink" title="ES6字符串的扩展"></a>ES6字符串的扩展</h3><h4 id="新扩展API"><a href="#新扩展API" class="headerlink" title="新扩展API"></a>新扩展API</h4><p>includes：返回布尔值，表示是否找到了参数字符串</p>
+<p>startswith：返回布尔值，表示参数字符串是否在原字符串的头部</p>
+<p>endswith：返回布尔值，表示参数字符串是否在原字符串的尾部</p>
+<h4 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h4><p>即用两个字符把一个字符串扩起来，可以任意换行。在ES6中用了``这两个符号作为字符串模板标记符，可以这样使用：</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\ES6字符串.jpg" alt="ES6字符串"></p>
+<h3 id="解构表达式"><a href="#解构表达式" class="headerlink" title="解构表达式"></a>解构表达式</h3><p>ES6中允许按照一定模式从数组和对象中提取值，然后再对变量进行赋值，这就被称为结构。</p>
+<h4 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1,2,3];</span><br><span class="line">let [x,y,z] = arr;  //相互对应来赋值给变量</span><br><span class="line">console.log(x,y,z)</span><br><span class="line"></span><br><span class="line">let [x1] = arr;  //只匹配一个参数</span><br><span class="line">console.log(x1)</span><br><span class="line"></span><br><span class="line">let [y1,y2,y3,y4] = arr; </span><br><span class="line">//当变量个数大于数组长度，不会报错，还是相互对应来赋值给变量，</span><br><span class="line">//超出长度的输出undefined</span><br><span class="line">console.log(y1,y2,y3,y4)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\数组解构.jpg" alt="数组解构"></p>
+<h4 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const person = &#123;</span><br><span class="line">        name:&quot;jack&quot;,</span><br><span class="line">        age:21,</span><br><span class="line">        language:[&#x27;java&#x27;,&#x27;js&#x27;,&#x27;css&#x27;]</span><br><span class="line">    &#125;;</span><br><span class="line">	</span><br><span class="line">	//解析对象获取值</span><br><span class="line">    let &#123;name,age,language&#125; = person;</span><br><span class="line">	//打印</span><br><span class="line">    console.log(name,age,language);</span><br><span class="line">    //变量名和属性名可以不一样，可以像下面一样定义</span><br><span class="line">    let &#123;name:n,age:a,language:l&#125; = person;</span><br><span class="line">    console.log(n,a,l);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\对象解构.jpg" alt="对象解构"></p>
+<h3 id="函数优化"><a href="#函数优化" class="headerlink" title="函数优化"></a>函数优化</h3><h4 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function add(a,b)&#123;</span><br><span class="line">//判断b是不是空，b为空就给默认值1</span><br><span class="line">b = b || 1;</span><br><span class="line">return a+b;</span><br><span class="line">&#125;</span><br><span class="line">//传一个参数</span><br><span class="line">console.log(add(10,2))</span><br><span class="line">console.log(add(10))</span><br><span class="line"></span><br><span class="line">//ES6中的操作</span><br><span class="line">function add1(a,b =1)&#123;</span><br><span class="line">	return a+b;</span><br><span class="line">&#125;</span><br><span class="line">//传一个参数就可以了</span><br><span class="line">console.log(add1(10,2))</span><br><span class="line">console.log(add1(10))</span><br></pre></td></tr></table></figure>
+
+<p>ES6在函数上优化了默认参数值，如上图，函数定义两个变量，但当其只收到一个变量时会报错，在ES6之前，我们可以在函数中套用一个if判断语句来判断输入的值是否为空，如果为空就给它赋一个初始值。在ES6中，我们可以在定义函数时就进行此操作，如上图。程序运行结果如下。</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\ES6函数优化.jpg" alt="ES6函数优化"></p>
+<h4 id="箭头参数"><a href="#箭头参数" class="headerlink" title="箭头参数"></a>箭头参数</h4><p>ES6中定义函数的简写方式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//一个参数</span><br><span class="line">function print(a)&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">&#125;</span><br><span class="line">print(&quot;123&quot;);</span><br><span class="line">//一个参数</span><br><span class="line">let print2 = a =&gt;console.log(a);</span><br><span class="line">print2(&quot;456&quot;);</span><br><span class="line">//两个参数</span><br><span class="line">let sum = (a,b) =&gt; console.log(a+b);</span><br><span class="line">sum(10,5);</span><br><span class="line">//代码不止一行,一定要用括号括起来</span><br><span class="line">let sum2 = (a,b) =&gt; &#123;return a+b;&#125;</span><br><span class="line">console.log(sum2(10,8))</span><br><span class="line">//没有参数,则需要()进行占位，代表参数部分</span><br><span class="line">let sayHello = () =&gt; console.log(&quot;hello&quot;);</span><br><span class="line">sayHello();</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="/2021/07/06/ES6/Blog\blog\source_posts\ES6\ES6箭头函数.jpg" alt="ES6箭头函数"></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i># 前端</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/06/PY%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B/" rel="prev" title="PY蓝桥杯国赛">
+      <i class="fa fa-chevron-left"></i> PY蓝桥杯国赛
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">ES6新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3ES6"><span class="nav-number">1.1.</span> <span class="nav-text">了解ES6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6%E4%B8%ADlet%E5%92%8Cconst"><span class="nav-number">1.2.</span> <span class="nav-text">ES6中let和const</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A5%E5%BE%80%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97var"><span class="nav-number">1.2.1.</span> <span class="nav-text">以往的关键字var</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97let%E5%92%8Cconst"><span class="nav-number">1.2.2.</span> <span class="nav-text">ES6的关键字let和const</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95"><span class="nav-number">1.3.</span> <span class="nav-text">ES6字符串的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E6%89%A9%E5%B1%95API"><span class="nav-number">1.3.1.</span> <span class="nav-text">新扩展API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.3.2.</span> <span class="nav-text">字符串模板</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">解构表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E8%A7%A3%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84"><span class="nav-number">1.4.2.</span> <span class="nav-text">对象解构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%BC%98%E5%8C%96"><span class="nav-number">1.5.</span> <span class="nav-text">函数优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E5%80%BC"><span class="nav-number">1.5.1.</span> <span class="nav-text">默认参数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%8F%82%E6%95%B0"><span class="nav-number">1.5.2.</span> <span class="nav-text">箭头参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.3.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
