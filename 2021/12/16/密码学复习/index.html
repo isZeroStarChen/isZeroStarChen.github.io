@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="家人们，纯纯的大无语时间了，最后一节课老师不讲考试重点，讲了点考试不考的，啧啧啧，22号和23号连考2天，人也是麻了，梦回大一。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学复习">
+<meta property="og:url" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="家人们，纯纯的大无语时间了，最后一节课老师不讲考试重点，讲了点考试不考的，啧啧啧，22号和23号连考2天，人也是麻了，梦回大一。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理.jpg">
+<meta property="og:image" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理例题.jpg">
+<meta property="og:image" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理习题解答.jpg">
+<meta property="og:image" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/平方剩余勒让得符号.png">
+<meta property="article:published_time" content="2021-12-16T02:11:16.000Z">
+<meta property="article:modified_time" content="2021-12-16T09:44:23.820Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理.jpg">
+
+<link rel="canonical" href="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>密码学复习 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          密码学复习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-16 10:11:16 / 修改时间：17:44:23" itemprop="dateCreated datePublished" datetime="2021-12-16T10:11:16+08:00">2021-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">考试</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>家人们，纯纯的大无语时间了，最后一节课老师不讲考试重点，讲了点考试不考的，啧啧啧，22号和23号连考2天，人也是麻了，梦回大一。</p>
+<span id="more"></span>
+
+<h1 id="密码学复习"><a href="#密码学复习" class="headerlink" title="密码学复习"></a>密码学复习</h1><h2 id="第一章-密码学概述"><a href="#第一章-密码学概述" class="headerlink" title="第一章 密码学概述"></a>第一章 密码学概述</h2><p>一些概念，不放上来，主要讲述了古典密码、现代密码等的一些例子。</p>
+<h2 id="第二章-数论简要"><a href="#第二章-数论简要" class="headerlink" title="第二章 数论简要"></a>第二章 数论简要</h2><h3 id="2-1-互素"><a href="#2-1-互素" class="headerlink" title="2.1 互素"></a>2.1 互素</h3><p>若c是两个整数a、b的最大公因子，则gcd(a,b)=c。若gcd(a,b)=1，则称a和b互素。</p>
+<h3 id="2-2-模运算"><a href="#2-2-模运算" class="headerlink" title="2.2 模运算"></a>2.2 模运算</h3><p>设n是一个正整数，a是整数，如果n除a，得商为q，余数为r，则a=q*n+r，r=a mod n</p>
+<p>若（a mod n）= (b mod n)，则称两整数a和b模n同余，记为a<strong>≡</strong>b mod n。且称与a模n同余的数的全体为a的同余类，记为[a]，称a为这个同余类的表示元素。</p>
+<h4 id="2-2-1-模运算性质"><a href="#2-2-1-模运算性质" class="headerlink" title="2.2.1 模运算性质"></a>2.2.1 模运算性质</h4><p>[(a mod n)+(b mod n)] mod n=(a+b) mod n</p>
+<p>[(a mod n)-(b mod n)] mod n=(a-b) mod n</p>
+<p>[(a mod n)×(b mod n)] mod n=(a×b) mod n</p>
+<h3 id="2-3-费尔马定理和欧拉定理"><a href="#2-3-费尔马定理和欧拉定理" class="headerlink" title="2.3 费尔马定理和欧拉定理"></a>2.3 费尔马定理和欧拉定理</h3><h4 id="2-3-1-费尔马定理"><a href="#2-3-1-费尔马定理" class="headerlink" title="2.3.1 费尔马定理"></a>2.3.1 费尔马定理</h4><p>若p是素数，a是正整数且gcd(a,p)=1，则a<sup>p-1</sup>≡ 1 mod p。</p>
+<h4 id="2-3-2-欧拉函数"><a href="#2-3-2-欧拉函数" class="headerlink" title="2.3.2 欧拉函数"></a>2.3.2 欧拉函数</h4><p>设n是一个正整数，小于n且与n互素的正整数的个数称为n的欧拉函数，记为φ(n)。</p>
+<p>例如：φ(3)=2(1,2共两个数)，φ(7)=6(1,2,3,4,5,6共6个数)，φ(8)=4(1,3,5,7共4个数)。</p>
+<p><strong>若n是素数，则显然有φ(n)=n-1。</strong></p>
+<p><strong>若n是两个素数p和q的乘积，则φ(n)=φ(p)xφ(q)=(p-1)x(q-1)。</strong></p>
+<p>例如：求φ(21)。φ(21)中21为3和7的乘积，满足上述性质，则φ(21)=2x6=12。而通过遍历我们发现，小于21且与21互素的正整数确实是有12个数，分别是：1,2,4,5,8,10,11,13,16,17,19,20。</p>
+<h4 id="2-3-3-欧拉定理"><a href="#2-3-3-欧拉定理" class="headerlink" title="2.3.3 欧拉定理"></a>2.3.3 欧拉定理</h4><p><strong>若a和n互素，则a<sup>φ(n)</sup>≡1 mod n</strong> 。</p>
+<p>例如：Z8 ={0,1,2,3,4,5,6,7}，n=8，试求a<sup>φ(n)</sup> mod n的值，其中a和n互素。</p>
+<p>解：a和n的范围为{1,3,5,7}。</p>
+<h3 id="2-4-素性检验"><a href="#2-4-素性检验" class="headerlink" title="2.4 素性检验"></a>2.4 素性检验</h3><p>素数检验是指对给定的数检验其是否为素数。</p>
+<p>引理：如果p为大于2的素数，则方程x<sup>2</sup>≡1(mod p)的解只有x ≡ 1和 x ≡ -1。</p>
+<p>逆否命题：如果方程x<sup>2</sup> ≡ 1 mod p，有一解x不属于{-1,1}，那么p不为素数。</p>
+<h3 id="2-5-欧几里得算法"><a href="#2-5-欧几里得算法" class="headerlink" title="2.5 欧几里得算法"></a>2.5 欧几里得算法</h3><h4 id="2-5-1-求最大公因子"><a href="#2-5-1-求最大公因子" class="headerlink" title="2.5.1 求最大公因子"></a>2.5.1 求最大公因子</h4><p>欧几里得算法是基于下面一个基本结论：对任意非负整数a和正整数b，有gcd(a,b)=gcd(b,a mod b)。</p>
+<p>例如：gcd(18,12)=gcd(12,6)=gcd(6,0)=6。</p>
+<h4 id="2-5-2-扩展欧几里得算法求乘法逆元"><a href="#2-5-2-扩展欧几里得算法求乘法逆元" class="headerlink" title="2.5.2 扩展欧几里得算法求乘法逆元"></a>2.5.2 扩展欧几里得算法求乘法逆元</h4><p>扩展欧几里得定理：对于不完全为0的非负整数a,b，gcd(a,b)表示a,b的最大公约数，必然存在整数对x,y，使得gcd(a,b)=ax+by。</p>
+<h4 id="2-5-3-例题"><a href="#2-5-3-例题" class="headerlink" title="2.5.3 例题"></a>2.5.3 例题</h4><p>一、用扩展欧几里德算法求15 mod 79乘逆元</p>
+<p>二、用扩展欧几里得算法求11 mod 79逆元。</p>
+<h3 id="2-6-中国剩余定理"><a href="#2-6-中国剩余定理" class="headerlink" title="2.6 中国剩余定理"></a>2.6 中国剩余定理</h3><img src="/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理.jpg" alt="中国剩余定理" style="zoom:80%;">
+
+<p>该定理提供了一个非常有用的特性，即在模M下可将非常大的数x由一组小数(a1,a2,…,ak)表达。</p>
+<p>例如：已知x关于2和5的同余类分别是[0]和[3]，即x mod 2 ≡0，x mod5 ≡ 3。可知是偶数且被5整除后余数是3，所以x的解为唯一，x=8。</p>
+<h4 id="2-6-1-例题"><a href="#2-6-1-例题" class="headerlink" title="2.6.1 例题"></a>2.6.1 例题</h4><p>例如：</p>
+<img src="/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理例题.jpg" alt="中国剩余定理" style="zoom:80%;">
+
+<p>解：M=2x3x5x7=210,M1=210/2=105，所以M2=70,M3=42,M4=30;</p>
+<p>e1=M<sup>-1</sup>1 mod 2 ≡ 1, e2=M<sup>-1</sup>2 mod 3 ≡ 1,e3=M<sup>-1</sup>3 mod 5 ≡ 3,e4=M<sup>-1</sup>4 mod 7 ≡ 4,</p>
+<p>所以 x ≡ (105x1x1+70x1x2+42x3x3+30x4x5) mod 210 ≡ 173 mod 210。</p>
+<p>试求：有一个年级的同学，每9人一排多6人，每7人一排多2人，每5人一排多3人，问这个年级至少有多少人 ？ </p>
+<p>解：<img src="/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/中国剩余定理习题解答.jpg" alt="中国剩余定理" style="zoom:80%;"></p>
+<p>共有303人。</p>
+<h3 id="2-7-离散对数"><a href="#2-7-离散对数" class="headerlink" title="2.7 离散对数"></a>2.7 离散对数</h3><h4 id="2-7-1-求模下的整数幂"><a href="#2-7-1-求模下的整数幂" class="headerlink" title="2.7.1 求模下的整数幂"></a>2.7.1 求模下的整数幂</h4><p>a<sup>m</sup> ≡ 1 mod n：如果a与n互素，则至少有一整数m(比如m=φ(n))满足这一方程。称满足方程的最小正整数m为模n下a的阶。</p>
+<p>例如：a=7,n=19，则易求出7<sup>1</sup> ≡ 7 mod 19,7<sup>2</sup> ≡ 11 mod 19 ,7<sup>3</sup> ≡ 1 mod 19。则可以说：7在模19下的阶为3。</p>
+<h4 id="2-7-2-引出定理"><a href="#2-7-2-引出定理" class="headerlink" title="2.7.2 引出定理"></a>2.7.2 引出定理</h4><p>设a的阶为m，则 a<sup>k</sup> ≡ 1 mod n的充要条件是k为m的倍数。</p>
+<p>推论：a的阶m整除φ(n)，这是因为a<sup>φ(n)</sup> ≡ 1 mod n。如果a的阶m等于φ(n)，则称a为n的本原根。</p>
+<p>如果a是n的本原根，则a,a<sup>2</sup> ,…,a<sup>φ(n)</sup> 在mod n下互不相同且都与n互素。</p>
+<p>特别地，如果a是素数p的本原根，则a,a<sup>2</sup> ,…,a<sup>p-1</sup>在 mod p下都不相同。</p>
+<p>例如：n=19,a=3在mod19下的幂为： 3,9,8,5,15,7,2,6,18,16,10,11,14,4,12,17,13,1。即3的阶为18=φ(19)，可验证19的本原根还有：2,10,13,14,15。</p>
+<h3 id="2-8-平方剩余"><a href="#2-8-平方剩余" class="headerlink" title="2.8 平方剩余"></a>2.8 平方剩余</h3><p>设p是一个素数，a小于p，如果方程x<sup>2</sup> ≡ a (mod p)有解，则称a是p的平方剩余，否则称为非平方剩余。</p>
+<p>例如： x<sup>2</sup> ≡1 mod 7有解x=1，x=6；x<sup>2</sup> ≡ 2 mod 7有解x=3，x=4；x<sup>2</sup> ≡ 3 mod 7无解；<br>        x<sup>2 </sup>≡ 4 mod 7有解x=2，x=5；x<sup>2 </sup>≡ 5 mod 7无解；x<sup>2</sup> ≡ 6 mod 7无解。<br>可见共有3个数（1、2、4）是模7的平方剩余，且每个平方剩余都有两个平方根（即例中的x）。</p>
+<h4 id="2-8-1-勒让得符号"><a href="#2-8-1-勒让得符号" class="headerlink" title="2.8.1 勒让得符号"></a>2.8.1 勒让得符号</h4><img src="/2021/12/16/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/平方剩余勒让得符号.png" alt="平方剩余勒让得符号" style="zoom:80%;">
+
+<h2 id="第三章-古典密码"><a href="#第三章-古典密码" class="headerlink" title="第三章 古典密码"></a>第三章 古典密码</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%BE%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i># 课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/07/ReactJS%E5%85%A5%E9%97%A8/" rel="prev" title="ReactJS入门">
+      <i class="fa fa-chevron-left"></i> ReactJS入门
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">密码学复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%86%E7%A0%81%E5%AD%A6%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 密码学概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E8%AE%BA%E7%AE%80%E8%A6%81"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 数论简要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BA%92%E7%B4%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 互素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 模运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E6%A8%A1%E8%BF%90%E7%AE%97%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 模运算性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%B4%B9%E5%B0%94%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 费尔马定理和欧拉定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E8%B4%B9%E5%B0%94%E9%A9%AC%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.3.1 费尔马定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.3.2 欧拉函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">2.3.3 欧拉定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%B4%A0%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 素性检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">2.5.1 求最大公因子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-2-%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%E6%B1%82%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">2.5.2 扩展欧几里得算法求乘法逆元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-3-%E4%BE%8B%E9%A2%98"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">2.5.3 例题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 中国剩余定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-1-%E4%BE%8B%E9%A2%98"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">2.6.1 例题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 离散对数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-1-%E6%B1%82%E6%A8%A1%E4%B8%8B%E7%9A%84%E6%95%B4%E6%95%B0%E5%B9%82"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">2.7.1 求模下的整数幂</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-2-%E5%BC%95%E5%87%BA%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">2.7.2 引出定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E5%B9%B3%E6%96%B9%E5%89%A9%E4%BD%99"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 平方剩余</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-1-%E5%8B%92%E8%AE%A9%E5%BE%97%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">2.8.1 勒让得符号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 古典密码</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
