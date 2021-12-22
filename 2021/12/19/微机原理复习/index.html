@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/2021/12/19/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/算术运算指令.jpg">
 <meta property="og:image" content="http://example.com/2021/12/19/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0/位操作类指令.jpg">
 <meta property="article:published_time" content="2021-12-19T03:08:09.000Z">
-<meta property="article:modified_time" content="2021-12-21T10:21:39.746Z">
+<meta property="article:modified_time" content="2021-12-22T12:12:11.274Z">
 <meta property="article:author" content="isZeroStarChen">
 <meta property="article:tag" content="课程">
 <meta name="twitter:card" content="summary">
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-21 18:21:39" itemprop="dateModified" datetime="2021-12-21T18:21:39+08:00">2021-12-21</time>
+                <time title="修改时间：2021-12-22 20:12:11" itemprop="dateModified" datetime="2021-12-22T20:12:11+08:00">2021-12-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
 <h5 id="状态标志"><a href="#状态标志" class="headerlink" title="状态标志"></a>状态标志</h5><p>状态标志共有6个，可以表示处理器当前运行状态。表示前一步操作(加、减等)执行以后，ALU所处的状态，后续操作可以根据这些状态标志进行判断，实现转移。</p>
 <h6 id="CF"><a href="#CF" class="headerlink" title="CF"></a>CF</h6><p>进位标志位，做加法时最高位出现进位或做减法时最高位出现借位，CF=1；</p>
 <h6 id="PF"><a href="#PF" class="headerlink" title="PF"></a>PF</h6><p>奇偶标志位，低8位中1的个数为偶数个，PF=1；</p>
-<h6 id="AF"><a href="#AF" class="headerlink" title="AF"></a>AF</h6><p>辅助进位，低4位向前有进(借)位，AF=1；</p>
+<h6 id="AF"><a href="#AF" class="headerlink" title="AF"></a>AF</h6><p>辅助进位标志位，低4位向前有进(借)位，AF=1；</p>
 <h6 id="ZF"><a href="#ZF" class="headerlink" title="ZF"></a>ZF</h6><p>零标志位，结果为0，ZF=1；</p>
 <h6 id="SF"><a href="#SF" class="headerlink" title="SF"></a>SF</h6><p>符号标志位，与最高位一致；</p>
 <h6 id="OF"><a href="#OF" class="headerlink" title="OF"></a>OF</h6><p>溢出标志位，双高位判别法。</p>
@@ -366,27 +366,40 @@
 <p>3）0.001010B</p>
 <p>4）-0.001010B</p>
 <h3 id="第二章作业"><a href="#第二章作业" class="headerlink" title="第二章作业"></a>第二章作业</h3><p>1、8086/8088CPU中BIU部件和EU部件各包括哪些部件？各自的功能是什么？追踪指令地址的寄存器是什么？</p>
+<p>答：</p>
+<p>1）BIU中包括4个16位段寄存器，1个16位指令指针、1个地址加法器、1个指令流队列和总线控制电路。BIU功能为：完成CPU和存储器间的数据传送。</p>
+<p>2）EU中包括：ALU，16位标志寄存器，寄存器阵列，指令译码器和控制电路。EU功能为：指令译码和指令执行。</p>
+<p>3）追踪指令地址的寄存器是IP。</p>
 <p>2、8086/8088CPU有哪几个状态标志？哪几个控制标志？各标志位的含义和功能是什么？</p>
+<p>答：8086/8088共有9个标志位，其中6个状态标志位，3个控制标志位。</p>
+<p>1）6个状态标志位：AF,PF,SF,CF,ZF,OF。</p>
+<p>AF：辅助进位标志位，指示加减法中D3向D4位进位或借位状态，有进位或借位时AF为1，反之为0；</p>
+<p>CF：进位标志位，指示加减法中最高位的进位或借位状态，有进位或借位时CF为1，反之为0；</p>
+<p>PF：奇偶标志位，低8位中1的个数是否为偶数，偶数个1时，PF=1;</p>
+<p>SF：符号标志位，指示运算中最高位的状态，最高位为1时，SF=1;</p>
+<p>ZF：零标志位，指示运算中ALU是否全为0，全为0时ZF为1，反之为0；</p>
+<p>OF：溢出标志位，指示带符号算术运算结果是否超出其范围，有溢出时，OF=1。</p>
+<p>2）3个控制标志位：</p>
+<p>TF：单步标志，用来控制CPU的执行方式；</p>
+<p>DF：方向标志，控制串操作指令的前进方向；</p>
+<p>IF：可屏蔽中断标志，IF为1时，则允许响应可屏蔽中断请求。</p>
 <p>3、8086/8088CPU的存储器组织为什么要采用分段结构？逻辑地址和物理地址的关系是什么？若已知逻辑地址为B100H:A300H,试求物理地址。</p>
 <p>4、80286CPU相对于8086CPU来说，有哪些改进？</p>
+<p>答：</p>
+<p>1）80286CPU有更为先进的16位微处理器，提高运算速度；</p>
+<p>2）80286CPU两种工作方式：实地址方式和虚地址方式；</p>
+<p>3）80286CPU内部分为4个独立的处理部件，使得80286CPU的运行速度较8086CPU快。</p>
 <p>5、80386CPU由哪6个部件组成？各有何功能？试说明80386CPU较80286CPU的先进之处，并说明386SX与386DX的区别。</p>
-<p>6、80486CPU较80386CPU的改进之处在哪里？试述486SX与486DX的区别</p>
+<p>答：</p>
+<p>1）80386CPU的6个部件：BIU，指令预取部件、指令译码部件、执行部件、分段部件和分页部件。BIU：将CPU与外部总线连接起来；指令预取部件：指令代码的预取；指令译码部件：为指令的执行做准备；执行部件：将指令控制信号发给其他处理部件，完成一条指令的执行；分段部件：把逻辑地址转换成线性地址；分页部件：把分段部件产生的线性地址转化成物理地址。</p>
+<p>2）80386CPU是32位微处理器，数据总线和地址总线各32条，且不复用；80386CPU较80286CPU多虚拟8086方式；80386CPU功能结构由6个处理部件组成。</p>
+<p>3）386SX内部寄存器为32位，外部数据总线宽度仅为16位，386DX内部寄存器外部数据与内存总线都是32位。</p>
+<p>6、80486CPU较80386CPU的改进之处在哪里？试述486SX与486DX的区别。</p>
 <h3 id="第三章作业"><a href="#第三章作业" class="headerlink" title="第三章作业"></a>第三章作业</h3><p>1、指出下列指令语法是否正确，若不正确请说明原因。</p>
-<p>1）MOV DS,0100H</p>
-<p>2）MOV BP,AL</p>
-<p>3）XCHG AX,2000H</p>
-<p>4）OUT 310H,AL</p>
-<p>5）MOV BX,[BX]</p>
-<p>6）MOV ES:[BX+DI],AX</p>
-<p>7）MOV AX,[SI+DI]</p>
-<p>8）MOV SS:[BX+SI+100H],BX</p>
-<p>9）AND AX,BL</p>
-<p>10）MOV DX,DS:[BP]</p>
-<p>11）MOV [BX],[SI]</p>
-<p>12）MOV CS,[1000]</p>
-<p>13）IN AL,BX</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>）MOV DS,<span class="number">0100</span>H</span><br><span class="line"><span class="comment">//错误，段寄存器不能直接传入立即数</span></span><br><span class="line"><span class="number">2</span>）MOV BP,AL</span><br><span class="line"><span class="comment">//错误，操作数类型不一致</span></span><br><span class="line"><span class="number">3</span>）XCHG AX,<span class="number">2000</span>H</span><br><span class="line"><span class="comment">//错误，XCHG不能直接交换立即数</span></span><br><span class="line"><span class="number">4</span>）OUT <span class="number">310</span>H,AL</span><br><span class="line"><span class="comment">//错误，310H超过了AL寻址范围</span></span><br><span class="line"><span class="number">5</span>）MOV BX,[BX]</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="number">6</span>）MOV ES:[BX+DI],AX</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="number">7</span>）MOV AX,[SI+DI]</span><br><span class="line"><span class="comment">//错误，不能同时用两寄存器间接寻址</span></span><br><span class="line"><span class="number">8</span>）MOV SS:[BX+SI+<span class="number">100</span>H],BX</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="number">9</span>）AND AX,BL</span><br><span class="line"><span class="comment">//错误，操作数类型不一致</span></span><br><span class="line"><span class="number">10</span>）MOV DX,DS:[BP]</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="number">11</span>）MOV [BX],[SI]</span><br><span class="line"><span class="comment">//错误，源操作数与目的操作数不能同时寻址</span></span><br><span class="line"><span class="number">12</span>）MOV CS,[<span class="number">1000</span>]</span><br><span class="line"><span class="comment">//错误，不能用MOV指令向CS中写入数据</span></span><br><span class="line"><span class="number">13</span>）IN AL,BX</span><br><span class="line"><span class="comment">//错误，BX不能作为寻址I/O的指针</span></span><br></pre></td></tr></table></figure>
+
 <p>2、有如下程序：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,<span class="number">45</span>H</span><br><span class="line">ADD AL,<span class="number">71</span>H</span><br><span class="line">DAA</span><br><span class="line">MOV BL,AL</span><br><span class="line">MOV AL,<span class="number">19</span>H</span><br><span class="line">MOV AL,<span class="number">12</span>H</span><br><span class="line">DAA</span><br><span class="line">MOV BH,AL</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,<span class="number">45</span>H</span><br><span class="line"><span class="comment">// AL=45H</span></span><br><span class="line">ADD AL,<span class="number">71</span>H</span><br><span class="line"><span class="comment">// AL=B6H,</span></span><br><span class="line">DAA</span><br><span class="line">MOV BL,AL</span><br><span class="line">MOV AL,<span class="number">19</span>H</span><br><span class="line">MOV AL,<span class="number">12</span>H</span><br><span class="line">DAA</span><br><span class="line">MOV BH,AL</span><br></pre></td></tr></table></figure>
 
 <p>执行后，BX=？标志位PF=？CF=？</p>
 <p>3、执行下列程序段，指出此程序段功能。</p>
@@ -404,10 +417,23 @@
 <p>6、假设AX=0078H,BX=06FAH,CX=1203H,DX=4105H,CF=1,下列每条指令单独执行后，标志位CF、OF、ZF的值是多少？</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DEC BX</span><br><span class="line">DIV CH</span><br><span class="line">MUL BX</span><br><span class="line">SHR AX,CL</span><br><span class="line">AND AL,<span class="number">0F</span>0H</span><br></pre></td></tr></table></figure>
 
-<h3 id="第四章作业"><a href="#第四章作业" class="headerlink" title="第四章作业"></a>第四章作业</h3><p>1、编写程序实现67H/12H,商存储在RESULT中，余数在REST中，程序的开头代码如下：</p>
+<h3 id="第四章作业"><a href="#第四章作业" class="headerlink" title="第四章作业"></a>第四章作业</h3><p>1、编写一个字符串copy的宏，要求有三个参数，分别是源字符串地址、目的字符串地址、要copy的字节数。</p>
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">COPY MACRO  BUF1,BUF2,NUM</span><br><span class="line">	 LEA	SI,BUF1</span><br><span class="line">	 LEA	DI,BUF2</span><br><span class="line">	 CLD</span><br><span class="line">	 REP	MOVSB</span><br><span class="line">	 ENDM</span><br></pre></td></tr></table></figure>
+
+<p>2、编写程序实现67H/12H,商存储在RESULT中，余数在REST中，程序的开头代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">VAR1 DB <span class="number">67</span>H</span><br><span class="line">VAR2 DB <span class="number">12</span>H</span><br><span class="line">RESULT DB ?</span><br><span class="line">REST DB ?</span><br><span class="line">DATA ENDS</span><br></pre></td></tr></table></figure>
 
+<p>答：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">;-----------------数据段---------------------</span><br><span class="line">DATA	SEGMENT</span><br><span class="line">VAR1	DB <span class="number">67</span>H</span><br><span class="line">VAR2	DB <span class="number">12</span>H</span><br><span class="line">RESULT	DB ?</span><br><span class="line">REST	DB ?</span><br><span class="line">DATA	ENDS</span><br><span class="line">;------------------堆栈段---------------------</span><br><span class="line">STACK	SEGMENT STACK</span><br><span class="line">		DW <span class="number">256</span> DUP(?)</span><br><span class="line">STACK	ENDS</span><br><span class="line">;-------------------代码段--------------------</span><br><span class="line">CODE	SEGMENT</span><br><span class="line">		ASSUME	CS:CODE,DS:DATA,SS:STACK</span><br><span class="line">START:	MOV	AX,DATA</span><br><span class="line">        MOV	DS,AX</span><br><span class="line">        XOR	AX,AX</span><br><span class="line">        MOV	DX,AX</span><br><span class="line">        MOV	AL,VAR1</span><br><span class="line">        DIV	VAR2</span><br><span class="line">        MOV	RESULT,AL</span><br><span class="line">        MOV	REST,AH</span><br><span class="line">        MOV	AH,<span class="number">4</span>CH</span><br><span class="line">        INT	<span class="number">21</span>H</span><br><span class="line">CODE	ENDS</span><br><span class="line">END	START</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="第五章作业"><a href="#第五章作业" class="headerlink" title="第五章作业"></a>第五章作业</h3><p>1、试指出8086和8088CPU的区别</p>
+<p>答：</p>
+<p>1）外部数据总线位数的差别：8086的外部数据总线有16位，8088外部数据总线为8位；</p>
+<p>2）指令队列容量的差别：8086指令队列可以容纳6个字节，8088CPU的指令队列可容纳4个字节；</p>
+<p>3）引脚特性的差别：8086的AD15~AD0定义为地址/数据复用总线，而8088只需要8条数据总线。，8086将34号引脚定义为BHE信号，8088中定义为SSO。</p>
 <h3 id="第八章作业"><a href="#第八章作业" class="headerlink" title="第八章作业"></a>第八章作业</h3><p>1、何谓初始化命令字？8259A有哪几个初始化命令字？各命令字的主要功能是什么？</p>
 <p>2、何谓操作命令字？8259A有哪几个操作命令字？各命令字的主要功能是什么？</p>
 
