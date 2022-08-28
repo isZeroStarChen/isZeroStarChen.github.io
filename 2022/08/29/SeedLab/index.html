@@ -20,23 +20,35 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="作为一个资深的老Python崇拜者，始终应当坚信Python是世界上最好的语言。本文对Pip和Python安装包进行了一个简要的方法介绍。">
+  <meta name="description" content="大四上的实训课需要用到，SeedLab版本2.0，基于Ubuntu20.04。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python&amp;Pip">
-<meta property="og:url" content="http://example.com/2021/03/23/Python&Pip/index.html">
+<meta property="og:title" content="SeedLab">
+<meta property="og:url" content="http://example.com/2022/08/29/SeedLab/index.html">
 <meta property="og:site_name" content="isZeroStar&#39;blog">
-<meta property="og:description" content="作为一个资深的老Python崇拜者，始终应当坚信Python是世界上最好的语言。本文对Pip和Python安装包进行了一个简要的方法介绍。">
+<meta property="og:description" content="大四上的实训课需要用到，SeedLab版本2.0，基于Ubuntu20.04。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/03/23/Python&Pip/1967993-20201017000810337-517458410.png">
-<meta property="og:image" content="http://example.com/2021/03/23/Python&Pip/1967993-20201027231544364-989418667.png">
-<meta property="article:published_time" content="2021-03-23T14:03:20.000Z">
-<meta property="article:modified_time" content="2021-04-05T12:15:39.105Z">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab2.0.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/VirtualBox.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab5.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/vmdk1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/vmdk2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/vmdk3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/vmdk4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/seedlab21.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/error.jpg">
+<meta property="og:image" content="http://example.com/2022/08/29/SeedLab/error1.jpg">
+<meta property="article:published_time" content="2022-08-28T16:14:02.000Z">
+<meta property="article:modified_time" content="2022-08-28T17:46:50.111Z">
 <meta property="article:author" content="isZeroStarChen">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="生产实习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/23/Python&Pip/1967993-20201017000810337-517458410.png">
+<meta name="twitter:image" content="http://example.com/2022/08/29/SeedLab/seedlab2.0.jpg">
 
-<link rel="canonical" href="http://example.com/2021/03/23/Python&Pip/">
+<link rel="canonical" href="http://example.com/2022/08/29/SeedLab/">
 
 
 <script id="page-configurations">
@@ -49,7 +61,7 @@
   };
 </script>
 
-  <title>Python&Pip | isZeroStar'blog</title>
+  <title>SeedLab | isZeroStar'blog</title>
   
 
 
@@ -170,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/Python&Pip/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/29/SeedLab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +195,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python&Pip
+          SeedLab
         </h1>
 
         <div class="post-meta">
@@ -192,23 +204,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-23 22:03:20" itemprop="dateCreated datePublished" datetime="2021-03-23T22:03:20+08:00">2021-03-23</time>
+              <time title="创建时间：2022-08-29 00:14:02 / 修改时间：01:46:50" itemprop="dateCreated datePublished" datetime="2022-08-29T00:14:02+08:00">2022-08-29</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-05 20:15:39" itemprop="dateModified" datetime="2021-04-05T20:15:39+08:00">2021-04-05</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a>
                 </span>
             </span>
 
@@ -223,22 +229,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>作为一个资深的老Python崇拜者，始终应当坚信Python是世界上最好的语言。本文对Pip和Python安装包进行了一个简要的方法介绍。</p>
+        <p>大四上的实训课需要用到，SeedLab版本2.0，基于Ubuntu20.04。</p>
 <span id="more"></span>
-
-<h2 id="Pip简易使用"><a href="#Pip简易使用" class="headerlink" title="Pip简易使用"></a>Pip简易使用</h2><p>使用pip list命令就可以发现自己电脑里所安装库的名字。如图展示的出来的有package、Version、Location三列，package是下载的python库名，Version是库的版本信息，Location是指库所在计算机里的安装位置，一般情况下只有非pip install 库名这样操作的或者其他操作的才会展示出本地的安装地址。</p>
-<p> <img src="/2021/03/23/Python&Pip/1967993-20201017000810337-517458410.png" alt="1967993-20201017000810337-517458410"></p>
-<h2 id="Pip安装"><a href="#Pip安装" class="headerlink" title="Pip安装"></a>Pip安装</h2><p>如果单安装了python编译器没有安装pycharm和anaconda的话，当你需要安装python的某个引用库时，就需要用到这个pip命令了。pip是Python的一种包管理工具，它可以直接进行对Python包的查找、下载、安装、以及卸载。一般在Python2.7.9+以上版本或 Python3.4+以上的python编译器版本都自带pip。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pip --version     　 <span class="comment"># Pip版本命令</span></span><br><span class="line">pip 　　　　　　    　 <span class="comment"># Pip获取帮助</span></span><br><span class="line">pip <span class="keyword">install</span> packages <span class="comment"># Pip安装包</span></span><br><span class="line">pip uninstall package <span class="comment">#Pip卸载包</span></span><br><span class="line">pip <span class="keyword">install</span> --upgrade package <span class="comment">#Pip安装包更新</span></span><br><span class="line">pip <span class="keyword">install</span> packages==<span class="number">1</span>.x.x <span class="comment">#Pip安装包的指定版本</span></span><br><span class="line">pip <span class="keyword">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple package <span class="comment">#Pip从清华大学镜像下载包</span></span><br><span class="line">pip debug --verbose <span class="comment">#查看计算机内Python当前版本pip所支持安装的文件类型</span></span><br></pre></td></tr></table></figure>
-
-<p>一般有着Pycharm和Anaconda这两类软件的话，直接在软件内部的python库中直接安装就可以了。</p>
-<h1 id="Python安装包"><a href="#Python安装包" class="headerlink" title="Python安装包"></a>Python安装包</h1><p>当计算机安装了Python编译器之后，那么同一版本的Python安装包就有着三种用法。<img src="/2021/03/23/Python&Pip/1967993-20201027231544364-989418667.png" alt="1967993-20201027231544364-989418667"></p>
-<p>Modify是修改的意思，你可以重新更改你的安装路径以及安装设置；Repair是修复，用于修复在使用过程中删除或者其他原因导致Python出问题的版块；最后一个是卸载，通过这个可以比较干净的卸载掉所安装的Python编译器。</p>
-<h1 id="Python运行"><a href="#Python运行" class="headerlink" title="Python运行"></a>Python运行</h1><p>Windows端可以下载Pycharm、Visual studio code、Anaconda等，mac和ios可以下载Pythonista，安卓版可以下载Pydroid3，也可以直接通过Python的IDLE运行。</p>
-<p>在Python中运用到某种包时(以Numpy库为例)，一般直接采用import Numpy，设置函数一般采用def f(n):。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def fu(<span class="keyword">a</span>,b)://更相减损法求最大公约数</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">a</span>!=b):</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">a</span>&lt;b):</span><br><span class="line">            b=b-<span class="keyword">a</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">a</span>=<span class="keyword">a</span>-b</span><br><span class="line">    <span class="literal">return</span> <span class="keyword">a</span></span><br><span class="line">def func(<span class="keyword">a</span>,b):</span><br><span class="line">    <span class="literal">return</span> int((<span class="keyword">a</span>*b)/fu(<span class="keyword">a</span>,b))</span><br><span class="line"><span class="keyword">a</span>,b=map(int,input().<span class="built_in">split</span>())</span><br><span class="line">print(fu(<span class="keyword">a</span>,b),func(<span class="keyword">a</span>,b))</span><br></pre></td></tr></table></figure>
-
-<p>求最大公约数和最小公倍数的代码如上所示。我认为Python相较于C语言的好处是简洁易上手，目前而言，对我来说就是Python好用，不接受反驳。</p>
+<p>本文提供了两种运行SeedLab平台的方法，一种是基于VirtualBox，另一种是基于VMware WorkStation。</p>
+<h1 id="VirtualBox"><a href="#VirtualBox" class="headerlink" title="VirtualBox"></a>VirtualBox</h1><h2 id="1、下载SeedLab2-0环境"><a href="#1、下载SeedLab2-0环境" class="headerlink" title="1、下载SeedLab2.0环境"></a>1、下载SeedLab2.0环境</h2><p>在<a target="_blank" rel="noopener" href="https://seedsecuritylabs.org/labsetup.html">SeedLab官网</a>里找到如下图所示的下载界面，任点击红框里的任意一个下载。得到一个压缩包，解压得到文件SEED-Ubuntu20.04.vdi。<br><img src="/2022/08/29/SeedLab/seedlab2.0.jpg" alt="seedlab2.0"></p>
+<h2 id="2、安装VirtualBox"><a href="#2、安装VirtualBox" class="headerlink" title="2、安装VirtualBox"></a>2、安装VirtualBox</h2><p>在得到该vdi文件后，下载一个最新版本的VirtualBox，进行安装，安装之后，运行，得到下图所示(注：这里是创建好了再来写博客的，所以会有左框中的SeedLab)。<br><img src="/2022/08/29/SeedLab/VirtualBox.jpg" alt="VirtualBox"></p>
+<h2 id="3、完成SeedLab基础设置"><a href="#3、完成SeedLab基础设置" class="headerlink" title="3、完成SeedLab基础设置"></a>3、完成SeedLab基础设置</h2><p>点击新建，然后按照下图一步步过程即可，注意路径换成自己实际的路径。<br><img src="/2022/08/29/SeedLab/seedlab1.jpg" alt="seedlab1"><br>然后在虚拟内存根据自己电脑实际情况填写适当大小。<br>接下来，选择使用已有的虚拟磁盘，然后在页面中点击添加，在文件夹中找到第一步中下载的.vdi文件，选中并创建即可。<br><img src="/2022/08/29/SeedLab/seedlab3.jpg" alt="seedlab3"><br><img src="/2022/08/29/SeedLab/seedlab2.jpg" alt="seedlab2"></p>
+<h2 id="4、运行SeedLab"><a href="#4、运行SeedLab" class="headerlink" title="4、运行SeedLab"></a>4、运行SeedLab</h2><p>打开创建好的SeedLab平台，账号是SEED，密码是dees，然后就进入了系统。<br><img src="/2022/08/29/SeedLab/seedlab4.jpg" alt="seedlab14"><br><img src="/2022/08/29/SeedLab/seedlab5.jpg" alt="seedlab15"></p>
+<h1 id="VMware-WorkStation"><a href="#VMware-WorkStation" class="headerlink" title="VMware WorkStation"></a>VMware WorkStation</h1><p>在基于VM搭建前，需要先将vmware所不支持的vdi文件转化成所支持的vmdk文件，但是进行转换的话就必然会使用到VBoxManager.exe文件，但是这个文件是在你安装了VirtualBox之后才会有的，所以还是老实的用VirtualBox吧。</p>
+<h2 id="1、vdi怎么转换成vmdk"><a href="#1、vdi怎么转换成vmdk" class="headerlink" title="1、vdi怎么转换成vmdk"></a>1、vdi怎么转换成vmdk</h2><p>在转换之前，先基础的了解一下转换思路。我们需要对一个vdi文件进行两次操作才能得到被VMware所识别的vmdk文件：</p>
+<p>第一次用VirtualBox中的VBoxManager.exe转换成vmdk，此时的vmdk还不能被VMware所识别；所以第二次用VMwareWorkStation中的vmware-vdiskmanager.exe将vmdk能被VMware所识别。</p>
+<h2 id="2、vdi转换成vmdk"><a href="#2、vdi转换成vmdk" class="headerlink" title="2、vdi转换成vmdk"></a>2、vdi转换成vmdk</h2><p>进入管理员权限的命令提示符界面，将路径转到VirtualBox路径下。<br><img src="/2022/08/29/SeedLab/vmdk1.jpg" alt="vmdk1"><br>然后利用VBoxManager.exe进行转换<br><img src="/2022/08/29/SeedLab/vmdk2.jpg" alt="vmdk2"><br>这里需要注意：<br><img src="/2022/08/29/SeedLab/vmdk3.jpg" alt="vmdk3"><br>然后就能在VirtualBox的根目录下找到第一次转换好的vmdk文件。<br>再将此时的管理员路径转换到VMWare WorkStation的根目录下。利用<code>vmware-vdiskmanager.exe</code>进行二次转换。<br><img src="/2022/08/29/SeedLab/vmdk4.jpg" alt="vmdk4"><br>等运行完成后，变得到VMware所能运行的vmdk文件。接下来就是老一套了。</p>
+<h2 id="3、利用VMware-WorkStation打开"><a href="#3、利用VMware-WorkStation打开" class="headerlink" title="3、利用VMware WorkStation打开"></a>3、利用VMware WorkStation打开</h2><p><img src="/2022/08/29/SeedLab/seedlab21.jpg" alt="seed21"></p>
+<p>其中<code>磁盘类型选择SATA</code>，然后使用现有虚拟磁盘和第一种方法一样选择vmdk文件即可运行。<br>但是需要注意，运行虚拟机时，有的电脑会出现如下所示报错<br><img src="/2022/08/29/SeedLab/error.jpg" alt="error"></p>
+<p>为避免蓝屏，<strong>解决方法是先下载一个SeedLab2.0所对应版本的Ubuntu20.04的iso光盘镜像文件</strong>。然后在编辑虚拟机设置一栏中，找到CD光盘，将其目录指向所下载的iso文件，即可避免。<br><img src="/2022/08/29/SeedLab/error1.jpg" alt="error1"></p>
+<h1 id="搭建心得"><a href="#搭建心得" class="headerlink" title="搭建心得"></a>搭建心得</h1><p>感觉这个SeedLab平台归根结底就是一个依赖于Ubuntu系统所搭载的资源平台，有点类似于在ubuntu上搭建网站。期待接下来的学习。</p>
 
     </div>
 
@@ -248,7 +253,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i># Python</a>
+              <a href="/tags/%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i># 生产实习</a>
           </div>
 
         
@@ -257,12 +262,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/23/GET&Post%E7%AE%80%E8%A6%81/" rel="prev" title="GET&Post简要">
-      <i class="fa fa-chevron-left"></i> GET&Post简要
+    <a href="/2022/07/01/PiKaChu%E5%AE%89%E8%A3%85/" rel="prev" title="PiKaChu安装">
+      <i class="fa fa-chevron-left"></i> PiKaChu安装
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/03/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%8601-%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" rel="next" title="计算机组成原理01-系统概论">
-      计算机组成原理01-系统概论 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/08/29/SeedLab%E6%90%AD%E5%BB%BA/" rel="next" title="SeedLab搭建">
+      SeedLab搭建 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -322,7 +327,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pip%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Pip简易使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pip%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Pip安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number"></span> <span class="nav-text">Python安装包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E8%BF%90%E8%A1%8C"><span class="nav-number"></span> <span class="nav-text">Python运行</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VirtualBox"><span class="nav-number">1.</span> <span class="nav-text">VirtualBox</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BDSeedLab2-0%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">1、下载SeedLab2.0环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85VirtualBox"><span class="nav-number">1.2.</span> <span class="nav-text">2、安装VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%AE%8C%E6%88%90SeedLab%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">3、完成SeedLab基础设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E8%BF%90%E8%A1%8CSeedLab"><span class="nav-number">1.4.</span> <span class="nav-text">4、运行SeedLab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VMware-WorkStation"><span class="nav-number">2.</span> <span class="nav-text">VMware WorkStation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81vdi%E6%80%8E%E4%B9%88%E8%BD%AC%E6%8D%A2%E6%88%90vmdk"><span class="nav-number">2.1.</span> <span class="nav-text">1、vdi怎么转换成vmdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81vdi%E8%BD%AC%E6%8D%A2%E6%88%90vmdk"><span class="nav-number">2.2.</span> <span class="nav-text">2、vdi转换成vmdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%A9%E7%94%A8VMware-WorkStation%E6%89%93%E5%BC%80"><span class="nav-number">2.3.</span> <span class="nav-text">3、利用VMware WorkStation打开</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%BF%83%E5%BE%97"><span class="nav-number">3.</span> <span class="nav-text">搭建心得</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
