@@ -20,20 +20,26 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="HTTP协议是指超文本传输协议，简单来说就是一种规则，允许将HTML文档从Web服务器传送到Web浏览器。">
+  <meta name="description" content="SeedLab中SQL容器环境的搭建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP协议简要">
-<meta property="og:url" content="http://example.com/2021/03/23/HTTP%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81/index.html">
+<meta property="og:title" content="SQL-1">
+<meta property="og:url" content="http://example.com/2022/08/31/SQL-1/index.html">
 <meta property="og:site_name" content="isZeroStar&#39;blog">
-<meta property="og:description" content="HTTP协议是指超文本传输协议，简单来说就是一种规则，允许将HTML文档从Web服务器传送到Web浏览器。">
+<meta property="og:description" content="SeedLab中SQL容器环境的搭建">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-22T23:35:11.000Z">
-<meta property="article:modified_time" content="2021-05-24T11:42:39.262Z">
+<meta property="og:image" content="http://example.com/2022/08/31/SQL-1/uname.jpg">
+<meta property="og:image" content="http://example.com/2022/08/31/SQL-1/sql1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/31/SQL-1/sql2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/31/SQL-1/sql3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/31/SQL-1/sql4.jpg">
+<meta property="article:published_time" content="2022-08-31T14:30:06.000Z">
+<meta property="article:modified_time" content="2022-08-31T15:03:20.644Z">
 <meta property="article:author" content="isZeroStarChen">
-<meta property="article:tag" content="安全">
+<meta property="article:tag" content="生产实习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/31/SQL-1/uname.jpg">
 
-<link rel="canonical" href="http://example.com/2021/03/23/HTTP%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81/">
+<link rel="canonical" href="http://example.com/2022/08/31/SQL-1/">
 
 
 <script id="page-configurations">
@@ -46,7 +52,7 @@
   };
 </script>
 
-  <title>HTTP协议简要 | isZeroStar'blog</title>
+  <title>SQL-1 | isZeroStar'blog</title>
   
 
 
@@ -167,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/23/HTTP%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/SQL-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          HTTP协议简要
+          SQL-1
         </h1>
 
         <div class="post-meta">
@@ -189,23 +195,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-23 07:35:11" itemprop="dateCreated datePublished" datetime="2021-03-23T07:35:11+08:00">2021-03-23</time>
+              <time title="创建时间：2022-08-31 22:30:06 / 修改时间：23:03:20" itemprop="dateCreated datePublished" datetime="2022-08-31T22:30:06+08:00">2022-08-31</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-24 19:42:39" itemprop="dateModified" datetime="2021-05-24T19:42:39+08:00">2021-05-24</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">安全</span></a>
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a>
                 </span>
             </span>
 
@@ -220,55 +220,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>HTTP协议是指超文本传输协议，简单来说就是一种规则，允许将HTML文档从Web服务器传送到Web浏览器。</p>
+        <p>SeedLab中SQL容器环境的搭建</p>
 <span id="more"></span>
-
-<h1 id="HTTP协议简要"><a href="#HTTP协议简要" class="headerlink" title="HTTP协议简要"></a>HTTP协议简要</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包括三部分：请求行(请求方法)，请求头(消息报头)和请求正文。</p>
-<p>例如：POST  /login.php HTTP/1.1           //请求行</p>
-<p>　　　HOST：<a target="_blank" rel="noopener" href="http://www.xxser.com/">www.xxser.com</a>　　　　　    //请求头</p>
-<p>　　  User-Agent:：Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20100101 Firefox/15.0</p>
-<p>　　　　　　　　　　　　　　　　　       //空白行，代表请求头结束</p>
-<p>　　  Username=admin&amp;password=admin   //请求正文</p>
-<p>请求行又可以分为三部分，一个是POST请求，一个是在域名根目录下的login.php里，还有一个是说明使用的是HTTP1.0版本；</p>
-<p>请求头是第二行到空白行，HOST代表请求的地址，User-Agent(简称UA)是浏览器UA标识；</p>
-<p>请求正文这一行最常出现在POST请求当中，而且可选。</p>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包括三部分：响应行，响应头(消息报头)和响应正文。</p>
-<p>一般HTTP响应的第一行为响应行，其中有HTTP版本，状态码以及消息；第二行到空白行是响应头，是服务器发给客户端的；最后是响应正文，是服务器向客户端发送的HTML数据。</p>
-<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>HTTP协议中的状态码一般由三位数字组成，第一位数字定义了相应的类型，只有五种。</p>
-<p>1XX：请求已被成功接收，继续处理，范围100~101。</p>
-<p>2XX：成功，服务器成功的处理了请求，范围200~206。</p>
-<p>3XX：重定向，资源已经被移动，并且会告诉新的资源位置，浏览器重新访问。范围300~305。</p>
-<p>4XX：客户端错误状态码，最常见的是请求了一个不存在URL，范围400~415。</p>
-<p>5XX：Web服务器自身出错，服务器内部有问题。范围500~505。</p>
-<p>常见的状态码有：</p>
-<p>200：客户端请求成功。</p>
-<p>302：重新定向。</p>
-<p>400：客户端请求有语法错误，不能被服务器理解。</p>
-<p>401：服务器请求未经授权。</p>
-<p>403：服务器接收到了请求，但是拒绝提供服务。</p>
-<p>404：访问资源不存在。</p>
-<p>500：服务器内部出错。</p>
-<p>503：当前服务器不能处理请求，请稍后再试。</p>
-<h2 id="HTTP消息"><a href="#HTTP消息" class="headerlink" title="HTTP消息"></a>HTTP消息</h2><p>HTTP消息也叫HTTP头，分四部分，一是请求头，二是响应头，三是普通头，四是实体头。</p>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>请求头只出现在HTTP请求中，常用的HTTP请求头如下。</p>
-<p>Host：用于指定请求资源的主机和端口号。</p>
-<p>User-Agent：浏览器UA标识，可以向服务器显示用的浏览器和系统信息。</p>
-<p>Referer：显示用户是从什么界面来到本界面的。例如：Referer：<a target="_blank" rel="noopener" href="http://www.xxser.com/login.php%E3%80%82%E8%A1%A8%E7%A4%BA%E7%94%A8%E6%88%B7%E6%98%AF%E4%BB%8Elogin.php%E7%95%8C%E9%9D%A2%E6%9D%A5%E5%88%B0%E6%9C%AC%E7%95%8C%E9%9D%A2%E7%9A%84%E3%80%82%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%98%BE%E7%A4%BA%E4%B8%8A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84URL%E3%80%82">www.xxser.com/login.php。表示用户是从login.php界面来到本界面的。相当于一个显示上个页面的URL。</a></p>
-<p>Cookie：一段文本，很重要，表示请求者身份。</p>
-<p>Range：请求实体的部分内容，多线程下载含有Range头。</p>
-<p>x-forward-for：代表请求端的IP。</p>
-<p>Accept：指定客户端接受哪些类型的信息。例如：Accept：text/html，表明客户端希望接受HTML文本。</p>
-<h3 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h3><p>是服务器根据请求向客户端发送的HTTP头。常见的HTTP头如下。</p>
-<p>Server：服务器使用的Web服务器的名称。</p>
-<p>Set-cookie：向客户端设置Cookie，通过这个可以查看到服务器发送给客户端的Cookie信息。</p>
-<p>Last-Modified：可以看到资源修改的最后时间。</p>
-<p>Location：服务器通过这个告诉浏览器访问什么页面，通常配合302状态码使用。</p>
-<p>Refresh：服务器通过这个告诉浏览器定时刷新浏览器。</p>
-<h3 id="实体头"><a href="#实体头" class="headerlink" title="实体头"></a>实体头</h3><p>请求和响应都能传送一个实体头。</p>
-<p>Content-Type：向接收方指示实体的介质类型。</p>
-<p>Content-Encoding：被用作媒体类型的修饰符，这个值指示了已经被应用到实体正文的附加内容的编码。</p>
-<p>Content-Length：用于指明实体正文的长度，以字节方式储存的十进制数字来表示。</p>
-<p>Last-Modified：用于指示资源的最后修改日期和时间</p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>在做实验前发现了老师要求用户名改为自己姓名，进入设置，做了更改。<img src="/2022/08/31/SQL-1/uname.jpg" alt="uname"><br>继之前搭建xss环境，直接附上命令行代码，详细操作，可以看一下之前的<a target="_blank" rel="noopener" href="https://iszerostarchen.github.io/2022/08/29/XSS-1/">XSS-1</a>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> Desktop/seedlab</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -o Labsetup.zip  https://seedsecuritylabs.org/Labs_20.04/Files/Web_SQL_Injection/Labsetup.zip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> unzip Labsetup.zip</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/31/SQL-1/sql1.jpg" alt="sql1"></p>
+<h1 id="容器装载"><a href="#容器装载" class="headerlink" title="容器装载"></a>容器装载</h1><p>也和之前搭建xss环境使用的命令相同，先把终端的路径移动到下载并解压缩好的Labsetup文件夹中(/Desktop/seedlab/sqlinject/Labsetup)先构建容器再启动容器。</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dcbuild  <span class="comment">#构建容器</span></span><br><span class="line">$ dcup     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure>
+<p>但在这里不同的是，你启动容器之后，所有的容器都将在后台运行。如果要在容器上运行命令，我们通常需要在该容器上获得一个shell。</p>
+<p>首先需要使用“dockps”命令找出容器的ID，然后使用“docker exec”在该容器上启动一个shell。我们已经在.bashrc文件中为它们创建了别名，浓缩一下就是”docksh id”。</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dockps  <span class="comment">#构建容器</span></span><br><span class="line">$ docksh id     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/31/SQL-1/sql2.jpg" alt="sql2"></p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>搭载好了容器环境后，就可以对数据库进行相应操作。</p>
+<p>在这里进行了数据库四个基本操作：增、删、改、查。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#显示数据库</span><br><span class="line"><span class="keyword">show</span> databases; </span><br><span class="line">#创建一个名叫t_dbtest表，里面有名字和整点型的年龄</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t t_<span class="operator">-</span>_dbtest(uname <span class="type">varchar</span>(<span class="number">10</span>),age <span class="type">int</span>);</span><br><span class="line">#往表里增加一个名<span class="string">&#x27;abc&#x27;</span>，年龄<span class="string">&#x27;12&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;abc&#x27;</span>,<span class="number">12</span>); </span><br><span class="line">#往表里增加一个名<span class="string">&#x27;tom&#x27;</span>，年龄<span class="string">&#x27;24&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;tom&#x27;</span>,<span class="number">24</span>);</span><br><span class="line">#查询t_dbtest表</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_dbtest; </span><br><span class="line">#将abc的年龄修改为<span class="number">15</span></span><br><span class="line">update t_dbtest <span class="keyword">set</span> age<span class="operator">=</span><span class="number">15</span> <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">#删除名字为<span class="string">&#x27;tom&#x27;</span>的数据</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> t_dbtest <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;tom&#x27;</span>; </span><br></pre></td></tr></table></figure>
+<p><img src="/2022/08/31/SQL-1/sql3.jpg" alt="sql3"><img src="/2022/08/31/SQL-1/sql4.jpg" alt="sql4"></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>需要掌握一下SQL的基本操作，以及巩固对docker容器的下载及装载操作等。</p>
 
     </div>
 
@@ -278,7 +245,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%AE%89%E5%85%A8/" rel="tag"><i class="fa fa-tag"></i># 安全</a>
+              <a href="/tags/%E7%94%9F%E4%BA%A7%E5%AE%9E%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i># 生产实习</a>
           </div>
 
         
@@ -287,13 +254,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/19/nmap%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" rel="prev" title="nmap简单使用">
-      <i class="fa fa-chevron-left"></i> nmap简单使用
+    <a href="/2022/08/30/XSS-2/" rel="prev" title="XSS-2">
+      <i class="fa fa-chevron-left"></i> XSS-2
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/23/GET&Post%E7%AE%80%E8%A6%81/" rel="next" title="GET&Post简要">
-      GET&Post简要 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -352,7 +316,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议简要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E6%B6%88%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">1.4.1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">1.4.2.</span> <span class="nav-text">响应头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%A4%B4"><span class="nav-number">1.4.3.</span> <span class="nav-text">实体头</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E8%A3%85%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">容器装载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">心得</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
