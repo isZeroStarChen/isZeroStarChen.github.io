@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/haha.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/haha.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Cuckoo沙箱的初步搭建，不涉及使用，为后来者避坑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cuckoo沙箱初步安装">
+<meta property="og:url" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="isZeroStar&#39;blog">
+<meta property="og:description" content="Cuckoo沙箱的初步搭建，不涉及使用，为后来者避坑。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/process1.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/VirtualBox%E9%85%8D%E7%BD%AE1.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/VirtualBox%E9%85%8D%E7%BD%AE2.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%ADUAC.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%ADUAC-1.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/python%E9%AA%8C%E8%AF%81.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/agent%E8%87%AA%E5%90%AF%E5%8A%A8.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E9%85%8D%E7%BD%AE.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/win7%E7%BD%91%E7%BB%9C.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/win7ip%E9%85%8D%E7%BD%AE.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0%E6%9F%A5%E8%AF%A2.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C1.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C2.jpg">
+<meta property="og:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C3.jpg">
+<meta property="article:published_time" content="2023-01-17T11:44:01.000Z">
+<meta property="article:modified_time" content="2023-01-17T14:35:00.575Z">
+<meta property="article:author" content="isZeroStarChen">
+<meta property="article:tag" content="学术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/process1.jpg">
+
+<link rel="canonical" href="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Cuckoo沙箱初步安装 | isZeroStar'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">isZeroStar'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">人生有梦，各自精彩</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="isZeroStarChen">
+      <meta itemprop="description" content="愿世间美好与你环环相扣">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isZeroStar'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cuckoo沙箱初步安装
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-17 19:44:01 / 修改时间：22:35:00" itemprop="dateCreated datePublished" datetime="2023-01-17T19:44:01+08:00">2023-01-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Cuckoo沙箱的初步搭建，不涉及使用，为后来者避坑。</p>
+<span id="more"></span>
+
+<h1 id="Cuckoo"><a href="#Cuckoo" class="headerlink" title="Cuckoo"></a>Cuckoo</h1><h2 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h2><p>在所看论文的环境基础上进行复现、尝试以及改进。考虑样本集处理过程进行增加以及后期所用神经网络进行修改，首选项优先考虑GNN，次选师兄所用知识蒸馏，末选自然语言处理领域中的词袋模型等等进行特征提取。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/process1.jpg" alt="所看论文处理流程"></p>
+<h2 id="拓扑环境"><a href="#拓扑环境" class="headerlink" title="拓扑环境"></a>拓扑环境</h2><p>1、Cuckoo沙箱是由一个host主机和多个guest机器组成，host机负责样本执行与分析过程的调度和guest机的管理。</p>
+<p>2、在本次搭建中，<strong>考虑在win10内以VMware Workstation作为承载，安装ubuntu虚拟机作为主机，然后再在ubuntu虚拟机中以VirtualBox作为承载，安装win7虚拟机作为guest机</strong>。</p>
+<p>3、在这里使用的ubuntu的版本是ubuntu18.04，win7的版本是家庭普通版。</p>
+<p>VMware Workstation安装Ubuntu的过程这里就不进行表述了。安装好Ubuntu系统后，一定要进行VMware tools的安装以及系统的换源更新。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">下载好VMware tools后，右键单击打开桌面上的那个光盘，将文件夹复制到桌面上</span></span><br><span class="line"><span class="meta">#</span><span class="bash">桌面上右键单击，打开一个终端</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> 桌面</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tar -zxvf VMwareTools-10.3.25-20206839.tar.gz <span class="comment">#文件名换成自己所对应提取出的tar压缩文件</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> vmware-tools-distrib</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./vmware-install.pl <span class="comment">#安装VMwareTools，在第一个yes or no处输入yes，之后一直回车</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get upgrade</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="主机环境-host"><a href="#主机环境-host" class="headerlink" title="主机环境(host)"></a>主机环境(host)</h2><h3 id="安装网络工具"><a href="#安装网络工具" class="headerlink" title="安装网络工具"></a>安装网络工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install net-tools</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装编辑工具"><a href="#安装编辑工具" class="headerlink" title="安装编辑工具"></a>安装编辑工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">这一步骤可不进行，Ubuntu中有自带的编辑器-gedit</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install vim</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install python python-pip python-dev libffi-dev libssl-dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install python-virtualenv python-setuptools</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install libjpeg-dev zlib1g-dev swig</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y libtiff5-dev libjpeg8-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装VirtualBox"><a href="#安装VirtualBox" class="headerlink" title="安装VirtualBox"></a>安装VirtualBox</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install-y virtualbox</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装MongoDB"><a href="#安装MongoDB" class="headerlink" title="安装MongoDB"></a>安装MongoDB</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install mongodb</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装Volatility"><a href="#安装Volatility" class="headerlink" title="安装Volatility"></a>安装Volatility</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y volatility</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装M2Cryto"><a href="#安装M2Cryto" class="headerlink" title="安装M2Cryto"></a>安装M2Cryto</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install swig</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install m2crypto==0.24.0</span></span><br></pre></td></tr></table></figure>
+
+<p>当有报错的话，直接运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt install python2.7</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> python2.7 -m pip install M2Crypto</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装tcpdump"><a href="#安装tcpdump" class="headerlink" title="安装tcpdump"></a>安装tcpdump</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install tcpdump</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install libcap2-bin</span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo <span class="built_in">setcap</span> cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 验证上列指令</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">getcap</span> /usr/sbin/tcpdump</span></span><br><span class="line">/usr/sbin/tcpdump = cap_net_admin,cap_net_raw+eip</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装guacd"><a href="#安装guacd" class="headerlink" title="安装guacd"></a>安装guacd</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt install libguac-client-rdp0 libguac-client-vnc0 libguac-client-ssh0 guacd</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装cuckoo"><a href="#安装cuckoo" class="headerlink" title="安装cuckoo"></a>安装cuckoo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pip install -U pip setuptools</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> pip install -U cuckoo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="验证cuckoo"><a href="#验证cuckoo" class="headerlink" title="验证cuckoo"></a>验证cuckoo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cuckoo -d <span class="comment">#如果安装成功，会出现cuckoo的命令行界面，或者参照下面的方法</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> .cuckoo/agent</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ls <span class="comment">#查看当前目录home/tc(自己用户名)/.cuckoo/agent是否出现agent.py，如果出现，则安装成功。</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="客机环境-guest"><a href="#客机环境-guest" class="headerlink" title="客机环境(guest)"></a>客机环境(guest)</h2><p>在ubuntu虚拟中安装VirtualBox作为guest机的承载，安装win7虚拟机。</p>
+<h3 id="安装VBox"><a href="#安装VBox" class="headerlink" title="安装VBox"></a>安装VBox</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y virtualbox</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装win7机"><a href="#安装win7机" class="headerlink" title="安装win7机"></a>安装win7机</h3><p>打开VirtualBox，进行相关安装，<strong>一定要记得对该虚拟机的名称命名，后续对cuckoo文件进行配置会用到。</strong>将win7安装好后，打开类似于VMwareWorkstaion中与本机的相互拖拽复制功能。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/VirtualBox%E9%85%8D%E7%BD%AE1.jpg" alt="VirtualBox配置1"></p>
+<h3 id="安装加强工具"><a href="#安装加强工具" class="headerlink" title="安装加强工具"></a>安装加强工具</h3><p>初步安装好win7系统的时候，类似于安装ubuntu系统没有全屏，所以需要安装加强工具</p>
+<p>，点击<strong>设备-&gt;安装增强功能</strong>，在win7界面上会自动加载一个光盘，点开选择下图所示。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/VirtualBox%E9%85%8D%E7%BD%AE2.jpg" alt="VirtualBox配置2"></p>
+<p>然后一步步安装，重启之后win7就是全屏了。</p>
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99.jpg" alt="关闭防火墙"></p>
+<h3 id="关闭自动更新"><a href="#关闭自动更新" class="headerlink" title="关闭自动更新"></a>关闭自动更新</h3><p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.jpg" alt="关闭自动更新"></p>
+<h3 id="关闭用户账户控制设置"><a href="#关闭用户账户控制设置" class="headerlink" title="关闭用户账户控制设置"></a>关闭用户账户控制设置</h3><p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%ADUAC.jpg" alt="关闭UAC"></p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E5%85%B3%E9%97%ADUAC-1.jpg" alt="关闭UAC-1"></p>
+<h3 id="安装python2-7和Pillow适应版本"><a href="#安装python2-7和Pillow适应版本" class="headerlink" title="安装python2.7和Pillow适应版本"></a>安装python2.7和Pillow适应版本</h3><p>这两个版本特定的安装包比较难找，所以放置在[百度网盘](<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1vl-3_xSg7rmPvjaZDZ2dEw?pwd=ccdd">https://pan.baidu.com/s/1vl-3_xSg7rmPvjaZDZ2dEw?pwd=ccdd</a> 提取码：ccdd )，可以进行下载。</p>
+<p>下载好后，通过主机win10拖进Ubuntu虚拟中，在l两个文件所在当前目录下对这两个文件提高权限，之后拖入VirtualBox的win7中。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod 777 python-2.7.8.msi</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod 777 Pillow-2.5.3.win32-py2.7.exe</span></span><br></pre></td></tr></table></figure>
+
+<p>在win7中点击进行安装。并在win7的<strong>计算机(右键)-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量</strong>中找到path，在最后加入**;C:\Python27**，分号不能少，是与其他环境变量做一个区分。</p>
+<p>测试环境是否配置好，摁win+r输入cmd，打开命令行界面，输入python</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/python%E9%AA%8C%E8%AF%81.jpg" alt="python验证"></p>
+<p><strong>Pillow的安装直接运行那个安装包即可。</strong></p>
+<h3 id="设置agent-py开机自启"><a href="#设置agent-py开机自启" class="headerlink" title="设置agent.py开机自启"></a>设置agent.py开机自启</h3><p>将上文中验证Cuckoo验证所提及到的agent.py拖拽至win7的**C:\Users\guest1\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup **目录下(guest1是我自己的用户名，以实操的用户名为准)，该目录为在文件夹地址栏中输入的目录地址，在实际操作中，AppData为隐藏文件，Users、Start Menu、Programs和Startup都是中文目录。</p>
+<p>将win7重启后，会发现再次打开win7的时候有一个空白的python程序运行窗口。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/agent%E8%87%AA%E5%90%AF%E5%8A%A8.jpg" alt="agent自启动"></p>
+<h3 id="配置VBox网络"><a href="#配置VBox网络" class="headerlink" title="配置VBox网络"></a>配置VBox网络</h3><p>点击VirtualBox的左上角<strong>管理-&gt;主机网络管理器</strong>，创建一块新网卡，并且按照如下图进行配置。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt="主机网络管理器配置"></p>
+<p>右键单击VBox首页的win7，点击管理，如下图所示，设置win7网络连接模式。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/win7%E7%BD%91%E7%BB%9C.jpg" alt="win7网络"></p>
+<p>进入win7系统，配置win7的ipv4地址。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/win7ip%E9%85%8D%E7%BD%AE.jpg" alt="win7ip配置"></p>
+<h3 id="检测通信"><a href="#检测通信" class="headerlink" title="检测通信"></a>检测通信</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu终端中运行</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ping 192.168.56.101</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Win7cmd中运行</span></span><br><span class="line">&gt; ping <span class="number">192.168</span>.<span class="number">56.1</span></span><br></pre></td></tr></table></figure>
+
+<p>两个都成功ping通则证明host机和guest机能够相互连通，但这个时候guest机上不了网，我们还需要对Ubuntu设置IP报文转发。</p>
+<h3 id="设置IP报文转发"><a href="#设置IP报文转发" class="headerlink" title="设置IP报文转发"></a>设置IP报文转发</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim <span class="regexp">/etc/</span>sysctl.conf</span><br><span class="line"><span class="comment"># 找到net.ipv4.ip_forward=1，将前面注释去掉</span></span><br><span class="line"><span class="comment"># vim编辑器的操作是，摁i进行编辑，摁ESC推出编辑，摁:wq进行保存并退出</span></span><br><span class="line">$ sudo sysctl -p <span class="regexp">/etc/</span>sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置NAT机制"><a href="#设置NAT机制" class="headerlink" title="设置NAT机制"></a>设置NAT机制</h3><p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0%E6%9F%A5%E8%AF%A2.jpg" alt="网卡名称查询"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ifconfig</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 找到第一个正常ip最左边的网卡名称，例如演示为ens33，在实操中，按照自己的网卡名称进行修改</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo iptables -A FORWARD -o ens33 -i vboxnet0 -s 192.168.56.0/24 -m conntrack --ctstate NEW -j ACCEPT</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo iptables -A POSTROUTING -t nat -j MASQUERADE</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo iptables -t nat -A POSTROUTING -o ens33 -s 192.168.56.0/24 -j MASQUERADE</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进行规则的自动保存，使iptables再次重启也还有以上配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> service iptables save</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 持久化iptables的設定</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/network/interfaces</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在文件中新增</span></span><br><span class="line">pre-up iptables-restore &lt; /etc/iptables.rules</span><br><span class="line">post-down iptables-save &gt; /etc/iptables.rules</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置DNS机制"><a href="#设置DNS机制" class="headerlink" title="设置DNS机制"></a>设置DNS机制</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y dnsmasq</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果提示说安装错误并且原因是占用了端口53，采用以下解决方法。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 对端口进行查看占用</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo netstat -anlp | grep -w LISTEN</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停用所占用53号端口的服务，以systemd-resolved服务占用为例子</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl stop systemd-resolved</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/systemd/resolved.conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 找到以下Resolve部分</span></span><br><span class="line">[Resolve]</span><br><span class="line">DNS=114.114.114.114  #取消注释，增加dns，或者改为DNS=8.8.8.8</span><br><span class="line"><span class="meta">#</span><span class="bash">FallbackDNS=</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Domains=</span></span><br><span class="line"><span class="meta">#</span><span class="bash">LLMNR=no</span></span><br><span class="line"><span class="meta">#</span><span class="bash">MulticastDNS=no</span></span><br><span class="line"><span class="meta">#</span><span class="bash">DNSSEC=no</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Cache=yes</span></span><br><span class="line">DNSStubListener=no  #取消注释，把yes改为no</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建修改文件链接</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 已经解除了53号端口占用</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install -y dnsmasq</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置dnsmasq开机自启动，并重启</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> systemctl <span class="built_in">enable</span> dnsmasq</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> systemctl start dnsmasq</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> systemctl restart dnsmasq</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>发现现在win7guest机器已经可以连接互联网，则配置成功。</strong></p>
+<h3 id="设置快照"><a href="#设置快照" class="headerlink" title="设置快照"></a>设置快照</h3><p>在VirtualBox中对win7进行快照保存，并将名字设置为<strong>snapshot</strong>。(后文会涉及到这个名字)</p>
+<h2 id="Cuckoo文件配置"><a href="#Cuckoo文件配置" class="headerlink" title="Cuckoo文件配置"></a>Cuckoo文件配置</h2><p>在host机打开文件系统，点击<strong>主目录-&gt;.cuckoo-&gt;conf</strong>。在这个目录下对virtualbox.conf、reporting.conf和cuckoo.conf进行编辑配置操作。</p>
+<p>再次强调，<strong>一定要记得自己VirtualBox中win7虚拟机的名称以及win7快照名称，下面会对这个使用。</strong>以我的win7虚拟机名称为win7以及快照名称snapshot为例。</p>
+<h3 id="virtualbox-conf"><a href="#virtualbox-conf" class="headerlink" title="virtualbox.conf"></a>virtualbox.conf</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 只需更改成以下所示，win7名称请按照实际情况</span></span><br><span class="line">machines = win7</span><br><span class="line">[win7]</span><br><span class="line">label = win7</span><br><span class="line">platform = windows</span><br><span class="line">ip = 192.168.56.101</span><br><span class="line">snapshot =snapshot</span><br></pre></td></tr></table></figure>
+
+<h3 id="reporting-conf"><a href="#reporting-conf" class="headerlink" title="reporting.conf"></a>reporting.conf</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 只需更改成以下所示</span></span><br><span class="line">[jsondump]</span><br><span class="line">enabled = yes</span><br><span class="line">indent = 4</span><br><span class="line">calls = yes</span><br><span class="line">[singlefile]</span><br><span class="line"><span class="meta">#</span><span class="bash"> Enable creation of report.html and/or report.pdf?</span></span><br><span class="line">enabled = yes </span><br><span class="line"><span class="meta">#</span><span class="bash"> Enable creation of report.html?</span></span><br><span class="line">html = yes </span><br><span class="line"><span class="meta">#</span><span class="bash"> Enable creation of report.pdf?</span></span><br><span class="line">pdf = yes</span><br><span class="line">[mongodb]</span><br><span class="line">enabled = yes</span><br><span class="line">host = 127.0.0.1</span><br><span class="line">port = 27017</span><br><span class="line">db = cuckoo</span><br><span class="line">store_memdump = yes </span><br><span class="line">paginate = 100</span><br></pre></td></tr></table></figure>
+
+<h3 id="cuckoo-conf"><a href="#cuckoo-conf" class="headerlink" title="cuckoo.conf"></a>cuckoo.conf</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">version_check = no</span><br><span class="line">machinery = virtualbox</span><br><span class="line">memory_dump = yes</span><br><span class="line">[resultserver]</span><br><span class="line">ip = 192.168.56.1</span><br><span class="line">port = 2042</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动Cuckoo"><a href="#启动Cuckoo" class="headerlink" title="启动Cuckoo"></a>启动Cuckoo</h2><p>在guest机开启的前提下，打开一个命令行，输入cuckoo命令，发现如下图，则成功运行。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C1.jpg" alt="cuckoo运行1"></p>
+<p>再打开一个命令行，输入cuckoo web命令，访问命令行中显示的界面</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C2.jpg" alt="cuckoo运行2"></p>
+<p>发现访问成功，则说明cuckoo搭建成功。</p>
+<p><img src="/2023/01/17/Cuckoo%E6%B2%99%E7%AE%B1%E5%88%9D%E6%AD%A5%E5%AE%89%E8%A3%85/cuckoo%E8%BF%90%E8%A1%8C3.jpg" alt="cuckoo运行3"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%9C%AF/" rel="tag"><i class="fa fa-tag"></i># 学术</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/01/SQL-2/" rel="prev" title="SQL-2">
+      <i class="fa fa-chevron-left"></i> SQL-2
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cuckoo"><span class="nav-number">1.</span> <span class="nav-text">Cuckoo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Idea"><span class="nav-number">1.1.</span> <span class="nav-text">Idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">拓扑环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E7%8E%AF%E5%A2%83-host"><span class="nav-number">1.3.</span> <span class="nav-text">主机环境(host)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装网络工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.2.</span> <span class="nav-text">安装编辑工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">1.3.3.</span> <span class="nav-text">安装python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85VirtualBox"><span class="nav-number">1.3.4.</span> <span class="nav-text">安装VirtualBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MongoDB"><span class="nav-number">1.3.5.</span> <span class="nav-text">安装MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Volatility"><span class="nav-number">1.3.6.</span> <span class="nav-text">安装Volatility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85M2Cryto"><span class="nav-number">1.3.7.</span> <span class="nav-text">安装M2Cryto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85tcpdump"><span class="nav-number">1.3.8.</span> <span class="nav-text">安装tcpdump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85guacd"><span class="nav-number">1.3.9.</span> <span class="nav-text">安装guacd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85cuckoo"><span class="nav-number">1.3.10.</span> <span class="nav-text">安装cuckoo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81cuckoo"><span class="nav-number">1.3.11.</span> <span class="nav-text">验证cuckoo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%9C%BA%E7%8E%AF%E5%A2%83-guest"><span class="nav-number">1.4.</span> <span class="nav-text">客机环境(guest)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85VBox"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装VBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85win7%E6%9C%BA"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装win7机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8A%A0%E5%BC%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.3.</span> <span class="nav-text">安装加强工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.4.4.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="nav-number">1.4.5.</span> <span class="nav-text">关闭自动更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%E6%8E%A7%E5%88%B6%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.6.</span> <span class="nav-text">关闭用户账户控制设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python2-7%E5%92%8CPillow%E9%80%82%E5%BA%94%E7%89%88%E6%9C%AC"><span class="nav-number">1.4.7.</span> <span class="nav-text">安装python2.7和Pillow适应版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEagent-py%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-number">1.4.8.</span> <span class="nav-text">设置agent.py开机自启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEVBox%E7%BD%91%E7%BB%9C"><span class="nav-number">1.4.9.</span> <span class="nav-text">配置VBox网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">1.4.10.</span> <span class="nav-text">检测通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEIP%E6%8A%A5%E6%96%87%E8%BD%AC%E5%8F%91"><span class="nav-number">1.4.11.</span> <span class="nav-text">设置IP报文转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AENAT%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.12.</span> <span class="nav-text">设置NAT机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEDNS%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.13.</span> <span class="nav-text">设置DNS机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BF%AB%E7%85%A7"><span class="nav-number">1.4.14.</span> <span class="nav-text">设置快照</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cuckoo%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.5.</span> <span class="nav-text">Cuckoo文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#virtualbox-conf"><span class="nav-number">1.5.1.</span> <span class="nav-text">virtualbox.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reporting-conf"><span class="nav-number">1.5.2.</span> <span class="nav-text">reporting.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cuckoo-conf"><span class="nav-number">1.5.3.</span> <span class="nav-text">cuckoo.conf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Cuckoo"><span class="nav-number">1.6.</span> <span class="nav-text">启动Cuckoo</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">isZeroStarChen</p>
+  <div class="site-description" itemprop="description">愿世间美好与你环环相扣</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/isZeroStar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;isZeroStar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/zero-one-mxc/" title="Cnblog → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;zero-one-mxc&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>Cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://litevymoment.github.io/" title="boringBoy → https:&#x2F;&#x2F;litevymoment.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-link fa-fw"></i>boringBoy</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://radiantzy.github.io/" title="StitchGirl → https:&#x2F;&#x2F;radiantzy.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>StitchGirl</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">暗明星辰</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
