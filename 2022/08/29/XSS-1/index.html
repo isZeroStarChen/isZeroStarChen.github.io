@@ -232,48 +232,88 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>继上文中SeedLab的搭建之后，对XSS实验所需要的安装文件进行下载及装载。</p>
-<span id="more"></span>
-<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>在打开的虚拟机桌面上新建一个文件夹，这里命名为seedlab。<br>这个文件夹的作用就是存放以后需要下载的文件。</p>
-<h2 id="视频方法"><a href="#视频方法" class="headerlink" title="视频方法"></a>视频方法</h2><p>在Linux中，下载一个文件可以在命令行中以文件链接进行下载，本次实验需要用到的是XSS环境，我们直接进入SeedLab2.0官方网站中的WEB Security中找到<a target="_blank" rel="noopener" href="https://seedsecuritylabs.org/Labs_20.04/Web/Web_XSS_Elgg/">XSS实验文件网址</a>。<br>找到我们需要的Lab setup files文件，然后右键选中需要下载的文件，点击复制链接，那么就找到了我们所需要的文件链接。<br><img src="/2022/08/29/XSS-1/LabSetup.jpg" alt="LabSetup">有了文件链接之后，进入seedlab文件夹，右键单击选择”open in terminal”。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir xss   <span class="comment">#在seedlab目录下新建一个xss文件</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> xss  <span class="comment">#进入xss目录下</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -o Labsetup.zip https://seedsecuritylabs.org/Labs_20.04/Files/Web_XSS_Elgg/Labsetup.zip</span></span><br><span class="line"><span class="meta">#</span><span class="bash">利用curl文件传输，进行压缩包下载</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> unzip Labsetup.zip  <span class="comment">#利用unzip对文件进行解压缩</span></span></span><br></pre></td></tr></table></figure>
-<p><img src="/2022/08/29/XSS-1/1-1.jpg" alt="1-1"><img src="/2022/08/29/XSS-1/2-1.jpg" alt="2-1">完成后在xss文件下会多出一个Labsetup文件夹。</p>
-<h2 id="VMware方法"><a href="#VMware方法" class="headerlink" title="VMware方法"></a>VMware方法</h2><p>当然，这里还有一种方法，如果你用的是VMware WorkStation的话。那么恭喜你，你可以直接将Labsetup.zip这个文件下载到win10上,解压之后，直接将这个解压好的Labsetup文件以拖拽的方式拖进虚拟机中的seedlab目录下。<code>注意：可能直接拖拽到桌面的时候，会拖拽不了，那就打开seedlab文件夹，然后再拖拽。</code></p>
-<h1 id="容器装载"><a href="#容器装载" class="headerlink" title="容器装载"></a>容器装载</h1><p>主要运用的还是docker容器，感兴趣的同学可以搜一下。在我的理解中，docker是轻量级虚拟化环境，它的工作原理是，把一些应用封装成一个容器，不管容器在哪个操作系统上运行，应用程序操作也可以执行。<br>先介绍几个常用的docker命令：</p>
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ dcbuild  <span class="comment">#构建容器</span></span><br><span class="line">$ dcup     <span class="comment">#启动容器</span></span><br><span class="line">$ dcdown   <span class="comment"># 关闭容器</span></span><br></pre></td></tr></table></figure>
-<p>然后在我们下载并解压缩好的Labsetup文件夹中(/Desktop/seedlab/xss/Labsetup)进行前两个docker操作。<br><img src="/2022/08/29/XSS-1/docker1.jpg" alt="docker1"><img src="/2022/08/29/XSS-1/docker2.jpg" alt="docker2"><img src="/2022/08/29/XSS-1/docker3.jpg" alt="docker3"><img src="/2022/08/29/XSS-1/docker4.jpg" alt="docker4">显示最后一张图片中的GPL这一红框中，即说明容器启动成功。<br>容器启动后，我们就能访问所搭建的XSS网站了，但是发现没有网址。<br>那么我们需要在另一个终端窗口(窗口路径还是在Labsetup文件夹下，即<code>/Desktop/seedlab/xss/Labsetup</code>)中，对配置文件进行一个修改，添加XSS网址的IP地址及域名。在这里需要用到的命令是：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vi /etc/hosts</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2022/08/29/XSS-1/vi0.jpg" alt="vi0">在这个命令中，是指用vi编辑器对配置文件进行操作，<br>我们摁下<strong>i</strong>键进入<strong>INSERT</strong>状态下，输入IP和域名后，摁下<strong>ESC</strong>退出编辑，随后摁下<code>:wq</code>进行文件保存。<br><img src="/2022/08/29/XSS-1/vi.jpg" alt="vi">最后用填入的域名进行访问，即可进入。<br><img src="/2022/08/29/XSS-1/elgg.jpg" alt="elgg">其中账号密码有4类：</p>
+        继上文中SeedLab的搭建之后，对XSS实验所需要的安装文件进行下载及装载。
+<span id="more"></span> # 文件下载
+在打开的虚拟机桌面上新建一个文件夹，这里命名为seedlab。
+这个文件夹的作用就是存放以后需要下载的文件。 ## 视频方法
+在Linux中，下载一个文件可以在命令行中以文件链接进行下载，本次实验需要用到的是XSS环境，我们直接进入SeedLab2.0官方网站中的WEB
+Security中找到<a target="_blank" rel="noopener" href="https://seedsecuritylabs.org/Labs_20.04/Web/Web_XSS_Elgg/">XSS实验文件网址</a>。
+找到我们需要的Lab setup
+files文件，然后右键选中需要下载的文件，点击复制链接，那么就找到了我们所需要的文件链接。
+<img src="/2022/08/29/XSS-1/LabSetup.jpg" alt="LabSetup">有了文件链接之后，进入seedlab文件夹，右键单击选择"open
+in terminal"。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir xss   <span class="comment">#在seedlab目录下新建一个xss文件</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> xss  <span class="comment">#进入xss目录下</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -o Labsetup.zip https://seedsecuritylabs.org/Labs_20.04/Files/Web_XSS_Elgg/Labsetup.zip</span></span><br><span class="line"><span class="meta">#</span><span class="bash">利用curl文件传输，进行压缩包下载</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> unzip Labsetup.zip  <span class="comment">#利用unzip对文件进行解压缩</span></span></span><br></pre></td></tr></table></figure> <img src="/2022/08/29/XSS-1/1-1.jpg" alt="1-1"><img src="/2022/08/29/XSS-1/2-1.jpg" alt="2-1">完成后在xss文件下会多出一个Labsetup文件夹。 ## VMware方法
+当然，这里还有一种方法，如果你用的是VMware
+WorkStation的话。那么恭喜你，你可以直接将Labsetup.zip这个文件下载到win10上,解压之后，直接将这个解压好的Labsetup文件以拖拽的方式拖进虚拟机中的seedlab目录下。<code>注意：可能直接拖拽到桌面的时候，会拖拽不了，那就打开seedlab文件夹，然后再拖拽。</code>
+# 容器装载
+主要运用的还是docker容器，感兴趣的同学可以搜一下。在我的理解中，docker是轻量级虚拟化环境，它的工作原理是，把一些应用封装成一个容器，不管容器在哪个操作系统上运行，应用程序操作也可以执行。
+先介绍几个常用的docker命令： <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ dcbuild  <span class="comment">#构建容器</span></span><br><span class="line">$ dcup     <span class="comment">#启动容器</span></span><br><span class="line">$ dcdown   <span class="comment"># 关闭容器</span></span><br></pre></td></tr></table></figure>
+然后在我们下载并解压缩好的Labsetup文件夹中(/Desktop/seedlab/xss/Labsetup)进行前两个docker操作。
+<img src="/2022/08/29/XSS-1/docker1.jpg" alt="docker1"><img src="/2022/08/29/XSS-1/docker2.jpg" alt="docker2"><img src="/2022/08/29/XSS-1/docker3.jpg" alt="docker3"><img src="/2022/08/29/XSS-1/docker4.jpg" alt="docker4">显示最后一张图片中的GPL这一红框中，即说明容器启动成功。
+容器启动后，我们就能访问所搭建的XSS网站了，但是发现没有网址。
+那么我们需要在另一个终端窗口(窗口路径还是在Labsetup文件夹下，即<code>/Desktop/seedlab/xss/Labsetup</code>)中，对配置文件进行一个修改，添加XSS网址的IP地址及域名。在这里需要用到的命令是：
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo vi /etc/hosts</span></span><br></pre></td></tr></table></figure> <img src="/2022/08/29/XSS-1/vi0.jpg" alt="vi0">在这个命令中，是指用vi编辑器对配置文件进行操作，
+我们摁下<strong>i</strong>键进入<strong>INSERT</strong>状态下，输入IP和域名后，摁下<strong>ESC</strong>退出编辑，随后摁下<code>:wq</code>进行文件保存。
+<img src="/2022/08/29/XSS-1/vi.jpg" alt="vi">最后用填入的域名进行访问，即可进入。
+<img src="/2022/08/29/XSS-1/elgg.jpg" alt="elgg">其中账号密码有4类：
 <table>
-    <tr>
-        <td align="center">账户</td>
-        <td align="center">密码</td>
-        <td align="center">身份</td>
-    </tr>
-    <tr>
-        <td align="center">samy</td>
-        <td align="center">seedsamy</td>
-        <td align="center">攻击者</td>
-    </tr>
-    <tr>
-        <td align="center">charlie</td>
-        <td align="center">seedcharlie</td>
-        <td align="center">执法者</td>
-    </tr>
-    <tr>
-        <td align="center">alice</td>
-        <td align="center">seedalice</td>
-        <td align="center">受害者</td>
-    </tr>
-    <tr>
-        <td align="center">boby</td>
-        <td align="center">seedboby</td>
-        <td align="center">受害者</td>
-    </tr>
+<tr>
+<td align="center">
+账户
+</td>
+<td align="center">
+密码
+</td>
+<td align="center">
+身份
+</td>
+</tr>
+<tr>
+<td align="center">
+samy
+</td>
+<td align="center">
+seedsamy
+</td>
+<td align="center">
+攻击者
+</td>
+</tr>
+<tr>
+<td align="center">
+charlie
+</td>
+<td align="center">
+seedcharlie
+</td>
+<td align="center">
+执法者
+</td>
+</tr>
+<tr>
+<td align="center">
+alice
+</td>
+<td align="center">
+seedalice
+</td>
+<td align="center">
+受害者
+</td>
+</tr>
+<tr>
+<td align="center">
+boby
+</td>
+<td align="center">
+seedboby
+</td>
+<td align="center">
+受害者
+</td>
+</tr>
 </table>
-
-<p>用alice的账号密码访问界面：<br><img src="/2022/08/29/XSS-1/elgg-alice.jpg" alt="elgg-alice"></p>
-<h1 id="本次心得"><a href="#本次心得" class="headerlink" title="本次心得"></a>本次心得</h1><p>本次实验装载了docker容器，现在用VMWare相比VirtualBox的好处就是能够拖拽文件以及复制粘贴。最主要的几个点还是docker容器命令，以及vi编辑器的简要使用。</p>
+<p>用alice的账号密码访问界面： <img src="/2022/08/29/XSS-1/elgg-alice.jpg" alt="elgg-alice"> # 本次心得
+本次实验装载了docker容器，现在用VMWare相比VirtualBox的好处就是能够拖拽文件以及复制粘贴。最主要的几个点还是docker容器命令，以及vi编辑器的简要使用。</p>
 
     </div>
 
@@ -357,7 +397,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">文件下载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">视频方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">VMware方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E8%A3%85%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">容器装载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%AC%A1%E5%BF%83%E5%BE%97"><span class="nav-number">3.</span> <span class="nav-text">本次心得</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

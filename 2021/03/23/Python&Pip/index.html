@@ -225,19 +225,28 @@
       
         <p>作为一个资深的老Python崇拜者，始终应当坚信Python是世界上最好的语言。本文对Pip和Python安装包进行了一个简要的方法介绍。</p>
 <span id="more"></span>
-
-<h2 id="Pip简易使用"><a href="#Pip简易使用" class="headerlink" title="Pip简易使用"></a>Pip简易使用</h2><p>使用pip list命令就可以发现自己电脑里所安装库的名字。如图展示的出来的有package、Version、Location三列，package是下载的python库名，Version是库的版本信息，Location是指库所在计算机里的安装位置，一般情况下只有非pip install 库名这样操作的或者其他操作的才会展示出本地的安装地址。</p>
-<p> <img src="/2021/03/23/Python&Pip/1967993-20201017000810337-517458410.png" alt="1967993-20201017000810337-517458410"></p>
-<h2 id="Pip安装"><a href="#Pip安装" class="headerlink" title="Pip安装"></a>Pip安装</h2><p>如果单安装了python编译器没有安装pycharm和anaconda的话，当你需要安装python的某个引用库时，就需要用到这个pip命令了。pip是Python的一种包管理工具，它可以直接进行对Python包的查找、下载、安装、以及卸载。一般在Python2.7.9+以上版本或 Python3.4+以上的python编译器版本都自带pip。</p>
+<h2 id="pip简易使用">Pip简易使用</h2>
+<p>使用pip
+list命令就可以发现自己电脑里所安装库的名字。如图展示的出来的有package、Version、Location三列，package是下载的python库名，Version是库的版本信息，Location是指库所在计算机里的安装位置，一般情况下只有非pip
+install 库名这样操作的或者其他操作的才会展示出本地的安装地址。</p>
+<figure>
+<img src="/2021/03/23/Python&Pip/1967993-20201017000810337-517458410.png" alt="1967993-20201017000810337-517458410">
+<figcaption aria-hidden="true">1967993-20201017000810337-517458410</figcaption>
+</figure>
+<h2 id="pip安装">Pip安装</h2>
+<p>如果单安装了python编译器没有安装pycharm和anaconda的话，当你需要安装python的某个引用库时，就需要用到这个pip命令了。pip是Python的一种包管理工具，它可以直接进行对Python包的查找、下载、安装、以及卸载。一般在Python2.7.9+以上版本或
+Python3.4+以上的python编译器版本都自带pip。</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pip --version     　 <span class="comment"># Pip版本命令</span></span><br><span class="line">pip 　　　　　　    　 <span class="comment"># Pip获取帮助</span></span><br><span class="line">pip <span class="keyword">install</span> packages <span class="comment"># Pip安装包</span></span><br><span class="line">pip uninstall package <span class="comment">#Pip卸载包</span></span><br><span class="line">pip <span class="keyword">install</span> --upgrade package <span class="comment">#Pip安装包更新</span></span><br><span class="line">pip <span class="keyword">install</span> packages==<span class="number">1</span>.x.x <span class="comment">#Pip安装包的指定版本</span></span><br><span class="line">pip <span class="keyword">install</span> -i https://pypi.tuna.tsinghua.edu.cn/simple package <span class="comment">#Pip从清华大学镜像下载包</span></span><br><span class="line">pip debug --verbose <span class="comment">#查看计算机内Python当前版本pip所支持安装的文件类型</span></span><br></pre></td></tr></table></figure>
-
 <p>一般有着Pycharm和Anaconda这两类软件的话，直接在软件内部的python库中直接安装就可以了。</p>
-<h1 id="Python安装包"><a href="#Python安装包" class="headerlink" title="Python安装包"></a>Python安装包</h1><p>当计算机安装了Python编译器之后，那么同一版本的Python安装包就有着三种用法。<img src="/2021/03/23/Python&Pip/1967993-20201027231544364-989418667.png" alt="1967993-20201027231544364-989418667"></p>
+<h1 id="python安装包">Python安装包</h1>
+<p>当计算机安装了Python编译器之后，那么同一版本的Python安装包就有着三种用法。<img src="/2021/03/23/Python&Pip/1967993-20201027231544364-989418667.png" alt="1967993-20201027231544364-989418667"></p>
 <p>Modify是修改的意思，你可以重新更改你的安装路径以及安装设置；Repair是修复，用于修复在使用过程中删除或者其他原因导致Python出问题的版块；最后一个是卸载，通过这个可以比较干净的卸载掉所安装的Python编译器。</p>
-<h1 id="Python运行"><a href="#Python运行" class="headerlink" title="Python运行"></a>Python运行</h1><p>Windows端可以下载Pycharm、Visual studio code、Anaconda等，mac和ios可以下载Pythonista，安卓版可以下载Pydroid3，也可以直接通过Python的IDLE运行。</p>
-<p>在Python中运用到某种包时(以Numpy库为例)，一般直接采用import Numpy，设置函数一般采用def f(n):。</p>
+<h1 id="python运行">Python运行</h1>
+<p>Windows端可以下载Pycharm、Visual studio
+code、Anaconda等，mac和ios可以下载Pythonista，安卓版可以下载Pydroid3，也可以直接通过Python的IDLE运行。</p>
+<p>在Python中运用到某种包时(以Numpy库为例)，一般直接采用import
+Numpy，设置函数一般采用def f(n):。</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def fu(<span class="keyword">a</span>,b)://更相减损法求最大公约数</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">a</span>!=b):</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">a</span>&lt;b):</span><br><span class="line">            b=b-<span class="keyword">a</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">a</span>=<span class="keyword">a</span>-b</span><br><span class="line">    <span class="literal">return</span> <span class="keyword">a</span></span><br><span class="line">def func(<span class="keyword">a</span>,b):</span><br><span class="line">    <span class="literal">return</span> int((<span class="keyword">a</span>*b)/fu(<span class="keyword">a</span>,b))</span><br><span class="line"><span class="keyword">a</span>,b=map(int,input().<span class="built_in">split</span>())</span><br><span class="line">print(fu(<span class="keyword">a</span>,b),func(<span class="keyword">a</span>,b))</span><br></pre></td></tr></table></figure>
-
 <p>求最大公约数和最小公倍数的代码如上所示。我认为Python相较于C语言的好处是简洁易上手，目前而言，对我来说就是Python好用，不接受反驳。</p>
 
     </div>
@@ -322,7 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pip%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Pip简易使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pip%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Pip安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number"></span> <span class="nav-text">Python安装包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E8%BF%90%E8%A1%8C"><span class="nav-number"></span> <span class="nav-text">Python运行</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pip%E7%AE%80%E6%98%93%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Pip简易使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Pip安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number"></span> <span class="nav-text">Python安装包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E8%BF%90%E8%A1%8C"><span class="nav-number"></span> <span class="nav-text">Python运行</span></a></div>
       </div>
       <!--/noindex-->
 

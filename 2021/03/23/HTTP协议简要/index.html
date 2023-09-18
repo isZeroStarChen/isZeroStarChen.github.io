@@ -222,19 +222,23 @@
       
         <p>HTTP协议是指超文本传输协议，简单来说就是一种规则，允许将HTML文档从Web服务器传送到Web浏览器。</p>
 <span id="more"></span>
-
-<h1 id="HTTP协议简要"><a href="#HTTP协议简要" class="headerlink" title="HTTP协议简要"></a>HTTP协议简要</h1><h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP请求包括三部分：请求行(请求方法)，请求头(消息报头)和请求正文。</p>
-<p>例如：POST  /login.php HTTP/1.1           //请求行</p>
-<p>　　　HOST：<a target="_blank" rel="noopener" href="http://www.xxser.com/">www.xxser.com</a>　　　　　    //请求头</p>
-<p>　　  User-Agent:：Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20100101 Firefox/15.0</p>
-<p>　　　　　　　　　　　　　　　　　       //空白行，代表请求头结束</p>
-<p>　　  Username=admin&amp;password=admin   //请求正文</p>
+<h1 id="http协议简要">HTTP协议简要</h1>
+<h2 id="http请求">HTTP请求</h2>
+<p>HTTP请求包括三部分：请求行(请求方法)，请求头(消息报头)和请求正文。</p>
+<p>例如：POST /login.php HTTP/1.1 //请求行</p>
+<p>　　　HOST：www.xxser.com　　　　　 //请求头</p>
+<p>　　 User-Agent:：Mozilla/5.0 (Windows NT 6.1; rv:15.0)
+Gecko/20100101 Firefox/15.0</p>
+<p>　　　　　　　　　　　　　　　　　 //空白行，代表请求头结束</p>
+<p>　　 Username=admin&amp;password=admin //请求正文</p>
 <p>请求行又可以分为三部分，一个是POST请求，一个是在域名根目录下的login.php里，还有一个是说明使用的是HTTP1.0版本；</p>
 <p>请求头是第二行到空白行，HOST代表请求的地址，User-Agent(简称UA)是浏览器UA标识；</p>
 <p>请求正文这一行最常出现在POST请求当中，而且可选。</p>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><p>HTTP响应包括三部分：响应行，响应头(消息报头)和响应正文。</p>
+<h2 id="http响应">HTTP响应</h2>
+<p>HTTP响应包括三部分：响应行，响应头(消息报头)和响应正文。</p>
 <p>一般HTTP响应的第一行为响应行，其中有HTTP版本，状态码以及消息；第二行到空白行是响应头，是服务器发给客户端的；最后是响应正文，是服务器向客户端发送的HTML数据。</p>
-<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>HTTP协议中的状态码一般由三位数字组成，第一位数字定义了相应的类型，只有五种。</p>
+<h2 id="http状态码">HTTP状态码</h2>
+<p>HTTP协议中的状态码一般由三位数字组成，第一位数字定义了相应的类型，只有五种。</p>
 <p>1XX：请求已被成功接收，继续处理，范围100~101。</p>
 <p>2XX：成功，服务器成功的处理了请求，范围200~206。</p>
 <p>3XX：重定向，资源已经被移动，并且会告诉新的资源位置，浏览器重新访问。范围300~305。</p>
@@ -249,22 +253,26 @@
 <p>404：访问资源不存在。</p>
 <p>500：服务器内部出错。</p>
 <p>503：当前服务器不能处理请求，请稍后再试。</p>
-<h2 id="HTTP消息"><a href="#HTTP消息" class="headerlink" title="HTTP消息"></a>HTTP消息</h2><p>HTTP消息也叫HTTP头，分四部分，一是请求头，二是响应头，三是普通头，四是实体头。</p>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>请求头只出现在HTTP请求中，常用的HTTP请求头如下。</p>
+<h2 id="http消息">HTTP消息</h2>
+<p>HTTP消息也叫HTTP头，分四部分，一是请求头，二是响应头，三是普通头，四是实体头。</p>
+<h3 id="请求头">请求头</h3>
+<p>请求头只出现在HTTP请求中，常用的HTTP请求头如下。</p>
 <p>Host：用于指定请求资源的主机和端口号。</p>
 <p>User-Agent：浏览器UA标识，可以向服务器显示用的浏览器和系统信息。</p>
-<p>Referer：显示用户是从什么界面来到本界面的。例如：Referer：<a target="_blank" rel="noopener" href="http://www.xxser.com/login.php%E3%80%82%E8%A1%A8%E7%A4%BA%E7%94%A8%E6%88%B7%E6%98%AF%E4%BB%8Elogin.php%E7%95%8C%E9%9D%A2%E6%9D%A5%E5%88%B0%E6%9C%AC%E7%95%8C%E9%9D%A2%E7%9A%84%E3%80%82%E7%9B%B8%E5%BD%93%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%98%BE%E7%A4%BA%E4%B8%8A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84URL%E3%80%82">www.xxser.com/login.php。表示用户是从login.php界面来到本界面的。相当于一个显示上个页面的URL。</a></p>
+<p>Referer：显示用户是从什么界面来到本界面的。例如：Referer：www.xxser.com/login.php。表示用户是从login.php界面来到本界面的。相当于一个显示上个页面的URL。</p>
 <p>Cookie：一段文本，很重要，表示请求者身份。</p>
 <p>Range：请求实体的部分内容，多线程下载含有Range头。</p>
 <p>x-forward-for：代表请求端的IP。</p>
 <p>Accept：指定客户端接受哪些类型的信息。例如：Accept：text/html，表明客户端希望接受HTML文本。</p>
-<h3 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h3><p>是服务器根据请求向客户端发送的HTTP头。常见的HTTP头如下。</p>
+<h3 id="响应头">响应头</h3>
+<p>是服务器根据请求向客户端发送的HTTP头。常见的HTTP头如下。</p>
 <p>Server：服务器使用的Web服务器的名称。</p>
 <p>Set-cookie：向客户端设置Cookie，通过这个可以查看到服务器发送给客户端的Cookie信息。</p>
 <p>Last-Modified：可以看到资源修改的最后时间。</p>
 <p>Location：服务器通过这个告诉浏览器访问什么页面，通常配合302状态码使用。</p>
 <p>Refresh：服务器通过这个告诉浏览器定时刷新浏览器。</p>
-<h3 id="实体头"><a href="#实体头" class="headerlink" title="实体头"></a>实体头</h3><p>请求和响应都能传送一个实体头。</p>
+<h3 id="实体头">实体头</h3>
+<p>请求和响应都能传送一个实体头。</p>
 <p>Content-Type：向接收方指示实体的介质类型。</p>
 <p>Content-Encoding：被用作媒体类型的修饰符，这个值指示了已经被应用到实体正文的附加内容的编码。</p>
 <p>Content-Length：用于指明实体正文的长度，以字节方式储存的十进制数字来表示。</p>
@@ -352,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议简要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E5%93%8D%E5%BA%94"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E6%B6%88%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">1.4.1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">1.4.2.</span> <span class="nav-text">响应头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%A4%B4"><span class="nav-number">1.4.3.</span> <span class="nav-text">实体头</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#http%E5%8D%8F%E8%AE%AE%E7%AE%80%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议简要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E5%93%8D%E5%BA%94"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E6%B6%88%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">1.4.1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">1.4.2.</span> <span class="nav-text">响应头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%A4%B4"><span class="nav-number">1.4.3.</span> <span class="nav-text">实体头</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
