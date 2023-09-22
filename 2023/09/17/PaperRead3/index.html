@@ -28,7 +28,7 @@
 <meta property="og:description" content="Kiskowski M A, Hancock J F, Kenworthy A K.On the use of Ripley&#39;s K-function and its derivatives to analyze domain size[J]. Biophysical journal, 2009, 97(4): 1095-1103.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-17T07:56:38.000Z">
-<meta property="article:modified_time" content="2023-09-18T03:14:19.163Z">
+<meta property="article:modified_time" content="2023-09-21T12:52:08.000Z">
 <meta property="article:author" content="isZeroStarChen">
 <meta property="article:tag" content="科研">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-18 11:14:19" itemprop="dateModified" datetime="2023-09-18T11:14:19+08:00">2023-09-18</time>
+                <time title="修改时间：2023-09-21 20:52:08" itemprop="dateModified" datetime="2023-09-21T20:52:08+08:00">2023-09-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,19 +227,18 @@ journal, 2009, 97(4): 1095-1103.</p>
 <p>该文于2009年发表于生物学SCI2区期刊<strong>Biophysical
 journal</strong>上，该文使用Ripley's K函数对蛋白质聚类进行一个判断。</p>
 <h1 id="应用背景">应用背景</h1>
-<p>在本文所说医学领域的某个问题之下，由于在该领域区分小的群体和随机分布过于难，因此会把数学工具更多的应用在这上面。其中有一种就是本文所提到的Ripley‘K函数，Ripley‘K函数能够用于判断域大小或面积等相关信息。</p>
+<p>在本文所说医学领域的某个问题之下，由于在该领域区分小的群体和随机分布过于难，因此会把数学工具更多的应用在这上面。其中有一种就是本文所提到的Ripley‘K函数，Ripley‘K函数能够用于判断域大小(面积)等相关信息。</p>
 <h1 id="研究回顾">研究回顾</h1>
-<h2 id="研究回顾-1">研究回顾</h2>
-<h3 id="k函数">K函数</h3>
+<h2 id="k函数">K函数</h2>
 <p><span class="math display">\[
 K(r) = \frac{1}{n} \sum^{n}_{i=1}N_{pi}(r)/\lambda
 \]</span></p>
 <p>其中<span class="math inline">\(N_{pi}\)</span>是第i个点在半径为r的距离下求和得出点的个数，<span class="math inline">\(\lambda\)</span>为每个区域的点数。Ripley‘K函数通常用于将给定点分布与随机分布进行比较。</p>
-<h3 id="l函数">L函数</h3>
+<h2 id="l函数">L函数</h2>
 <p>将K函数归一化，使得其期望为r，方程变线性。 <span class="math display">\[
 L(r)=\sqrt{(K(r)/\pi)}
 \]</span></p>
-<h3 id="h函数">H函数</h3>
+<h2 id="h函数">H函数</h2>
 <p><span class="math display">\[
 H(r)=L(r)-r
 \]</span></p>
@@ -251,12 +250,174 @@ K在最佳情况下的局限性和潜力有了深层的理解，还评估了噪�
 <h1 id="研究方法">研究方法</h1>
 <h2 id="modeling-idealized-disk-shaped-domains">Modeling idealized
 disk-shaped domains</h2>
-<p>在半径为R的理想化域中，任意两个相邻域之间的中心点距离为S，那么相邻域的边缘距离就为S-2R。</p>
+<p>在半径为R的理想化域中，任意两个相邻域之间的中心点距离为S，那么相邻域的边缘距离就为S-2R。然后在点图案的蒙特克洛模拟实验中，在域内的点为0.05
+nm<sup>-2</sup>点密度，在域外的点密度为0.001
+nm<sup>-2</sup>。<strong>即在域内为聚类，域外为离散</strong>。在本文中，仅考虑S$$4R，这样相邻的域相隔至少一个域直径2R。</p>
 <h2 id="modeling-k-ras-nanoclusters">Modeling K-ras nanoclusters</h2>
-<h2 id="computing-ripleys-h-and-h0-functions">Computing Ripley’s H and
-H0 functions</h2>
-<h1 id="实验验证与结果分析">实验验证与结果分析</h1>
-<h1 id="分析总结与研究启示">分析总结与研究启示</h1>
+<p>在该领域的某个情况下，使用蒙特卡洛模型对一个模式进行模拟，半径为16nm的域被放置在500X500个正方形晶格上，每个晶格节点对应着1nm<sup>-2</sup>的面积，免疫颗粒的密度允许在每1000个颗粒之间的400-1200个颗粒间变化。在实验模型中，44%的颗粒排列在纳米簇中，每个纳米簇的化学计量为3.2个颗粒。因此，对于给定数量的免疫金颗粒N，最接近的整数0.44N/3.2
+域被分配给晶格。纳米簇随机排列在模型上，但受到不能重叠且必须完全包含在晶格内的限制。然后将N个粒子0.44:0.56的比例随机分配给域节点和非域节点。首先，我们允许域尺寸在6到16nm之间变化。在没有单体部分的情况下，所有非域颗粒都被删除。在没有域交互的情况下，域被随机分配，但受到以下约束：域之间的距离为4R，距域边界的距离为2R。</p>
+<h2 id="computing-ripleys-h-and-h-functions">Computing Ripley’s H and H‘
+functions</h2>
+<p>无论点位于域内还是域外，都会针对晶格上的所有点计算Ripley的K统计量。周期性边界条件用于消除边缘效应。理想化点图案的周期扩展是无缝的，因为域以三角形图案排列。在生成模拟K-ras纳米团簇的点图案时，我们要求域完全包含在晶格内，以便在平铺晶格图案时不存在破碎或重叠的域。H函数的导数是通过在区间
+[r-1 nm, r+1 nm] 上取H的平均导数，从每个 r
+nm值处的H函数计算出来的，这会产生足够平滑的函数。</p>
+<h1 id="结果分析">结果分析</h1>
+<h2 id="comparing-the-radius-of-maximal-aggregation-with-the-domain-radius-in-distributions-of-idealized-disk-shaped-domains将最大聚集半径与理想化盘形域分布中的域半径进行比较">Comparing
+the radius of maximal aggregation with the domain radius in
+distributions of idealized, disk-shaped
+domains(将最大聚集半径与理想化盘形域分布中的域半径进行比较)</h2>
+<p>本文评估了理想化点模式情况下的H(r)，其中点聚集在半径为R且间隔为S的分离良好的盘形区域内，在域内的点为0.05
+nm<sup>-2</sup>点密度。只考虑S$$4R的值，以便相邻域被至少一个域直径分开。正如预期的那样，对于这种理想化情况，H(r)在聚合分布的区间[0，S/2]内为正，表明在该区间内存在聚类。相反，将H(r)应用于泊松分布会产生H(r)恒定值为0，这与不存在聚类一致。</p>
+<p>在以前的研究中，使H(r)最大的值用于提供域半径的测量。本文将其表示为最大最聚合半径R^<em>^=[H<sub>MAX</sub>]。<strong>其中，[H<sub>MAX</sub>]为计算产生最大H值的R(逆运算)</strong>。在本文的案例中，R</em>=25$$1
+nm，大于实际值R=20 nm。文中考虑了实际域半径与[H<sub>MAX</sub>]
+预测的域半径之间存在差异的可能性。因为K、H、L函数是累积函数，这意味着较大距离的影响会和较小距离的影响相混淆。这些函数是累加的，因为对于每个r值，Ripley's
+K都会考虑半径r内的点数，因此始终会包含较小半径内的点。</p>
+<p>为了进一步研究累积效应怎么影响R<sup><em>^与实际域半径之间的关系，本文计算了理想化分布的H(r)，其中域半径保持不变，但S发生变化(Figure2
+B、C)。图2B显示了三个不同S值的H(r)绘图示例。该分析表明：<strong>随着域间距离的增加，最大聚集半径逐渐转变为更大的半径</strong>。对一系列S值重复此计算，并计算每种情况的最大聚集半径[H<sub>MAX</sub>]。如图2C所示，随着间隔从4R增加到任意大值，由[H<sub>MAX</sub>]预测的域半径R^</em></sup>从域半径R单调增加到域直径2R。本文通过将Rilpey'K应用于没有周期性边界条件的单个域来评估预测为S到无穷大的最大聚集半径，并发现[H<sub>MAX</sub>]接近2R。</p>
+<p>[H<sub>MAX</sub>]对S的这种依赖性可以通过回顾H函数将测试半径内观察到的密度与泊松分布中的预期密度进行比较来理解。H(r)的临界点(当H'=0)位于域内的聚集效应被域外的色散完全抵消的位置。当域大小相同但域间隔较大时，点的聚合实际更大，因为点聚合在相对较小的区域内。(这是由H(r)的最大值随S增加的事实表明）。相对于域之间总面积的聚合程度增加，并且需要更大的面积来抵消这个聚合。然而，尽管最大聚合半径并不完全对应于域半径，但即使在这种理想化场景中，[H<sub>MAX</sub>]估计域半径在2倍以内也是很好的。</p>
+<h2 id="using-the-derivative-to-subtract-accumulative-effects使用导数减去累积效应">Using
+the derivative to subtract accumulative
+effects(使用导数减去累积效应)</h2>
+<p>由于[H<sub>MAX</sub>]给出的最大聚合位置不能精确测量域半径，因此开始考虑是否有其他测量能够计算域半径。虽然<strong>K函数可用于检测排斥效应和吸引效应的空间范围</strong>，但应使用基于K函数导数的函数来描述特定距离处的聚集程度。<strong>用导数是因为函数的变化率不取决于函数的大小，因此不受累积效应的影响</strong>。因此，本文测试了用H(r)的导数减去累积效应。</p>
+<p>为了测试导数能够消去累积效应，针对Figure2-B中所表示的相同三个模拟计算了H'(r)，尽管每条曲线都与x轴相交，每条曲线与y=-1相交时都是相同的r=2R(Figure3A)。这表明H(r)的导数等于-1的点能够提供与累积效应无关的域半径测量值。为了进一步测试这点，本文计算了r值(当H'(r)=-1)，对于一系列域的相邻距离具有恒定域半径的理想化域。我们发现当H'(r)=-1的r值图可以准确预测域半径，即使域分离发生变化(Figure3B)。因此，产生H'(r)的最小r值除以2，可以准确地产生与理想化域情况下的域分离无关的域半径。在本研究的其余部分中，本文将**H'(r)的最小值表示的域半径表示为R^*^=[H'<sub>MIN</sub>]，其中括号再次表示产生最小值的r值**。</p>
+<p>考虑到最大聚合半径[H<sub>MAX</sub>]发生在当H(r)的导数为0时，域半径指示为H'(r)导数为-1且与累积效应无关的发现很有趣。通过这种方式预测域半径，本文考虑了L函数，它具有精确的几何解释：对于给定半径r，L(r)是在完全分布的情况下点数分布的半径随机的。因此，泊松分布的L(r)期望值为r(Figure4A中虚线)，点聚集在半径为R和间隔S的域内分布L(r)大于[0,S/2]上的泊松分布，表明该区间内的聚类(Figure4A中黑色实线)。</p>
+<p>重要的是，只要半径r内找到点的数量随r增加，L(r)就是r的增函数，并且当所有测试点的半径r之外的点的密度为0时，L(r)停止增加。换句话说，L(r)的导数L'(r)始终大于等于0，只要在半径r内发现的点的数量随r增加，L‘(r)将为正，当半径r之外的点密度为0时，L‘(r)将为正(Figure4B黑色实线)。<strong>对于点完全聚集在半径为R的域内的情况，同一域内任意两点之间的距离将小于或等于直径2R，并且域外的点密度将为0，直到下一个域到达。</strong>由于邻域边界之间的距离为S-2R，L(r)在区间[2R,S-2R]的斜率为0(Figure4B)。因此，当L'(r)为0时，指示域直径(Figure4B，箭头)。当L(r)的导数为0时，H(r)的导数为-1.因为H(r)与L(r)仅r不同。</p>
+<h2 id="effect-of-a-monomer-fraction-in-the-case-of-idealized-domains理想化域情况下单体分数的影响">Effect
+of a monomer fraction in the case of idealized
+domains(理想化域情况下单体分数的影响)</h2>
+<p>上述几何参数适用于理想化分布，其中点完全分布在域内并且不存在单体部分。然而，Ripley's
+K
+的一个重要特征是它适用于其中可能有许多点随机分布在域之外的分布。因此，我们接下来测试了单体分数的存在如何影响
+H(r) 和 L’(r) 预测域半径的能力。对于此分析，我们考虑了以0.001
+nm<sup>2</sup>的密度向域外节点添加单体的影响。对于这些域外探针密度现在非零的点模式，我们发现H(r)最大值的位置不受影响(Fig2.A)，但
+L‘(r)并未变为零(Fig4.B，灰色实线)。然而,最小化L'(r)的r值仍然会产生域半径(Fig4.B)。因此，在这些条件下，两种测量似乎对单体级分的存在相对不敏感。我们注意到，我们的点模式假设随机放置的单体以恒定密度分布在域外。在单体密度在域外非随机波动的不规则分布中，使用此方法来识别域半径将因第二级聚合或排序而产生偏差。</p>
+<h2 id="comparing-the-predictions-of-the-maximum-of-hr-and-the-minimum-of-hr比较hr最大值和hr最小值的预测">Comparing
+the predictions of the maximum of H(r) and the minimum of
+H’(r)(比较H(r)最大值和H‘(r)最小值的预测)</h2>
+<p>我们对于理想化域的分析表明，H(r)的最大值和H'(r)的最小值对域分离具有不同的依赖性。特别是，H(r)的最大值产生最大聚集半径，这取决于域分离。而H'(r)的最小值产生与域分离无关的域半径。因此，我们考虑了[H<sub>MAX</sub>]/[H'<sub>MIN</sub>]与域分离的比率，域分离范围为4R(80nm)到20R(400nm)(Fig5)。在这些条件下，[H<sub>MAX</sub>]/[H'<sub>MIN</sub>]之比从==~1
+单调增加到
+~2==。为了确定该比率是否取决于域半径，我们对三个不同的域半径(20、30和40nm)进行了类似的计算。当域分离按域半径标准化时，对于三个不同的域半径，[H<sub>MAX</sub>]/[Hup<sub>MIN</sub>]与域相隔的比率相同(Fig5)。这表明参数[H<sub>MAX</sub>]/[Hup<sub>MIN</sub>]可用于测量域分离。</p>
+<h2 id="application-to-experimentally-measured-domains-k-ras-nanoclusters在实验测量领域的应用k-ras-纳米团簇">Application
+to experimentally measured domains: K-ras
+nanoclusters(在实验测量领域的应用：K-ras 纳米团簇)</h2>
+<p>上述结果适用于理想化分布，其中点在理想化域内随机分布。然而，Ripley’K的一个重要应用是分析实验确定的分布，其中可能存在重要的噪声源，例如Ripley‘s
+K函数的一个重要应用是分析实验确定的分布。其中可能存在重要的噪声源。例如：Ripley’s
+K分析最近已经用于通过某个医学测量结果。先前使用[H<sub>MAX</sub>]作为结构域半径报告基因的分析表明，<em>Ras与具有恒定大小的纳米簇关联，并与随机排列的单体蛋白共存，发现簇状蛋白与单体蛋白的比率在多对数表达范围内保持恒定，这表明簇状分子的比例是通过活跃过程维持的
+。平均而言，每个纳米团簇含有 3.2 个金颗粒，单体数量约为 56%。</em></p>
+<p>为了评估H(r)与H'(r)在估计实验确定的Ras纳米团簇半径中的使用，我们根据之前发布的数据估计完整质膜片上K-ras蛋白的免疫金点模式的纳米团簇半径。使用的实验确定的点图案如(Fig6)所示。在该测量中，标记的K-ras密度为每平方微米625个金颗粒。使用[H<sub>MAX</sub>]，K-ras纳米团簇半径估计为16nm，而根据[H‘<sub>MIN</sub>]估计K-ras纳米团簇半径为14
+nm。因此，对于该实验测量的颗粒分布，这两种测量方法得出相似但不相同的K-ras纳米团簇半径估计值。</p>
+<p>接下来，我们询问在与实验观察到的条件类似的条件下，[H<sub>MAX</sub>]和[H'<sub>MIN</sub>]报告的域半径是否随K-ras粒子密度的函数而变化，假设域半径不发生变化。为了评估这一点，本文使用了蒙特卡洛模拟，该模拟模型生成类似于在质膜片上标记K-ras蛋白的免疫金点团。这些模式包含在理想模型中不存在的两个噪声。首先，存在恒定的单体分数(不论总体颗粒密度如何，56%的K-ras蛋白随机分布在纳米簇外部)。其次，域之间的分离是随机的，域可能不重叠，但它们可能接近任意接近。</p>
+<p>本文生成了500个免疫经典图案，其中包含这两种噪声源，针对九种不同的图案密度中的每一种选择对应于实验测量的颗粒密度范围。图案中的所有域都是具有16
+nm的固定半径，因此这是要报告的正确半径。对于每个模式，我们计算了
+[H<sub>MAX</sub>] (Fig6B)和 [H‘<sub>MIN</sub>]
+(Fig6C)。两种测量都预测平均标准差 (SD)
+内的域半径；然而，如各个预测的直方图（插图）所示，各个结果差异很大，并且单点模式的预测可能比域半径大几个数量级。然而，两种方法在估计纳米簇图案的域半径方面平均表现相对较好，因此在评估多点图案时可以获得增加的可靠性。</p>
+<p>出乎意料的是，[H<sub>MAX</sub>] 和 [H'<sub>MIN</sub>]
+对颗粒密度的依赖性很小。考虑到我们初始模拟获得的结果(Fig2C)，[H<sub>MAX</sub>]
+对图案密度不存在强烈依赖性尤其令人惊讶，该模拟预测[H<sub>MAX</sub>]应随着簇之间平均间隔的增加而增加。相反，[H<sub>MAX</sub>]和[H'<sub>MIN</sub>]预测的半径比并不随颗粒密度系统变化，而是基本恒定，平均值为
+1.25，SD 为 0.05。根据Fig5，对于[H<sub>MAX</sub>]/[H'<sub>MIN</sub>]
+的这个值，估计的域分离应对应于5.5R$<span class="math inline">\(0.5 或
+88\)</span>$8
+nm。然而，从点图案的直接检查中可以清楚地看出，域分离随点密度而系统地变化，随着颗粒密度从每平方毫米
+400 个颗粒增加到 1200 个颗粒，区域分离从 ~85 nm 减小到 50
+nm。因此，我们的蒙特卡洛模拟结果表明，无法使用 [H<sub>MAX</sub>] 与
+[H’<sub>MIN</sub>]
+的比率来预测域分离，因为在这种噪声较大的情况下，该比率不会随域分离而变化。</p>
+<h2 id="systematic-evaluation-of-the-two-noise-sources-in-experimentally-derived-data对实验数据中的两个噪声源进行系统评估">Systematic
+evaluation of the two noise sources in experimentally derived
+data(对实验数据中的两个噪声源进行系统评估)</h2>
+<p>为了理解为什么[H<sub>MAX</sub>]的行为似乎与模拟K-ras纳米团簇的累积效应无关，我们接下来系统地评估了两个噪声源对这些数据的单独贡献，即单体分数的存在和随机域位置。尽管我们之前的分析表明单体部分不应成为主要噪声源(Fig2A和Fig4B)，但我们希望针对生物学相关分布验证这一点。此外，当域间隔随机变化时，某些域间隔可能小于4R。发生这种情况时，域之间的距离(从边缘到边缘)可能小于域直径，并且域边缘处的点与另一个域中的点的距离与它们与自己域内的点的距离一样近。我们将其定义为域交互。</p>
+<p>我们在Fig7中独立评估了有或没有这两个噪声源的 Ripley's
+K的性能。对于此分析，我们以与Fig6B和Fig6C中的模拟相同的方式生成点分布，不同之处在于：在这种情况下，我们系统地改变域半径，同时将粒子密度保持在每1000nm
+X
+1000nm有625个粒子。每个域的粒子数量和簇/单体的比率与Fig6中使用的相同。因此，这些模拟包含单体分数并具有不同的域分离，类似于基于实验的分布中的已知噪声源分析如Fig6所示。对于每个研究案例，我们计算了[H<sub>MAX</sub>]和[H‘<sub>MIN</sub>]，并将它们与实际域大小进行比较(Fig7,虚线)。</p>
+<p>我们首先计算了存在两个噪声源时的预测半径(Fig7，Ai和Bi)。
+[H<sub>MAX</sub>]和[H’<sub>MIN</sub>]的预测域半径与实际域半径在误差范围内一致。然而，由于SD非常大，噪声无法精确预测域半径。因此，在存在单体分数和变化的域分离的情况下，这两种测量表现同样好并且没有区别。</p>
+<p>接下来我们评估了域相互作用对域半径预测中噪声的贡献。为了检查这一点，通过删除域外的所有点，从蒙特卡罗生成的点模式中删除单体部分。我们发现，当仅存在域交互时，[H<sub>MAX</sub>]和[H’<sub>MIN</sub>]的预测仍然非常嘈杂(Fig7,Aii和Bii)。事实上，在这些条件下，[H'<sub>MIN</sub>]的预测甚至比同时存在结构域相互作用和单体部分的情况下的噪声更大(即误差更大)(比较Fig7，Bi和Bii)。这表明域交互是这两种测量的重要噪声源。从几何角度来看，这可以理解为发生的原因，因为在4R距离内接近的域被两种测量解释为单个域。</p>
+<p>接下来，我们通过去除相互作用的域来测试单体分数如何影响域半径测量的变化(Fig7，Aiii和Biii)。为了消除域相互作用，我们要求域间隔至少为4R(而不是当域不能重叠时为2R)。由于域必须间隔得更远以消除域相互作用，因此更难以生成在高点密度下满足这些约束的点图案。因此，我们仅评估了6nm
+至16nm的域尺寸。该分析的结果表明，这两种措施对于单体分数的影响都相当稳健，因为它们的预测中的大部分误差都被消除了(Fig7,Aiii和Biii)。对于域半径的某些值，[H<sub>MAX</sub>]
+的置信区间比[H‘<sub>MIN</sub>]更窄，表明在这些情况下[H<sub>MAX</sub>]是更可靠的度量。</p>
+<p>最后，我们从模拟的K-ras数据中删除了域相互作用和单体分数(Fig7,Aiv和Biv)。在不存在任何类型噪声的情况下，结果与我们的理想化场景基本一致：[H'<sub>MIN</sub>]
+产生正确的域半径，而 [H<sub>MAX</sub>]
+预测的半径稍大(Fig7,Aiv和Biv)。请注意，[H'<sub>MIN</sub>]
+预测通常会低估域半径，但绝不会高估它。这是由于每个域的密度仅为 3.2
+个粒子，因为在某些点实现中，域的最边缘可能没有点。</p>
+<p>这些发现表明，Fig6B和Fig6C 看起来相似，并且
+[H<sub>MAX</sub>]对基于实验的域的密度没有很强的依赖性，是因为它们通过域与域的相互作用偏离了理想值，以及在较小程度上单体部分。当通过消除单体分数和域-域相互作用来减去该噪声时，结果与我们的理论结果一致。</p>
+<h2 id="the-effect-of-varying-the-monomer-fraction改变单体分数的影响">The
+effect of varying the monomer fraction(改变单体分数的影响)</h2>
+<p>Prior
+和普洛曼等人观察到的K-ras分布的一个有趣特征，发现聚集蛋白与单体蛋白的比率在多对数表达范围内是恒定的。上面，我们考虑了当单体与域探针的比例为
+56:44 时，单体蛋白对 [H<sub>MAX</sub>]和[H’<sub>MIN</sub>]
+预测域半径的能力的影响，如本实验中观察到的。然而，在一般情况下，单体与域探针的比率可以随着探针的密度而变化，而且，该比率不太可能是先验已知的。为了进一步研究单体分数对Ripley
+的K统计量的影响，我们研究了在域内探针数量保持不变的情况下增加单体分数的影响。特别是，我们观察了当单体分数从20%系统性增加到
+80% 时由
+[H<sub>MAX</sub>]和[H‘<sub>MIN</sub>]预测的半径。如果通过H(r)最大值测量的聚合程度大于对相同点密度的100个随机点分布测量的H(r)最大值，则确定统计显着性聚合(置信度为99%)。</p>
+<p>根据这个标准，我们发现在非常高的单体分数下，统计数据识别聚集变得越来越困难。随着我们的模拟中单体分数的增加，在越来越少的点模式中识别出具有统计学意义的聚集(分数显示在Fig8A和Fig8B中每个数据点上方)。对于0.8和0.9的单体分数，具有统计显着聚集的模式百分比分别为50%和16%。因此，我们使用Ripley的K统计量来预测仅在观察到统计显着聚合的点模式中的域半径。因此，由[H<sub>MAX</sub>]和[H’<sub>MIN</sub>]预测的半径的平均值和SD如图所示。Fig8中的A和B仅限于观察到聚集的点模式的子集。</p>
+<p>对于检测到聚集的模式，我们发现虽然
+[H<sub>MAX</sub>]和[H‘<sub>MIN</sub>]预测的半径的SD随着单体分数的增加而增加，但平均预测半径并没有受到单体噪声的显着改变，直到单体分数超过80%。这与我们之前的结果(Fig
+7)一致，即单体分数仅部分地影响了统计的实验噪声。</p>
+<h1 id="讨论">讨论</h1>
+<p>在本研究中，我们评估了使用Ripley's
+K在理想和实验条件下定量测量域大小。我们首先在理想条件下分析了Ripley's
+K，以界定Ripley's
+K在最佳情况下的理论潜力。据我们所知，我们首次描述了最大聚集半径[H<sub>MAX</sub>]与域半径之间的关系，并发现[H<sub>MAX</sub>]随着域分离而系统且有规律地增加。因此，[H<sub>MAX</sub>]与实际域半径的比率是域分离的预测因子。根据我们的理论结果，我们提出了一种新的测量方法，即最小化H导数的半径，用于以与分离无关的方式找到域半径。
+H(r)导数的最小值在几何上对应于域边界，因为域外部的粒子密度小于域内部的粒子密度。</p>
+<p>接下来，我们将 Ripley
+的K分析应用于K-ras纳米团簇的实验数据，以研究单体分数和域间相互作用等噪声对域大小定量分析的影响。我们的噪声分析表明，Ripley的K度量的预测值受到域交互的深刻影响，每当域彼此位于一个域宽度内时，就会发生域交互。这是一个重要的发现，因为域可能会随机接近一定距离，即使在低域密度下也会导致域交互。例如，在我们的测试用例中，即使平均域间隔比发生交互的最小域间隔大四倍(例如，对于域半径为6nm时的域交互)，也会发生显着的域交互。由于
+[H<sub>MAX</sub>]对域相互作用的影响更稳健，因此
+[H<sub>MAX</sub>]可能是实验数据集的首选度量，请记住，在低域密度的情况下，[H<sub>MAX</sub>]
+往往会稍微高估域半径。在非常低的域密度下，[H'<sub>MIN</sub>]将提供更准确的测量。对于这两种衡量标准，应分析几种模式，因为个体结果可能差异很大，而平均值或多或少仍然可信。</p>
+<p>我们的研究结果说明了检查简单极限情况和进行系统噪声分析以辨别Ripley's
+K
+等分析工具的潜在局限性的实用性。由于噪声源是特殊情况，因此在存在噪声的情况下预测或推断理论结果变得复杂-依赖；每个环境场景都会有独特的噪音效果组合。之前的工作利用了模拟实际实验数据的模拟。在这里，蒙特卡洛模型使我们能够关闭和打开噪声源，并独立地观察它们的影响。因此，我们建议对所研究的每个实验情况进行蒙特卡罗模拟，以评估在该情况下使用的统计数据的性能。</p>
+<h1 id="图片分析">图片分析</h1>
+<h2 id="figure1">Figure1</h2>
+<p>理想化域的分布和点的分布。</p>
+<p>在A图中，半径为R的盘形域以具有周期性边界条件的三角形团案平铺在方形晶格上。任意两个相邻域的中心之间的距离为S，相邻域边缘之间的距离为S-2R。</p>
+<p>在B图中，域内密度为0.05 nm<sup>-2</sup>，域外密度为0.001
+nm<sup>-2</sup>的点分布的随机的域。域的半径为20nm，间隔S为120nm。</p>
+<h2 id="figure2">Figure2</h2>
+<p>使用Ripley的H函数确定域半径。</p>
+<p>在A图中，虚线表示H(r)为随机(泊松分布)；黑色实线表示点完全聚集在半径为R=20nm的25个域内，每两个域的间隔为100nm；灰色实现表示点聚集在单体部分的域中。标记为H<sub>MAX</sub>的箭头表示H(r)最大化的位置，标记为H<sub>MIN</sub>的箭头表示在完全聚类分布中，H(r)的斜率首先为-1的位置。为了模拟单体分数，域外的节点以0.001nm<sup>-2</sup>的密度填充。</p>
+<p>在B图中，H(r)计算包含25个域的三个分布，域半径恒定为20nm，但域间隔不同(S=100、200、300nm)。[H<sub>MAX</sub>]的大小和位置随着域分离而系统的移动。</p>
+<p>在C图中，由[H<sub>MAX</sub>]预测的域半径R^*^作为域分离的函数。域半径和直径分别由20nm和40nm处的灰色虚线表示。数据代表了包含25个半径为R=20nm的域的五个独立点分布的平均值mean<span class="math inline">\(\pm\)</span>SD。</p>
+<h2 id="figure3">Figure3</h2>
+<p>对H(r)求导可以消除累积效应。</p>
+<p>在A图中，针对包含25个域(半径R为20nm)的理想化分布计算的H'(r)，对于域间隔S的三个不同值：100
+nm(空心三角形)、200 nm(空心正方形)或300 nm(空心圆形)</p>
+<p>在B图中，由[H'<sub>MIN</sub>]预测的域半径R*作为域分离的函数。域半径和直径分别由20nm和40nm处的灰色虚线表示。在这两个图中，数据代表包含25个半径为
+R=20nm的域的五个独立点分布的平均值<span class="math inline">\(\pm\)</span>SD。</p>
+<h2 id="figure4">Figure4</h2>
+<p>使用Ripley的L函数及其导数来确定域半径。
+(A)L(r)和(B)L'(r)为随机(泊松)分布(虚线)、完全聚集在域内的点(黑色实线)或在存在单体分数的情况下聚集在域中的点(灰色实线)。箭头表示对于完全聚类分布，L(r)的斜率首先为0。数据代表五个独立点分布的平均值<span class="math inline">\(\pm\)</span>SD，其中包含25个半径为R=20nm且间隔为
+S=60nm的域。为了模拟单体分数，域外的节点以0.001个探针nm<sup>-2</sup>的密度填充。</p>
+<h2 id="figure5">Figure5</h2>
+<p>[H<sub>MAX</sub>]/[H'<sub>MIN</sub>]
+比率随着域分离而单调增加。如果域间隔通过域半径R归一化，则
+[H<sub>MAX</sub>]/[H'<sub>MIN</sub>]与间隔S的比率对于三个不同的域半径是相同的。这三个图的域半径分别为
+20nm、30nm和40nm，在错误范围内无法区分。数据代表包含25个半径为
+R=20nm的域的五个独立点分布的平均值<span class="math inline">\(\pm\)</span>SD。</p>
+<h2 id="figure6">Figure6</h2>
+<p>K-ras 纳米团簇蒙特卡罗模拟的纳米团簇半径作为图案密度的函数。</p>
+<p>在图A中实验得出的点图案示例，免疫金密度为625um<sup>-2</sup>。数据代表Plowman等人为K-ras收集的数据。比例尺为100nm。</p>
+<p>在B和C图中，为模仿K-ras纳米团簇的500个模拟点图案计算的半径。虚线显示实际域半径(16nm)，而实线显示Ripley计算的平均值和SD(B)使用H(r)的最大值计算的半径，或(C)使用H'(r)的最小值。直方图显示了当金颗粒图案密度为400个颗粒/um<sup>-2</sup>时各个模拟预测的分布。</p>
+<h2 id="figure7">Figure7</h2>
+<p>分析单体分数和域相互作用对从
+[H<sub>MAX</sub>]或[H'<sub>MIN</sub>]获得的K-ras域半径估计值的贡献。模拟点图案的生成如Fig6所示，不同之处在于域半径从6nm系统性地变化为16或20，同时保持粒子密度恒定在每1000nm
+X 1000nm中存在612个粒子。使用H(r)的最大值(A
+图)或使用H'(r)的最小值(B图)计算域半径。蒙特卡洛点模式是用两种噪声源(Ai和Bi)生成的，具有域相互作用但没有单体部分(Aii和Bii)，具有单体部分但没有域相互作用(Aiii和Biii)，并且没有单体部分或域相互作用(Aiv和Biv)。虚线显示实际域半径，而带误差线的实线显示500个点模式的平均半径和SD。</p>
+<h2 id="figure8">Figure8</h2>
+<p>Ripley’s
+K预测随着单体分数的变化而变化。Ripley对500个模拟点图案的域半径进行了计算，粒子密度为400个粒子/um<sup>-2</sup>，每个域3.2个粒子，域半径为16nm，单体与域粒子的比例不同。</p>
+<p>在A图中使用H(r)的最大值计算的半径。在B图中，使用H’(r)的最小值计算的半径。虚线显示实际域半径(16nm)，而实线显示计算的半径与每个数据点相关的数字表示识别出聚合的模式的比例。</p>
+<h1 id="其他">其他</h1>
+<p>完全随机分布</p>
+<p>完全聚类分布</p>
+<p>泊松分布</p>
+<p>单体部分</p>
+<p>域分离</p>
+<p>累计效应</p>
 
     </div>
 
@@ -337,9 +498,23 @@ H0 functions</h2>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.</span> <span class="nav-text">研究回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE-1"><span class="nav-number">2.1.</span> <span class="nav-text">研究回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#k%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">K函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">L函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">H函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">问题分析与研究动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">研究方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#modeling-idealized-disk-shaped-domains"><span class="nav-number">4.1.</span> <span class="nav-text">Modeling idealized
-disk-shaped domains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#modeling-k-ras-nanoclusters"><span class="nav-number">4.2.</span> <span class="nav-text">Modeling K-ras nanoclusters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computing-ripleys-h-and-h0-functions"><span class="nav-number">4.3.</span> <span class="nav-text">Computing Ripley’s H and
-H0 functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">实验验证与结果分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%90%AF%E7%A4%BA"><span class="nav-number">6.</span> <span class="nav-text">分析总结与研究启示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.</span> <span class="nav-text">研究回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#k%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">K函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#l%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">L函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#h%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">H函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">问题分析与研究动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">研究方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#modeling-idealized-disk-shaped-domains"><span class="nav-number">4.1.</span> <span class="nav-text">Modeling idealized
+disk-shaped domains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#modeling-k-ras-nanoclusters"><span class="nav-number">4.2.</span> <span class="nav-text">Modeling K-ras nanoclusters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computing-ripleys-h-and-h-functions"><span class="nav-number">4.3.</span> <span class="nav-text">Computing Ripley’s H and H‘
+functions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">结果分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#comparing-the-radius-of-maximal-aggregation-with-the-domain-radius-in-distributions-of-idealized-disk-shaped-domains%E5%B0%86%E6%9C%80%E5%A4%A7%E8%81%9A%E9%9B%86%E5%8D%8A%E5%BE%84%E4%B8%8E%E7%90%86%E6%83%B3%E5%8C%96%E7%9B%98%E5%BD%A2%E5%9F%9F%E5%88%86%E5%B8%83%E4%B8%AD%E7%9A%84%E5%9F%9F%E5%8D%8A%E5%BE%84%E8%BF%9B%E8%A1%8C%E6%AF%94%E8%BE%83"><span class="nav-number">5.1.</span> <span class="nav-text">Comparing
+the radius of maximal aggregation with the domain radius in
+distributions of idealized, disk-shaped
+domains(将最大聚集半径与理想化盘形域分布中的域半径进行比较)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#using-the-derivative-to-subtract-accumulative-effects%E4%BD%BF%E7%94%A8%E5%AF%BC%E6%95%B0%E5%87%8F%E5%8E%BB%E7%B4%AF%E7%A7%AF%E6%95%88%E5%BA%94"><span class="nav-number">5.2.</span> <span class="nav-text">Using
+the derivative to subtract accumulative
+effects(使用导数减去累积效应)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#effect-of-a-monomer-fraction-in-the-case-of-idealized-domains%E7%90%86%E6%83%B3%E5%8C%96%E5%9F%9F%E6%83%85%E5%86%B5%E4%B8%8B%E5%8D%95%E4%BD%93%E5%88%86%E6%95%B0%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">5.3.</span> <span class="nav-text">Effect
+of a monomer fraction in the case of idealized
+domains(理想化域情况下单体分数的影响)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comparing-the-predictions-of-the-maximum-of-hr-and-the-minimum-of-hr%E6%AF%94%E8%BE%83hr%E6%9C%80%E5%A4%A7%E5%80%BC%E5%92%8Chr%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E9%A2%84%E6%B5%8B"><span class="nav-number">5.4.</span> <span class="nav-text">Comparing
+the predictions of the maximum of H(r) and the minimum of
+H’(r)(比较H(r)最大值和H‘(r)最小值的预测)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#application-to-experimentally-measured-domains-k-ras-nanoclusters%E5%9C%A8%E5%AE%9E%E9%AA%8C%E6%B5%8B%E9%87%8F%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BA%94%E7%94%A8k-ras-%E7%BA%B3%E7%B1%B3%E5%9B%A2%E7%B0%87"><span class="nav-number">5.5.</span> <span class="nav-text">Application
+to experimentally measured domains: K-ras
+nanoclusters(在实验测量领域的应用：K-ras 纳米团簇)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systematic-evaluation-of-the-two-noise-sources-in-experimentally-derived-data%E5%AF%B9%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%99%AA%E5%A3%B0%E6%BA%90%E8%BF%9B%E8%A1%8C%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0"><span class="nav-number">5.6.</span> <span class="nav-text">Systematic
+evaluation of the two noise sources in experimentally derived
+data(对实验数据中的两个噪声源进行系统评估)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-effect-of-varying-the-monomer-fraction%E6%94%B9%E5%8F%98%E5%8D%95%E4%BD%93%E5%88%86%E6%95%B0%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">5.7.</span> <span class="nav-text">The
+effect of varying the monomer fraction(改变单体分数的影响)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA"><span class="nav-number">6.</span> <span class="nav-text">讨论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%88%86%E6%9E%90"><span class="nav-number">7.</span> <span class="nav-text">图片分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#figure1"><span class="nav-number">7.1.</span> <span class="nav-text">Figure1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure2"><span class="nav-number">7.2.</span> <span class="nav-text">Figure2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure3"><span class="nav-number">7.3.</span> <span class="nav-text">Figure3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure4"><span class="nav-number">7.4.</span> <span class="nav-text">Figure4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure5"><span class="nav-number">7.5.</span> <span class="nav-text">Figure5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure6"><span class="nav-number">7.6.</span> <span class="nav-text">Figure6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure7"><span class="nav-number">7.7.</span> <span class="nav-text">Figure7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#figure8"><span class="nav-number">7.8.</span> <span class="nav-text">Figure8</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
