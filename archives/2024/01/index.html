@@ -20,29 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="后端开发第一步，MySQL安装和构建。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL安装">
-<meta property="og:url" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/index.html">
+  <meta name="description" content="愿世间美好与你环环相扣">
+<meta property="og:type" content="website">
+<meta property="og:title" content="isZeroStar&#39;blog">
+<meta property="og:url" content="http://example.com/archives/2024/01/index.html">
 <meta property="og:site_name" content="isZeroStar&#39;blog">
-<meta property="og:description" content="后端开发第一步，MySQL安装和构建。">
+<meta property="og:description" content="愿世间美好与你环环相扣">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/Mysql官网.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/环境变量.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql测试.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql初始化.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql密码修改.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/navicat.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/navicat连接.jpg">
-<meta property="og:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql连接成功.jpg">
-<meta property="article:published_time" content="2023-12-11T07:54:18.000Z">
-<meta property="article:modified_time" content="2024-01-09T01:46:11.546Z">
 <meta property="article:author" content="isZeroStarChen">
-<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/Mysql官网.jpg">
 
-<link rel="canonical" href="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/">
+<link rel="canonical" href="http://example.com/archives/2024/01/">
 
 
 <script id="page-configurations">
@@ -50,12 +38,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>MySQL安装 | isZeroStar'blog</title>
+  <title>归档 | isZeroStar'blog</title>
   
 
 
@@ -169,122 +157,51 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/11/MySQL%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="isZeroStarChen">
-      <meta itemprop="description" content="愿世间美好与你环环相扣">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="isZeroStar'blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          MySQL安装
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-12-11 15:54:18" itemprop="dateCreated datePublished" datetime="2023-12-11T15:54:18+08:00">2023-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-09 09:46:11" itemprop="dateModified" datetime="2024-01-09T09:46:11+08:00">2024-01-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        
+        <span class="collection-header">还行! 目前共计 33 篇日志。 继续努力。</span>
+      </div>
 
       
-        <p>后端开发第一步，MySQL安装和构建。</p>
-<span id="more"></span>
-<h1 id="下载">下载</h1>
-<p>访问<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL官网</a>，找到版本8.0.35，下载其压缩包，如图所示。</p>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/Mysql官网.jpg" alt="Mysql官网" style="zoom:50%;"></p>
-<h1 id="环境配置">环境配置</h1>
-<h2 id="添加path">添加path</h2>
-<p>右键单击此电脑，按照如图所示进入path变量值中，path中添加mysql文件中bin的目录地址。</p>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/环境变量.jpg" alt="环境变量" style="zoom:75%;"></p>
-<p>打开cmd，输入mysql，出现如下报错则证明环境变量添加成功，出现“mysql不是内部或外部命令”，则需要再次重复上述环境变量过程。</p>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql测试.jpg"></p>
-<h2 id="安装mysql服务">安装mysql服务</h2>
-<p>以管理员权限打开cmd，输入安装服务和初始化命令，会出现服务器登录密码，需要记住。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqld --install</span><br><span class="line">mysqld --initialize --console</span><br></pre></td></tr></table></figure>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql初始化.jpg"></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#mysql命令登录，密码为初始化显示的密码</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">#修改默认密码为root</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;root&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql密码修改.jpg"></p>
-<h2 id="安装navicat">安装Navicat</h2>
-<p>先参考github上的老哥发布的<a target="_blank" rel="noopener" href="https://github.com/LiJunYi2/navicat-keygen-16V/releases/tag/v16.3.3">激活方式</a>下载对应压缩包，然后按照txt文档中运行bat脚本。</p>
-<p>再到<a target="_blank" rel="noopener" href="https://www.navicat.com.cn/">Navicat官网</a>下载Navicat
-Premium16版本，点击产品，选择Navicat
-Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
-<p>安装后不要运行，将压缩包中的x64_Patch.dll这个文件复制到Navicat的安装路径下，完成破解。<img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/navicat.jpg" alt="navicat"></p>
-<h2 id="连接数据库">连接数据库</h2>
-<p>打开Navicat后在左上角的连接中找到MySQL连接，点开后需要输入用户名和密码，如下图所示。</p>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/navicat连接.jpg" alt="navicat连接" style="zoom:75%;"></p>
-<p>输入用户名和修改后的密码，连接成功后如下图所示。</p>
-<p><img src="/2023/12/11/MySQL%E5%AE%89%E8%A3%85/mysql连接成功.jpg"></p>
-
+    <div class="collection-year">
+      <span class="collection-header">2024</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i># 后端</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2024-01-09T15:54:18+08:00"
+              content="2024-01-09">
+          01-09
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/" itemprop="url">
+            <span itemprop="name">MySQL安装</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2023/12/01/Numpy/" rel="prev" title="Numpy">
-      <i class="fa fa-chevron-left"></i> Numpy
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -337,7 +254,6 @@ Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0path"><span class="nav-number">2.1.</span> <span class="nav-text">添加path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">安装mysql服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85navicat"><span class="nav-number">2.3.</span> <span class="nav-text">安装Navicat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">连接数据库</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
