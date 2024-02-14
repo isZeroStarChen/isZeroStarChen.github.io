@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -224,24 +224,17 @@
       
         <p>感觉哪哪都有服务器，跑数据用服务器，搭环境什么的也可以用服务器，简略阐述一下最近用服务器积累的一点小知识。</p>
 <span id="more"></span>
-<h1 id="服务器">服务器</h1>
-<p>服务器在我的理解里可以分为身边的服务器(以下简称本地服务器)和其他运营商的服务器(比如阿里云、腾讯云、华为云或者国外的服务器)。</p>
-<h2 id="本地服务器">本地服务器</h2>
-<p>本地服务器，举个简单的例子，就像笔者最近使用的学校的一台服务器(浪潮-NF5270M4-16G运行内存)。这类服务器可以自行安装自己想要的服务器系统，笔者在服务器上安装的是Ubuntu18.04LTS系统(Bionic
-Beaver仿生海狸)。</p>
+<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>服务器在我的理解里可以分为身边的服务器(以下简称本地服务器)和其他运营商的服务器(比如阿里云、腾讯云、华为云或者国外的服务器)。</p>
+<h2 id="本地服务器"><a href="#本地服务器" class="headerlink" title="本地服务器"></a>本地服务器</h2><p>本地服务器，举个简单的例子，就像笔者最近使用的学校的一台服务器(浪潮-NF5270M4-16G运行内存)。这类服务器可以自行安装自己想要的服务器系统，笔者在服务器上安装的是Ubuntu18.04LTS系统(Bionic Beaver仿生海狸)。</p>
 <p>在本地服务器上装系统就好比给一台电脑装系统，最好的选择是制作一个U盘启动盘，然后在服务器的bios设置里选择U盘自启，然后就可以进行安装，windows系统的U盘启动盘就不做介绍了，这里介绍Ubuntu系统制作系统启动盘所需要的材料。一是Ubuntu系统的iso文件，这个可以在Ubuntu官网上就进行下载，我们这里进入到Ubuntu官网下载<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download">Ubuntu官网下载</a>；二是将下载好的.iso镜像文件做成系统启动盘的工具，这里我们选用的是<a target="_blank" rel="noopener" href="http://rufus.ie/zh/">Rufus</a>。</p>
 <p>整体思路，先下好对应的iso光盘镜像文件，再通过rufus软件装载到U盘上。通过进入服务器的boot设置，改为U盘自启动，然后就可以进行安装。</p>
 <p>经过漫长的等待之后，服务器装好了的话，我们需要做一下俩件事。</p>
-<h3 id="更新">更新</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-<h3 id="ssh连接">SSH连接</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server     <span class="comment">#安装SSH连接基础包</span></span><br><span class="line">sudo service ssh start           <span class="comment">#开启ssh连接</span></span><br><span class="line">sudo ps -e | grep ssh            <span class="comment">#查看ssh连接是否开启</span></span><br><span class="line">sudo systemctl enable ssh        <span class="comment">#设置ssh开机自启动</span></span><br><span class="line">sudo systemctl status ssh        <span class="comment">#查看ssh是否启动，Active: active表示成功</span></span><br><span class="line">sudo service ssh restart         <span class="comment">#重启ssh连接</span></span><br><span class="line">sudo service sshd status         <span class="comment">#查看ssh连接当前状态</span></span><br><span class="line"><span class="comment">#ssh连接端口开放默认为22</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config    <span class="comment">#对ssh连接配置进行更改</span></span><br><span class="line">ifconfig                         <span class="comment">#查看本机ip地址</span></span><br></pre></td></tr></table></figure>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="SSH连接"><a href="#SSH连接" class="headerlink" title="SSH连接"></a>SSH连接</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server     <span class="comment">#安装SSH连接基础包</span></span><br><span class="line">sudo service ssh start           <span class="comment">#开启ssh连接</span></span><br><span class="line">sudo ps -e | grep ssh            <span class="comment">#查看ssh连接是否开启</span></span><br><span class="line">sudo systemctl enable ssh        <span class="comment">#设置ssh开机自启动</span></span><br><span class="line">sudo systemctl status ssh        <span class="comment">#查看ssh是否启动，Active: active表示成功</span></span><br><span class="line">sudo service ssh restart         <span class="comment">#重启ssh连接</span></span><br><span class="line">sudo service sshd status         <span class="comment">#查看ssh连接当前状态</span></span><br><span class="line"><span class="comment">#ssh连接端口开放默认为22</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config    <span class="comment">#对ssh连接配置进行更改</span></span><br><span class="line">ifconfig                         <span class="comment">#查看本机ip地址</span></span><br></pre></td></tr></table></figure>
 <p>然后以上程序按一定顺序都运行了之后，就可以用一些远程连接软件，比如说putty或者是MobaXterm进行连接。连接的时候，账户和用户名都是自己设置的，ssh连接的地址是服务器的ip地址，端口号默认是22，这样就可以登录了。</p>
-<h3 id="说明">说明</h3>
-<p>像我们所在的校园里的服务器，因为可能它所使用的是校园内网，那么我们可以用俩种方式对其连接。第一种是挂学校内网vpn，这样的话在哪里都能连接到，推荐一款内网vpn连接器<a target="_blank" rel="noopener" href="https://share.weiyun.com/o7Tf3xBM">Easyconnect</a>(密码是y7n69p。QQ微云打开),采用挂学校vpn的方法连接。第二种方法是找一个校园宽带或者校园里的学校WiFi，这样就都处于同一个局域网下。但是在笔者学校，校园宽带的网对学校连接服务器有限制，所以要将默认端口改成30000以上才能进行连接，这里不做过多阐述。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>像我们所在的校园里的服务器，因为可能它所使用的是校园内网，那么我们可以用俩种方式对其连接。第一种是挂学校内网vpn，这样的话在哪里都能连接到，推荐一款内网vpn连接器<a target="_blank" rel="noopener" href="https://share.weiyun.com/o7Tf3xBM">Easyconnect</a>(密码是y7n69p。QQ微云打开),采用挂学校vpn的方法连接。第二种方法是找一个校园宽带或者校园里的学校WiFi，这样就都处于同一个局域网下。但是在笔者学校，校园宽带的网对学校连接服务器有限制，所以要将默认端口改成30000以上才能进行连接，这里不做过多阐述。</p>
 <p>整体思路：服务器正常网，直接ssh连接。服务器是内网，可以挂载vpn进行访问连接，亦或者是采用端口映射、端口转发进行连接。</p>
-<h2 id="云服务器">云服务器</h2>
-<p>云服务器大家可以自行去阿里云、腾讯云、华为云或者稳定的云服务平台进行租赁和购买，但是需要注意的是，如果是学生的话，可以享受一笔学生优惠，具体价格视平台而定，不做过多阐述。</p>
+<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p>云服务器大家可以自行去阿里云、腾讯云、华为云或者稳定的云服务平台进行租赁和购买，但是需要注意的是，如果是学生的话，可以享受一笔学生优惠，具体价格视平台而定，不做过多阐述。</p>
 <p>说在最后，最近事多，还有几篇在更的博客还在天上，争取早日落地。最后，希望我的SunRobot可以早日做出来。心有草木，向阳而生。继续加油！！！</p>
 
     </div>
@@ -326,7 +319,7 @@ Beaver仿生海狸)。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">SSH连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.1.3.</span> <span class="nav-text">说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">云服务器</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">本地服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">SSH连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.1.3.</span> <span class="nav-text">说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">云服务器</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,7 +333,7 @@ Beaver仿生海狸)。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -353,7 +346,7 @@ Beaver仿生海狸)。</p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

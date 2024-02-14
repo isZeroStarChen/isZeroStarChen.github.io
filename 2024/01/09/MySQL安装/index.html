@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -147,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -233,32 +233,24 @@
       
         <p>后端开发第一步，MySQL安装和构建。</p>
 <span id="more"></span>
-<h1 id="下载">下载</h1>
-<p>访问<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL官网</a>，找到版本8.0.35，下载其压缩包，如图所示。</p>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>访问<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">MySQL官网 </a>，找到版本8.0.35，下载其压缩包，如图所示。</p>
 <p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/Mysql官网.jpg" alt="Mysql官网" style="zoom:50%;"></p>
-<h1 id="环境配置">环境配置</h1>
-<h2 id="添加path">添加path</h2>
-<p>右键单击此电脑，按照如图所示进入path变量值中，path中添加mysql文件中bin的目录地址。</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><h2 id="添加path"><a href="#添加path" class="headerlink" title="添加path"></a>添加path</h2><p>右键单击此电脑，按照如图所示进入path变量值中，path中添加mysql文件中bin的目录地址。</p>
 <p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/环境变量.jpg" alt="环境变量" style="zoom:75%;"></p>
 <p>打开cmd，输入mysql，出现如下报错则证明环境变量添加成功，出现“mysql不是内部或外部命令”，则需要再次重复上述环境变量过程。</p>
-<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql测试.jpg"></p>
-<h2 id="安装mysql服务">安装mysql服务</h2>
-<p>以管理员权限打开cmd，输入安装服务和初始化命令，会出现服务器登录密码，需要记住。</p>
+<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql测试.jpg" alt></p>
+<h2 id="安装mysql服务"><a href="#安装mysql服务" class="headerlink" title="安装mysql服务"></a>安装mysql服务</h2><p>以管理员权限打开cmd，输入安装服务和初始化命令，会出现服务器登录密码，需要记住。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqld --install</span><br><span class="line">mysqld --initialize --console</span><br></pre></td></tr></table></figure>
-<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql初始化.jpg"></p>
+<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql初始化.jpg" alt></p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#mysql命令登录，密码为初始化显示的密码</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">#修改默认密码为root</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;root&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql密码修改.jpg"></p>
-<h2 id="安装navicat">安装Navicat</h2>
-<p>先参考github上的老哥发布的<a target="_blank" rel="noopener" href="https://github.com/LiJunYi2/navicat-keygen-16V/releases/tag/v16.3.3">激活方式</a>下载对应压缩包，然后按照txt文档中运行bat脚本。</p>
-<p>再到<a target="_blank" rel="noopener" href="https://www.navicat.com.cn/">Navicat官网</a>下载Navicat
-Premium16版本，点击产品，选择Navicat
-Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
-<p>安装后不要运行，将压缩包中的x64_Patch.dll这个文件复制到Navicat的安装路径下，完成破解。<img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/navicat.jpg" alt="navicat"></p>
-<h2 id="连接数据库">连接数据库</h2>
-<p>打开Navicat后在左上角的连接中找到MySQL连接，点开后需要输入用户名和密码，如下图所示。</p>
+<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql密码修改.jpg" alt></p>
+<h2 id="安装Navicat"><a href="#安装Navicat" class="headerlink" title="安装Navicat"></a>安装Navicat</h2><p>先参考github上的老哥发布的<a target="_blank" rel="noopener" href="https://github.com/LiJunYi2/navicat-keygen-16V/releases/tag/v16.3.3">激活方式</a>下载对应压缩包，然后按照txt文档中运行bat脚本。</p>
+<p>再到<a target="_blank" rel="noopener" href="https://www.navicat.com.cn/">Navicat官网</a>下载Navicat Premium16版本，点击产品，选择Navicat Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
+<p>安装后不要运行，将压缩包中的x64_Patch\winmm.dll这个文件复制到Navicat的安装路径下，完成破解。<img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/navicat.jpg" alt="navicat"></p>
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><p>打开Navicat后在左上角的连接中找到MySQL连接，点开后需要输入用户名和密码，如下图所示。</p>
 <p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/navicat连接.jpg" alt="navicat连接" style="zoom:75%;"></p>
 <p>输入用户名和修改后的密码，连接成功后如下图所示。</p>
-<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql连接成功.jpg"></p>
+<p><img src="/2024/01/09/MySQL%E5%AE%89%E8%A3%85/mysql连接成功.jpg" alt></p>
 
     </div>
 
@@ -280,7 +272,10 @@ Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
     <a href="/2023/12/01/Numpy/" rel="prev" title="Numpy">
       <i class="fa fa-chevron-left"></i> Numpy
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/02/14/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E4%B9%8B%E6%9C%AF/" rel="next" title="博客迁移之术">
+      博客迁移之术 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -339,7 +334,7 @@ Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0path"><span class="nav-number">2.1.</span> <span class="nav-text">添加path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">安装mysql服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85navicat"><span class="nav-number">2.3.</span> <span class="nav-text">安装Navicat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">连接数据库</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0path"><span class="nav-number">2.1.</span> <span class="nav-text">添加path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85mysql%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">安装mysql服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Navicat"><span class="nav-number">2.3.</span> <span class="nav-text">安装Navicat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">连接数据库</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -353,7 +348,7 @@ Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -366,7 +361,7 @@ Premium，选择试用，进行下载，下载后傻瓜式安装。</p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

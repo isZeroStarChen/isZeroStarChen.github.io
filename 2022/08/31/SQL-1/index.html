@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -228,20 +228,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>SeedLab中SQL容器环境的搭建以及SQL增删改查基本用法。 <span id="more"></span> #
-文件下载
-在做实验前发现了老师要求用户名改为自己姓名，进入设置，做了更改。<img src="/2022/08/31/SQL-1/uname.jpg" alt="uname">
-继之前搭建xss环境，直接附上命令行代码，详细操作，可以看一下之前的<a target="_blank" rel="noopener" href="https://iszerostarchen.github.io/2022/08/29/XSS-1/">XSS-1</a>。
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> Desktop/seedlab</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -o Labsetup.zip  https://seedsecuritylabs.org/Labs_20.04/Files/Web_SQL_Injection/Labsetup.zip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> unzip Labsetup.zip</span></span><br></pre></td></tr></table></figure> <img src="/2022/08/31/SQL-1/sql1.jpg" alt="sql1"> # 容器装载
-也和之前搭建xss环境使用的命令相同，先把终端的路径移动到下载并解压缩好的Labsetup文件夹中(/Desktop/seedlab/sqlinject/Labsetup)先构建容器再启动容器。
-<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dcbuild  <span class="comment">#构建容器</span></span><br><span class="line">$ dcup     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure>
-但在这里不同的是，你启动容器之后，所有的容器都将在后台运行。如果要在容器上运行命令，我们通常需要在该容器上获得一个shell。</p>
-<p>首先需要使用“dockps”命令找出容器的ID，然后使用“docker
-exec”在该容器上启动一个shell。我们已经在.bashrc文件中为它们创建了别名，浓缩一下就是"docksh
-id"。 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dockps  <span class="comment">#构建容器</span></span><br><span class="line">$ docksh id     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure> <img src="/2022/08/31/SQL-1/sql2.jpg" alt="sql2"> # 常用命令
-搭载好了容器环境后，就可以对数据库进行相应操作。</p>
-<p>在这里进行了数据库四个基本操作：增、删、改、查。 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#显示数据库</span><br><span class="line"><span class="keyword">show</span> databases; </span><br><span class="line">#创建一个名叫t_dbtest表，里面有名字和整点型的年龄</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t t_<span class="operator">-</span>_dbtest(uname <span class="type">varchar</span>(<span class="number">10</span>),age <span class="type">int</span>);</span><br><span class="line">#往表里增加一个名<span class="string">&#x27;abc&#x27;</span>，年龄<span class="string">&#x27;12&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;abc&#x27;</span>,<span class="number">12</span>); </span><br><span class="line">#往表里增加一个名<span class="string">&#x27;tom&#x27;</span>，年龄<span class="string">&#x27;24&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;tom&#x27;</span>,<span class="number">24</span>);</span><br><span class="line">#查询t_dbtest表</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_dbtest; </span><br><span class="line">#将abc的年龄修改为<span class="number">15</span></span><br><span class="line">update t_dbtest <span class="keyword">set</span> age<span class="operator">=</span><span class="number">15</span> <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">#删除名字为<span class="string">&#x27;tom&#x27;</span>的数据</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> t_dbtest <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;tom&#x27;</span>; </span><br></pre></td></tr></table></figure> <img src="/2022/08/31/SQL-1/sql3.jpg" alt="sql3"><img src="/2022/08/31/SQL-1/sql4.jpg" alt="sql4"> # 心得
-需要掌握一下SQL的基本操作，以及巩固对docker容器的下载及装载操作等。</p>
+        <p>SeedLab中SQL容器环境的搭建以及SQL增删改查基本用法。<br><span id="more"></span></p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>在做实验前发现了老师要求用户名改为自己姓名，进入设置，做了更改。<img src="/2022/08/31/SQL-1/uname.jpg" alt="uname"><br>继之前搭建xss环境，直接附上命令行代码，详细操作，可以看一下之前的<a target="_blank" rel="noopener" href="https://iszerostarchen.github.io/2022/08/29/XSS-1/">XSS-1</a>。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> Desktop/seedlab</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> sqlinject</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -o Labsetup.zip  https://seedsecuritylabs.org/Labs_20.04/Files/Web_SQL_Injection/Labsetup.zip</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> unzip Labsetup.zip</span></span><br></pre></td></tr></table></figure><br><img src="/2022/08/31/SQL-1/sql1.jpg" alt="sql1"></p>
+<h1 id="容器装载"><a href="#容器装载" class="headerlink" title="容器装载"></a>容器装载</h1><p>也和之前搭建xss环境使用的命令相同，先把终端的路径移动到下载并解压缩好的Labsetup文件夹中(/Desktop/seedlab/sqlinject/Labsetup)先构建容器再启动容器。<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dcbuild  <span class="comment">#构建容器</span></span><br><span class="line">$ dcup     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure><br>但在这里不同的是，你启动容器之后，所有的容器都将在后台运行。如果要在容器上运行命令，我们通常需要在该容器上获得一个shell。</p>
+<p>首先需要使用“dockps”命令找出容器的ID，然后使用“docker exec”在该容器上启动一个shell。我们已经在.bashrc文件中为它们创建了别名，浓缩一下就是”docksh id”。<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dockps  <span class="comment">#构建容器</span></span><br><span class="line">$ docksh id     <span class="comment">#启动容器</span></span><br></pre></td></tr></table></figure><br><img src="/2022/08/31/SQL-1/sql2.jpg" alt="sql2"></p>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>搭载好了容器环境后，就可以对数据库进行相应操作。</p>
+<p>在这里进行了数据库四个基本操作：增、删、改、查。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#显示数据库</span><br><span class="line"><span class="keyword">show</span> databases; </span><br><span class="line">#创建一个名叫t_dbtest表，里面有名字和整点型的年龄</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t t_<span class="operator">-</span>_dbtest(uname <span class="type">varchar</span>(<span class="number">10</span>),age <span class="type">int</span>);</span><br><span class="line">#往表里增加一个名<span class="string">&#x27;abc&#x27;</span>，年龄<span class="string">&#x27;12&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;abc&#x27;</span>,<span class="number">12</span>); </span><br><span class="line">#往表里增加一个名<span class="string">&#x27;tom&#x27;</span>，年龄<span class="string">&#x27;24&#x27;</span>的数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t_dbtest <span class="keyword">values</span>(<span class="string">&#x27;tom&#x27;</span>,<span class="number">24</span>);</span><br><span class="line">#查询t_dbtest表</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_dbtest; </span><br><span class="line">#将abc的年龄修改为<span class="number">15</span></span><br><span class="line">update t_dbtest <span class="keyword">set</span> age<span class="operator">=</span><span class="number">15</span> <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">#删除名字为<span class="string">&#x27;tom&#x27;</span>的数据</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> t_dbtest <span class="keyword">where</span> uname<span class="operator">=</span><span class="string">&#x27;tom&#x27;</span>; </span><br></pre></td></tr></table></figure><br><img src="/2022/08/31/SQL-1/sql3.jpg" alt="sql3"><img src="/2022/08/31/SQL-1/sql4.jpg" alt="sql4"></p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>需要掌握一下SQL的基本操作，以及巩固对docker容器的下载及装载操作等。</p>
 
     </div>
 
@@ -325,6 +318,7 @@ id"。 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E8%A3%85%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">容器装载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">心得</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -338,7 +332,7 @@ id"。 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -351,7 +345,7 @@ id"。 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

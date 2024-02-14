@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="葛莹,刘尉,李勇.Ripley’s K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.">
+  <meta name="description" content="葛莹,刘尉,李勇.Ripley’s K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PaperRead2">
 <meta property="og:url" content="http://example.com/2023/09/15/PaperRead2/index.html">
 <meta property="og:site_name" content="isZeroStar&#39;blog">
-<meta property="og:description" content="葛莹,刘尉,李勇.Ripley’s K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.">
+<meta property="og:description" content="葛莹,刘尉,李勇.Ripley’s K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/09/15/PaperRead2/蒙特卡洛模拟.jpg">
 <meta property="article:published_time" content="2023-09-15T02:11:51.000Z">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -224,86 +224,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>葛莹,刘尉,李勇.Ripley’s
-K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.</p>
+        <p>葛莹,刘尉,李勇.Ripley’s K函数方法修正与估计方法比较[J].武汉大学学报(信息科学版),2023,48(06):970-978.</p>
 <span id="more"></span>
-<p>Ripley’s
-K函数方法修正与估计方法比较，于2023年发表在武汉大学学报(信息科学版)上。</p>
-<h1 id="应用背景与研究动机">应用背景与研究动机</h1>
-<h2 id="应用背景">应用背景</h2>
-<p>Ripley's
-K函数适用于空间点格局分析，在国内外有着三大方向的应用：分析产业的空间点格局<strong>(国内，曾侧重于单变量K函数考察，后扩展到双变量K函数考察)</strong>、研究植物的空间点格局<strong>(国内，文献众多但分歧大)</strong>以及考察流行病的空间点格局<strong>(国外)</strong>。</p>
-<h2 id="研究动机">研究动机</h2>
-<p>国内基于Ripley‘s
-K函数的空间点格局研究，存在三个问题：（1）公式形式及参数选择有误，（2）蒙特卡洛检验不够充分，（3）边缘校正方法的适用范围和系统相对优劣的比较</p>
-<h1 id="研究回顾与问题分析">研究回顾与问题分析</h1>
-<h2 id="研究回顾">研究回顾</h2>
-<p>设点过程是完全空间随机分布，且点在足够大的无界区域上独立分布，则Ripley’s
-K函数定义为 <span class="math display">\[
-K(r) = \frac{1}{\lambda} E(n)
-\]</span>
-其中E()是数学期望，lambda为描述单位面积内地理事件发生的平均次数，r为区域半径。</p>
-<h3 id="估计式">估计式</h3>
-<p>设地理事件的空间点过程近似服从泊松分布，若研究区包含n个地理时间，且研究区面积为A，则地理事件的点密度估计式为n/A。I<sub>ij</sub>(r)为示性函数，当观测变量点i与点j之间的距离d<sub>ij</sub>&lt;r时，取值为1，否则为0。
-<span class="math display">\[
-K(r) = \frac{A}{n^2}\sum_{i,j=1,j\neq i}^n {I_{ij}(r)}
-\]</span></p>
-<h3 id="无偏估计式">无偏估计式</h3>
-<p><span class="math display">\[
-K(r) = \frac{A}{n(n-1)}\sum_{i,j=1,j\neq i}^n {I_{ij}(r)}
-\]</span></p>
-<p>此时，式子期望E(K(r))=<span class="math inline">\(\Pi\)</span> <span class="math inline">\(r^2\)</span>。当观测变量的空间点格局趋于均匀分布时，K(r)&lt;<span class="math inline">\(\Pi\)</span> <span class="math inline">\(r^2\)</span>;趋于集聚分布时，K(r) &gt; <span class="math inline">\(\Pi\)</span> <span class="math inline">\(r^2\)</span>。</p>
+<p>Ripley’s K函数方法修正与估计方法比较，于2023年发表在武汉大学学报(信息科学版)上。</p>
+<h1 id="应用背景与研究动机"><a href="#应用背景与研究动机" class="headerlink" title="应用背景与研究动机"></a>应用背景与研究动机</h1><h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>Ripley’s K函数适用于空间点格局分析，在国内外有着三大方向的应用：分析产业的空间点格局<strong>(国内，曾侧重于单变量K函数考察，后扩展到双变量K函数考察)</strong>、研究植物的空间点格局<strong>(国内，文献众多但分歧大)</strong>以及考察流行病的空间点格局<strong>(国外)</strong>。</p>
+<h2 id="研究动机"><a href="#研究动机" class="headerlink" title="研究动机"></a>研究动机</h2><p>国内基于Ripley‘s K函数的空间点格局研究，存在三个问题：（1）公式形式及参数选择有误，（2）蒙特卡洛检验不够充分，（3）边缘校正方法的适用范围和系统相对优劣的比较</p>
+<h1 id="研究回顾与问题分析"><a href="#研究回顾与问题分析" class="headerlink" title="研究回顾与问题分析"></a>研究回顾与问题分析</h1><h2 id="研究回顾"><a href="#研究回顾" class="headerlink" title="研究回顾"></a>研究回顾</h2><p>设点过程是完全空间随机分布，且点在足够大的无界区域上独立分布，则Ripley’s K函数定义为</p>
+<script type="math/tex; mode=display">
+K(r) = \frac{1}{\lambda} E(n)</script><p>其中E()是数学期望，lambda为描述单位面积内地理事件发生的平均次数，r为区域半径。</p>
+<h3 id="估计式"><a href="#估计式" class="headerlink" title="估计式"></a>估计式</h3><p>设地理事件的空间点过程近似服从泊松分布，若研究区包含n个地理时间，且研究区面积为A，则地理事件的点密度估计式为n/A。I<sub>ij</sub>(r)为示性函数，当观测变量点i与点j之间的距离d<sub>ij</sub>&lt;r时，取值为1，否则为0。</p>
+<script type="math/tex; mode=display">
+K(r) = \frac{A}{n^2}\sum_{i,j=1,j\neq i}^n {I_{ij}(r)}</script><h3 id="无偏估计式"><a href="#无偏估计式" class="headerlink" title="无偏估计式"></a>无偏估计式</h3><script type="math/tex; mode=display">
+K(r) = \frac{A}{n(n-1)}\sum_{i,j=1,j\neq i}^n {I_{ij}(r)}</script><p>此时，式子期望E(K(r))=$\Pi$ $r^2$。当观测变量的空间点格局趋于均匀分布时，K(r)&lt;$\Pi$ $r^2$;趋于集聚分布时，K(r) &gt; $\Pi$ $r^2$。</p>
 <p><strong>与上式不同的地方在于，把自己的点从中去除了。</strong></p>
-<h3 id="l函数">L函数</h3>
-<p><span class="math display">\[
-L(r)= \sqrt{\frac{K(r)}{\Pi}}
-\]</span></p>
-<p>L函数估计值趋向于r，近似服从期望为常数、方差稳定的泊松分布。<strong>采用L函数能够使方差保持稳定，且与r有线性关系</strong>。</p>
-<h3 id="蒙特卡洛模拟">蒙特卡洛模拟</h3>
-<h4 id="步骤">步骤</h4>
-<p>能够解决Ripley‘s K函数的显著性检验，步骤基本如下所示：</p>
+<h3 id="L函数"><a href="#L函数" class="headerlink" title="L函数"></a>L函数</h3><script type="math/tex; mode=display">
+L(r)= \sqrt{\frac{K(r)}{\Pi}}</script><p>L函数估计值趋向于r，近似服从期望为常数、方差稳定的泊松分布。<strong>采用L函数能够使方差保持稳定，且与r有线性关系</strong>。</p>
+<h3 id="蒙特卡洛模拟"><a href="#蒙特卡洛模拟" class="headerlink" title="蒙特卡洛模拟"></a>蒙特卡洛模拟</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>能够解决Ripley‘s K函数的显著性检验，步骤基本如下所示：</p>
 <p>1）按CSR假设(完全空间随机分布、点的出现位置独立且是均匀分布的一种假设。假设空间中的点是随机的)生成m组n个地理事件的模拟样本</p>
-<p>2）逐个计算模拟样本的观测值u<sub>m</sub>，并从小到大排序u<sub>(1)</sub>
-&lt; u<sub>(2)</sub> &lt; ...&lt;
-u<sub>(m)</sub>，其中u<sub>(i)</sub>表示u<sub>m</sub>中第i小的观测值</p>
+<p>2）逐个计算模拟样本的观测值u<sub>m</sub>，并从小到大排序u<sub>(1)</sub> &lt; u<sub>(2)</sub> &lt; …&lt; u<sub>(m)</sub>，其中u<sub>(i)</sub>表示u<sub>m</sub>中第i小的观测值</p>
 <p>3）计算观测样本的观测值u<sub>0</sub></p>
 <p>4）判断观测值u<sub>0</sub>在模拟样本序列中的位序，并根据给定的显著性水平，确定其显著性</p>
-<h4 id="解释">解释</h4>
-<p>置信度水平P=95%时，空间点过程L函数的置信区间为： <span class="math display">\[
-|L(r)-r| \le \frac{1.45}{n}
-\]</span> 其中r<span class="math inline">\(\le\)</span>r<sub>max</sub>；r<sub>max</sub>是L函数估计的最大观测尺度。需要自定义模拟次数m、最小观测尺度r<sub>min</sub>以及最大观测尺度r<sub>max</sub>。</p>
-<p>其中模拟次数m在n不大时取m=1000，能保证L函数估计无偏性。最小观测尺度应该大于地理事件间的最短距离。最大观测尺度应该小于正方形区域边长的<span class="math inline">\(\frac{\sqrt{2}}{2}\)</span>，或小于等于研究区域矩形短边的1/4。</p>
-<h3 id="边界效应">边界效应</h3>
-<p>主要是因为公式函数是在无界区域条件下推导出来的，但大多数点的过程分析都是在有界区域上完成的，因此边界效应一定会带来一些偏差(未作过多了解)</p>
-<h2 id="问题分析">问题分析</h2>
-<p>函数公式等形式表述错误、蒙特卡洛模拟次数过少和最小最大观测尺度的设置、以及边界效应。</p>
-<h1 id="研究思路与研究方法">研究思路与研究方法</h1>
-<h2 id="蒙特卡洛模拟修正">蒙特卡洛模拟修正</h2>
-<figure>
-<img src="/2023/09/15/PaperRead2/蒙特卡洛模拟.jpg" alt="蒙特卡洛模拟">
-<figcaption aria-hidden="true">蒙特卡洛模拟</figcaption>
-</figure>
-<h2 id="ripleys-k函数算法修正">Ripley's K函数算法修正</h2>
-<p>最小空间尺度需大于观测点的点间最短距离；最大空间尺度需小于观测点格局矩形短边的0.25倍或0.5倍。具体流程修改为：（1）生成随机点格局；（2）确定最小和最大尺度；（3）估算L随机值；（4）观测点格局模式判别。</p>
-<h2 id="边界效应改正算法修正">边界效应改正算法修正</h2>
-<p>卷积法、缓冲法、Ripley周长法</p>
-<h1 id="实验验证与结果分析">实验验证与结果分析</h1>
-<p>选择了ArcGIS中的Ripley‘s
-K函数以及自编的函数修正算法，进行了三个实验。</p>
-<h2 id="arcgis比较模拟次数">ArcGIS比较模拟次数</h2>
-<p>在无边界效应改正情况下，用ArcGIS算法在蒙卡特洛模拟10次和1000次，计算L值，评估模拟次数对K值的影响。</p>
-<h2 id="arcgis和修正算法比较">ArcGIS和修正算法比较</h2>
-<p>在无边界效应改正情况下，采用ArcGIS算法和修正算法进行了3次模拟，发现ArcGIS算法存在随机取点位的不足，自编的算法既随机取定位又随机取属性值。</p>
-<h2 id="修正算法中边界效应比较">修正算法中边界效应比较</h2>
-<p>未看。</p>
-<h1 id="分析总结与研究启示">分析总结与研究启示</h1>
-<p>该文章总结了过往研究中所存在的Ripley’s
-K函数在公式及应用情况中所存在的问题，并针对性的提出了改进所存在的点：蒙特卡洛模拟次数、Ripley‘s
-K修正算法和边界效应的影响。然后通过相关实验，来证明所提出的三个改进点对实验结果有影响。</p>
+<h4 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h4><p>置信度水平P=95%时，空间点过程L函数的置信区间为：</p>
+<script type="math/tex; mode=display">
+|L(r)-r| \le \frac{1.45}{n}</script><p>其中r$\le$r<sub>max</sub>；r<sub>max</sub>是L函数估计的最大观测尺度。需要自定义模拟次数m、最小观测尺度r<sub>min</sub>以及最大观测尺度r<sub>max</sub>。</p>
+<p>其中模拟次数m在n不大时取m=1000，能保证L函数估计无偏性。最小观测尺度应该大于地理事件间的最短距离。最大观测尺度应该小于正方形区域边长的$\frac{\sqrt{2}}{2}$，或小于等于研究区域矩形短边的1/4。</p>
+<h3 id="边界效应"><a href="#边界效应" class="headerlink" title="边界效应"></a>边界效应</h3><p>主要是因为公式函数是在无界区域条件下推导出来的，但大多数点的过程分析都是在有界区域上完成的，因此边界效应一定会带来一些偏差(未作过多了解)</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>函数公式等形式表述错误、蒙特卡洛模拟次数过少和最小最大观测尺度的设置、以及边界效应。</p>
+<h1 id="研究思路与研究方法"><a href="#研究思路与研究方法" class="headerlink" title="研究思路与研究方法"></a>研究思路与研究方法</h1><h2 id="蒙特卡洛模拟修正"><a href="#蒙特卡洛模拟修正" class="headerlink" title="蒙特卡洛模拟修正"></a>蒙特卡洛模拟修正</h2><p><img src="/2023/09/15/PaperRead2/蒙特卡洛模拟.jpg" alt="蒙特卡洛模拟"></p>
+<h2 id="Ripley’s-K函数算法修正"><a href="#Ripley’s-K函数算法修正" class="headerlink" title="Ripley’s K函数算法修正"></a>Ripley’s K函数算法修正</h2><p>最小空间尺度需大于观测点的点间最短距离；最大空间尺度需小于观测点格局矩形短边的0.25倍或0.5倍。具体流程修改为：（1）生成随机点格局；（2）确定最小和最大尺度；（3）估算L随机值；（4）观测点格局模式判别。</p>
+<h2 id="边界效应改正算法修正"><a href="#边界效应改正算法修正" class="headerlink" title="边界效应改正算法修正"></a>边界效应改正算法修正</h2><p>卷积法、缓冲法、Ripley周长法</p>
+<h1 id="实验验证与结果分析"><a href="#实验验证与结果分析" class="headerlink" title="实验验证与结果分析"></a>实验验证与结果分析</h1><p>选择了ArcGIS中的Ripley‘s K函数以及自编的函数修正算法，进行了三个实验。</p>
+<h2 id="ArcGIS比较模拟次数"><a href="#ArcGIS比较模拟次数" class="headerlink" title="ArcGIS比较模拟次数"></a>ArcGIS比较模拟次数</h2><p>在无边界效应改正情况下，用ArcGIS算法在蒙卡特洛模拟10次和1000次，计算L值，评估模拟次数对K值的影响。</p>
+<h2 id="ArcGIS和修正算法比较"><a href="#ArcGIS和修正算法比较" class="headerlink" title="ArcGIS和修正算法比较"></a>ArcGIS和修正算法比较</h2><p>在无边界效应改正情况下，采用ArcGIS算法和修正算法进行了3次模拟，发现ArcGIS算法存在随机取点位的不足，自编的算法既随机取定位又随机取属性值。</p>
+<h2 id="修正算法中边界效应比较"><a href="#修正算法中边界效应比较" class="headerlink" title="修正算法中边界效应比较"></a>修正算法中边界效应比较</h2><p>未看。</p>
+<h1 id="分析总结与研究启示"><a href="#分析总结与研究启示" class="headerlink" title="分析总结与研究启示"></a>分析总结与研究启示</h1><p>该文章总结了过往研究中所存在的Ripley’s K函数在公式及应用情况中所存在的问题，并针对性的提出了改进所存在的点：蒙特卡洛模拟次数、Ripley‘s K修正算法和边界效应的影响。然后通过相关实验，来证明所提出的三个改进点对实验结果有影响。</p>
 <p><strong>提出什么问题就应该写什么话，讲什么故事就应该从故事的角度取出发思考问题提出问题并解决问题。你所做的实验都是为你的问题进行叙述说明和解释。</strong></p>
-<h1 id="其他">其他</h1>
-<h2 id="ripley的k函数">Ripley的K函数</h2>
-<p>Ripley的K函数：多距离空间聚类分析。聚类分析中，要素之间的距离是个非常重要的参数。通过计算该函数可以得到点事件随空间研究尺度(距离)变化的分布格局变化图，用这些来表明这些要素的质心的空间聚集或扩散的程度，以及在邻域大小发生变化时是如何变化。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="Ripley的K函数"><a href="#Ripley的K函数" class="headerlink" title="Ripley的K函数"></a>Ripley的K函数</h2><p>Ripley的K函数：多距离空间聚类分析。聚类分析中，要素之间的距离是个非常重要的参数。通过计算该函数可以得到点事件随空间研究尺度(距离)变化的分布格局变化图，用这些来表明这些要素的质心的空间聚集或扩散的程度，以及在邻域大小发生变化时是如何变化。</p>
 <p>算法原理是：设定起算距离，指定最终距离或增量步长，通过不同距离计算不同密度。全部计算完后，把每个距离的密度进行算数平均，并用该平均密度作为用于比较的标准密度值。根据每个距离计算出的数据量密度与标准密度值进行比较。大于标准密度，就认为距离处于聚类分布；小于标准密度，就认为处于离散分布。</p>
 <p>整个数据分布不是线性的，需要通过观察计算出来的实际密度值K与随机分布下预期的K值进行比较，来判定哪个距离上聚集/分散效果。通常使用零假设的方式，<strong>如果特定距离的K观测值大于K预期值，则与该距离的随机分布相比，该分布的聚类程度更高。如果K观测值小于K预期值，则与该距离的随机分布相比，该分布的离散程度更高</strong>。</p>
 
@@ -389,7 +345,7 @@ K修正算法和边界效应的影响。然后通过相关实验，来证明所�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">应用背景与研究动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">研究动机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE%E4%B8%8E%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">研究回顾与问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.1.</span> <span class="nav-text">研究回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">估计式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">无偏估计式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">L函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.1.4.</span> <span class="nav-text">蒙特卡洛模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94"><span class="nav-number">2.1.5.</span> <span class="nav-text">边界效应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">问题分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">研究思路与研究方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%A8%A1%E6%8B%9F%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.1.</span> <span class="nav-text">蒙特卡洛模拟修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ripleys-k%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.2.</span> <span class="nav-text">Ripley&#39;s K函数算法修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94%E6%94%B9%E6%AD%A3%E7%AE%97%E6%B3%95%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.3.</span> <span class="nav-text">边界效应改正算法修正</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">实验验证与结果分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arcgis%E6%AF%94%E8%BE%83%E6%A8%A1%E6%8B%9F%E6%AC%A1%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">ArcGIS比较模拟次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arcgis%E5%92%8C%E4%BF%AE%E6%AD%A3%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83"><span class="nav-number">4.2.</span> <span class="nav-text">ArcGIS和修正算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3%E7%AE%97%E6%B3%95%E4%B8%AD%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94%E6%AF%94%E8%BE%83"><span class="nav-number">4.3.</span> <span class="nav-text">修正算法中边界效应比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%90%AF%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">分析总结与研究启示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ripley%E7%9A%84k%E5%87%BD%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">Ripley的K函数</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">应用背景与研究动机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">研究动机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE%E4%B8%8E%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">研究回顾与问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.1.</span> <span class="nav-text">研究回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">估计式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">无偏估计式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">L函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.1.4.</span> <span class="nav-text">蒙特卡洛模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94"><span class="nav-number">2.1.5.</span> <span class="nav-text">边界效应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">问题分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">研究思路与研究方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%A8%A1%E6%8B%9F%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.1.</span> <span class="nav-text">蒙特卡洛模拟修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ripley%E2%80%99s-K%E5%87%BD%E6%95%B0%E7%AE%97%E6%B3%95%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.2.</span> <span class="nav-text">Ripley’s K函数算法修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94%E6%94%B9%E6%AD%A3%E7%AE%97%E6%B3%95%E4%BF%AE%E6%AD%A3"><span class="nav-number">3.3.</span> <span class="nav-text">边界效应改正算法修正</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">实验验证与结果分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArcGIS%E6%AF%94%E8%BE%83%E6%A8%A1%E6%8B%9F%E6%AC%A1%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">ArcGIS比较模拟次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArcGIS%E5%92%8C%E4%BF%AE%E6%AD%A3%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83"><span class="nav-number">4.2.</span> <span class="nav-text">ArcGIS和修正算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3%E7%AE%97%E6%B3%95%E4%B8%AD%E8%BE%B9%E7%95%8C%E6%95%88%E5%BA%94%E6%AF%94%E8%BE%83"><span class="nav-number">4.3.</span> <span class="nav-text">修正算法中边界效应比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%90%AF%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">分析总结与研究启示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ripley%E7%9A%84K%E5%87%BD%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">Ripley的K函数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -403,7 +359,7 @@ K修正算法和边界效应的影响。然后通过相关实验，来证明所�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -416,7 +372,7 @@ K修正算法和边界效应的影响。然后通过相关实验，来证明所�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of Spatial Association Between Categorical Subsets of Points[J]. Geographical Analysis, 2011, 43(3): 306-326.">
+  <meta name="description" content="Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of Spatial Association Between Categorical Subsets of Points[J]. Geographical Analysis, 2011, 43(3): 306-326.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PaperRead1">
 <meta property="og:url" content="http://example.com/2023/09/01/PaperRead1/index.html">
 <meta property="og:site_name" content="isZeroStar&#39;blog">
-<meta property="og:description" content="Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of Spatial Association Between Categorical Subsets of Points[J]. Geographical Analysis, 2011, 43(3): 306-326.">
+<meta property="og:description" content="Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of Spatial Association Between Categorical Subsets of Points[J]. Geographical Analysis, 2011, 43(3): 306-326.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-01T06:18:40.000Z">
 <meta property="article:modified_time" content="2023-12-11T10:55:56.845Z">
@@ -128,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +138,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
 
   </li>
   </ul>
@@ -222,182 +222,89 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of
-Spatial Association Between Categorical Subsets of Points[J].
-Geographical Analysis, 2011, 43(3): 306-326.</p>
+        <p>Leslie T F, Kronenfeld B J. The Colocation Quotient: A New Measure of Spatial Association Between Categorical Subsets of Points[J]. Geographical Analysis, 2011, 43(3): 306-326.</p>
 <span id="more"></span>
-<p>论文中译——协同区位商:点集分类子集间空间关联性的新度量标准。该文章于2011年发表在Geographical
-Analysis期刊上为SCI三区论文。</p>
+<p>论文中译——协同区位商:点集分类子集间空间关联性的新度量标准。该文章于2011年发表在Geographical Analysis期刊上为SCI三区论文。</p>
 <p><strong>需要思考的问题：从数学的角度上出发，去考虑怎么优化一个空间关联统计指标</strong>。</p>
-<h1 id="文献翻译">文献翻译</h1>
-<h2 id="摘要">摘要</h2>
-<p>论文提出了一种新的度量标准CLQ，主要是为了解决对<strong>种群类别之间空间关联的如何量化</strong>(可能不对称)。<strong>此处的不对称，是指对类别
-A 与类别 B 进行比较时计算的协同区位商值将与对类别 B 与类别 A
-进行比较时计算的协同区位商值不同</strong>。
-当前研究现状是：大多数分类空间关联的度量不适合许多的常见情况 ？
-在构成感兴趣的总体的点位置测量单个分类数据变量，进而开发新的度量CLQ。</p>
-<p>CLQ是基于点的关联度量，类似于交叉K函数和连接计数统计。
-与前者不同是：是基于距离排名而不是原始距离；与后者不同是：CLQ不对称</p>
+<h1 id="文献翻译"><a href="#文献翻译" class="headerlink" title="文献翻译"></a>文献翻译</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>论文提出了一种新的度量标准CLQ，主要是为了解决对<strong>种群类别之间空间关联的如何量化</strong>(可能不对称)。<strong>此处的不对称，是指对类别 A 与类别 B 进行比较时计算的协同区位商值将与对类别 B 与类别 A 进行比较时计算的协同区位商值不同</strong>。<br>当前研究现状是：大多数分类空间关联的度量不适合许多的常见情况 ？<br>在构成感兴趣的总体的点位置测量单个分类数据变量，进而开发新的度量CLQ。</p>
+<p>CLQ是基于点的关联度量，类似于交叉K函数和连接计数统计。<br>与前者不同是：是基于距离排名而不是原始距离；与后者不同是：CLQ不对称</p>
 <p><strong>论文使用随机标记技术来测试了CLQ的显著性，并将其应用于经济和生态点数据证明实用性。CLQ扩展了目前基于点的托管统计的解释力。</strong>什么是点的托管统计？</p>
 <p>CLQ是什么？Colocation Quotient——协同区位商。</p>
-<p>关于怎么计算协同区位商：将针对在其领域内找到的相邻类别B的协同区位对感兴趣类别A中的每个要素进行评估。
-通常，如果A的领域内B点的比例大于B的全局比例，则协同区位商很高。
-如果A的邻域包含B以外的许多其他A点或许多其他类别，则感兴趣类别A与相邻类别B之间的协同区位会比较小。
-来源：https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/spatial-statistics/learnmorecolocationanalysis.htm</p>
-<h2 id="应用背景与研究动机">应用背景与研究动机</h2>
-<h3 id="应用背景">应用背景</h3>
-<p>学术界长期以来都在考虑一个物体特征与其邻居之间的关系。
-空间关系的量化在地理分析中逐渐变成重中之重。</p>
-<p>各种托布勒式关系中，不同种群或分布之间的空间关系是最基本的关系之一。不同种群或分布之间空间关系可以用"空间关联"表示。<strong>空间关联的各个方面包含在：“空间覆盖”、“相互关联”、“托管”。</strong></p>
+<p>关于怎么计算协同区位商：将针对在其领域内找到的相邻类别B的协同区位对感兴趣类别A中的每个要素进行评估。<br>通常，如果A的领域内B点的比例大于B的全局比例，则协同区位商很高。<br>如果A的邻域包含B以外的许多其他A点或许多其他类别，则感兴趣类别A与相邻类别B之间的协同区位会比较小。<br>来源：<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/spatial-statistics/learnmorecolocationanalysis.htm">https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/spatial-statistics/learnmorecolocationanalysis.htm</a></p>
+<h2 id="应用背景与研究动机"><a href="#应用背景与研究动机" class="headerlink" title="应用背景与研究动机"></a>应用背景与研究动机</h2><h3 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h3><p>学术界长期以来都在考虑一个物体特征与其邻居之间的关系。 空间关系的量化在地理分析中逐渐变成重中之重。</p>
+<p>各种托布勒式关系中，不同种群或分布之间的空间关系是最基本的关系之一。不同种群或分布之间空间关系可以用”空间关联”表示。<strong>空间关联的各个方面包含在：“空间覆盖”、“相互关联”、“托管”。</strong></p>
 <p>空间关联在本文中是指两个或多个种群之间的模式，因此与空间自相关不同。空间关联分析需要同时考虑多种模式和过程，在选择用于空间分析的度量时，还要考虑<strong>联合种群和每个不同亚种群的自相关结构</strong>，因为这些上述这些方面，可能会影响到种群之间的关联。</p>
 <p>本文兴趣点是在构成感兴趣总体的点位置进行测量单个分类数据变量的情况。由于感兴趣的值本质上是名义上的，为比率点数据开发的空间关联度量，例如交叉变异函数是不适用的；其他度量像连接计数统计通常应用于多边形而不是点数据、莫兰系数可以应用于名义数据、交叉K函数与CLQ比较相似，但是交叉K函数测量的是两个种群之间的空间关联，并不用适用于分类个体来自单个种群的情况。</p>
 <p>为了分析分类个体来自单个种群的情况，本文开发了一种广义上的方法来确定种群内的类别是否在空间上相关。如果是，是怎样的相关、在什么方向上，以及相关程度是多少。</p>
 <p>在不同的情况下，潜在的分布都是两个概念上不同的空间过程的结果。首先，总体人口的空间结构可能导致点的位置聚散或分散。其次，嵌套在整体空间格局中，类别之间的关系可能会导致某些类别或多或少可能出现在其他类别附近。这两个层次过程需要区分开。需要注意的两个点：总体人口聚类中分离类别之间的空间关联和<strong>类别效应可能是不对称的</strong>。<strong>任何两两范畴空间相关的度量都应该能够处理这种不对称性</strong>。在某些情况下，A类中的点可能更喜欢B类，B类中的点可能更喜欢C类，C类中的点可能更喜欢接近A类。在这种情况下，对称的空间关联度量可能会在它测量的所有双向配对关联中发现“显著性”。</p>
-<p>CLQ量化了空间关系，在类别之间通过建立概念的位置商的概念，以“地理学家”和“经济学家”的角度来判断一个地区在特定专业的专业化程度。
-CLQ是根据两个类别的定义的，并提供了一个类别子集在空间上依赖于另一个类别子集程度的度量。CLQ<sub>A-&gt;B</sub>指的是测量A类时间在空间上被B类事件吸引的程度。CLQ的计算方法是在另一种类型的点的最近邻集合中，求一种类型的观察点和期望值的比值。?也是对传统类别间空间相关性度量的修正，包括连接计数统计和交叉K函数。</p>
-<h3 id="研究动机">研究动机</h3>
-<p>由于关系的多样性，单一类型实体的多个子类别的存在会导致两个复杂因素。
-<strong>1</strong>、在任何给定的一对类别之间的相互作用通常是不对称的，不对称是由单向依赖导致的。例如：B类个体只能在靠近A类的地方发现，但是A类个体可能在与B类无关的地方被发现。空间关联度量必须能够区分对称和不对称两种模式。
-<strong>2</strong>、类别间的空间关系常常被联合种群的空间自相关所混淆，但几乎没有进一步的分类关联。</p>
+<p>CLQ量化了空间关系，在类别之间通过建立概念的位置商的概念，以“地理学家”和“经济学家”的角度来判断一个地区在特定专业的专业化程度。<br>CLQ是根据两个类别的定义的，并提供了一个类别子集在空间上依赖于另一个类别子集程度的度量。CLQ<sub>A-&gt;B</sub>指的是测量A类时间在空间上被B类事件吸引的程度。CLQ的计算方法是在另一种类型的点的最近邻集合中，求一种类型的观察点和期望值的比值。?也是对传统类别间空间相关性度量的修正，包括连接计数统计和交叉K函数。</p>
+<h3 id="研究动机"><a href="#研究动机" class="headerlink" title="研究动机"></a>研究动机</h3><p>由于关系的多样性，单一类型实体的多个子类别的存在会导致两个复杂因素。<br><strong>1</strong>、在任何给定的一对类别之间的相互作用通常是不对称的，不对称是由单向依赖导致的。例如：B类个体只能在靠近A类的地方发现，但是A类个体可能在与B类无关的地方被发现。空间关联度量必须能够区分对称和不对称两种模式。<br><strong>2</strong>、类别间的空间关系常常被联合种群的空间自相关所混淆，但几乎没有进一步的分类关联。</p>
 <p>不能区分这两点过程的度量只有有限的实用价值。因此，下列将以两种最常用的类别间空间关联度量：连接计数统计和Ripley交叉函数作为基准，当应用在上述的两点情况时，这两个度量标准都有缺点。</p>
-<h2 id="研究回顾与问题分析">研究回顾与问题分析</h2>
-<h3 id="连接计数统计">连接计数统计</h3>
-<p>连接计数统计是空间关联的区域级度量，即K色地图上类别之间的相关性。<strong>统计操作是通过比较<em>一对类别在相邻位置出现的次数和随机性</em>的期望</strong>。
-通常应用于二进制网格数据，被概念化为黑白棋盘、不规则多边形镶嵌。在这种情况下，统计量成为空间自相关的度量。
-每个多边形之间的链接被计数为颜色相同或不同。计算最后的计数，可以用来确定数据是否有显著的自相关。将这些计数与零假设下使用X<sup>2</sup>分布的二项随机变量的期望进行比较。</p>
-<p>在源数据作为点而不是作为面值的空间设置中，计算需要点对的几何关联。点对以对称的方式定义，因此计数为A-&gt;B和B-&gt;A的连接根据定义是相等的。
-从本质上说连接计数统计不能检测到不对称性。</p>
+<h2 id="研究回顾与问题分析"><a href="#研究回顾与问题分析" class="headerlink" title="研究回顾与问题分析"></a>研究回顾与问题分析</h2><h3 id="连接计数统计"><a href="#连接计数统计" class="headerlink" title="连接计数统计"></a>连接计数统计</h3><p>连接计数统计是空间关联的区域级度量，即K色地图上类别之间的相关性。<strong>统计操作是通过比较<em>一对类别在相邻位置出现的次数和随机性</em>的期望</strong>。<br>通常应用于二进制网格数据，被概念化为黑白棋盘、不规则多边形镶嵌。在这种情况下，统计量成为空间自相关的度量。<br>每个多边形之间的链接被计数为颜色相同或不同。计算最后的计数，可以用来确定数据是否有显著的自相关。将这些计数与零假设下使用X<sup>2</sup>分布的二项随机变量的期望进行比较。</p>
+<p>在源数据作为点而不是作为面值的空间设置中，计算需要点对的几何关联。点对以对称的方式定义，因此计数为A-&gt;B和B-&gt;A的连接根据定义是相等的。<br>从本质上说连接计数统计不能检测到不对称性。</p>
 <p>对二元度量的强调导致很少使用连接计数统计来度量分类空间关联。即使数据包含了多个类别，但主要是被用来检查单个类别内的空间自相关程度。另一种空间二元概念化，即自论模型：在给定点本身的值为1的情况下，测量点的邻居值为1的可能性。自定义模型为量化给定邻域关系的发生概率提供了一个框架，但没有为如何定义邻域关系提供理论指导。</p>
 <p>将连接计数方法应用于多变量数据的研究人员没有实现“总体”统计，因此分析只能通过分别检查每对变量来完成。原始连接计数统计信息不需要总体统计信息：二进制对要么是显著自相关的负相关或正相关，要么是不显著的。在多类别情况下，每队类别的两两显著性矩阵应该通过相同联系的总体计数和相关显著性值来增强。</p>
-<h3 id="交叉k函数">交叉K函数</h3>
-<p>交叉K函数是Ripley的两个分布的K函数的扩展。它测量的是在A类个体周围规定的邻域内B类的总密度————<strong>密度是使用区域内个体的数目除以区域以距离为半径的面积得到的</strong>。类似于Ripley的K表示。
-交叉K函数不对称，可以解释两个类别之间互补关系的差异。但使用的是度量距离，不是拓扑领域距离。因此，总体人口空间格局的影响与类别间相互关联的影响混合在一起。交叉K函数虽然提供了结果的图表，但可能是错误的结论。因为影响发生在数据集中的多个尺度。可能这个函数得到的某个结论对该数据的某个尺度是无用的。</p>
-<h3 id="其他相关指标">其他相关指标</h3>
-<p>有发展到描述点类别之间的空间关联，但是没有一个是处理不对称和嵌套模式相关的问题。有学者提出过不对称关系统计，但排除了同类别关联，忽略了单个位置的多个观察结果，没有提供理解其结果的统计显著性基础。学术界仍然需要一种不对称的拓扑测量方法，这种方法可以处理受父母种群约束的分类数据，而父母种群本身可能是聚集的(或分散的)。
-## 研究思路与研究方法
-虽然存在一些量化空间关联的指标，但一个区分这些模式和过程的概念框架尚未明确。追求方案的三件事：1、将提出的分析整合到少数可访问的方程中；2、探讨空间关联测度不对称的存在及成因；3、创建并检验一个零假设，以捕获其分析能力并解释统计量的局限性。在发展该方法框架时，以近邻的重要性为基础。这样做是为了解决除托管以外的原因而产生的节电模式聚类的问题。</p>
+<h3 id="交叉K函数"><a href="#交叉K函数" class="headerlink" title="交叉K函数"></a>交叉K函数</h3><p>交叉K函数是Ripley的两个分布的K函数的扩展。它测量的是在A类个体周围规定的邻域内B类的总密度————<strong>密度是使用区域内个体的数目除以区域以距离为半径的面积得到的</strong>。类似于Ripley的K表示。<br>交叉K函数不对称，可以解释两个类别之间互补关系的差异。但使用的是度量距离，不是拓扑领域距离。因此，总体人口空间格局的影响与类别间相互关联的影响混合在一起。交叉K函数虽然提供了结果的图表，但可能是错误的结论。因为影响发生在数据集中的多个尺度。可能这个函数得到的某个结论对该数据的某个尺度是无用的。</p>
+<h3 id="其他相关指标"><a href="#其他相关指标" class="headerlink" title="其他相关指标"></a>其他相关指标</h3><p>有发展到描述点类别之间的空间关联，但是没有一个是处理不对称和嵌套模式相关的问题。有学者提出过不对称关系统计，但排除了同类别关联，忽略了单个位置的多个观察结果，没有提供理解其结果的统计显著性基础。学术界仍然需要一种不对称的拓扑测量方法，这种方法可以处理受父母种群约束的分类数据，而父母种群本身可能是聚集的(或分散的)。</p>
+<h2 id="研究思路与研究方法"><a href="#研究思路与研究方法" class="headerlink" title="研究思路与研究方法"></a>研究思路与研究方法</h2><p>虽然存在一些量化空间关联的指标，但一个区分这些模式和过程的概念框架尚未明确。追求方案的三件事：1、将提出的分析整合到少数可访问的方程中；2、探讨空间关联测度不对称的存在及成因；3、创建并检验一个零假设，以捕获其分析能力并解释统计量的局限性。在发展该方法框架时，以近邻的重要性为基础。这样做是为了解决除托管以外的原因而产生的节电模式聚类的问题。</p>
 <p>在开发一种统计度量区分联合总体的自相关效应和分类子集对之间的特定关联关系时，<strong>零假设</strong>很重要。虽然实现交叉K函数的研究使用“任何对类别子集之间没有空间关联”的零假设，但基于CLQ分析的零假设是“给定联合总体的聚类，对类别子集之间没有空间关联”。即把一个联合群体的几何模式作为一个给定的，并寻找不能单独用这个联合模式解释的关联。</p>
 <p>设P表示一个点种群，其中每个个体都被唯一的分配到分类系统X中的k个类别中的某一个，并且A和B表示X中的类别(可能相同)。CLQ<sub>A-&gt;B</sub>被定义为B在A最近的邻居中观测到的与期望的比例之比。这个计算是由</p>
-<p><span class="math display">\[
-CLQ_{A-&gt;B} = \frac{C_{A-&gt;B}/N_A}{N&#39;_B/(N-1)}
-\]</span>
-其中N是分析类别的总体大小，N<sub>A</sub>表示A的总体大小，在A和B不同时，N<sup>'</sup><sub>B</sub>表示B的种群规模。相同时，N<sup>'</sup><sub>B</sub>表示B的种群规模减1。C<sub>A-&gt;B</sub>表示其最近邻居为B的A类点个数。CLQ<sub>A-&gt;B</sub>的分子是B类点在A的最近邻居中所占的比例(即观察到的比例)，分母是每个A类点可能成为最近邻居的B类点的比例(即期望的比例)。</p>
-<p>为了计算期望比例，分母使用N-1而不是N，因为要去掉点本身。同样，在计算相同类别的CLQ时，N<sup>'</sup><sub>B</sub>定义为B类的个数减去1，因为A类的每个点可以有除自己以外所有的A类点作为邻居。</p>
-<p>在语义上，CLQ<sub>A-&gt;B</sub>表示A对B的空间吸引力，或者B吸引A的程度。CLQ<sub>A-&gt;B</sub>=2表示A在位于B类型点附近的可能性时偶然预期的两倍。CLQ<sub>A-&gt;B</sub>表示A对B的吸引力是单向的，因为依赖于可能是不对称的最近邻关系。如果存在，A最近邻居是B，但B最近邻居不是A，那么C<sub>A-&gt;B</sub>
-&gt; C<sub>B-&gt;A</sub>，因此CLQ<sub>A-&gt;B</sub> &gt;
-CLQ<sub>B-&gt;A</sub></p>
+<script type="math/tex; mode=display">
+CLQ_{A->B} = \frac{C_{A->B}/N_A}{N'_B/(N-1)}</script><p>其中N是分析类别的总体大小，N<sub>A</sub>表示A的总体大小，在A和B不同时，N<sup>‘</sup><sub>B</sub>表示B的种群规模。相同时，N<sup>‘</sup><sub>B</sub>表示B的种群规模减1。C<sub>A-&gt;B</sub>表示其最近邻居为B的A类点个数。CLQ<sub>A-&gt;B</sub>的分子是B类点在A的最近邻居中所占的比例(即观察到的比例)，分母是每个A类点可能成为最近邻居的B类点的比例(即期望的比例)。</p>
+<p>为了计算期望比例，分母使用N-1而不是N，因为要去掉点本身。同样，在计算相同类别的CLQ时，N<sup>‘</sup><sub>B</sub>定义为B类的个数减去1，因为A类的每个点可以有除自己以外所有的A类点作为邻居。</p>
+<p>在语义上，CLQ<sub>A-&gt;B</sub>表示A对B的空间吸引力，或者B吸引A的程度。CLQ<sub>A-&gt;B</sub>=2表示A在位于B类型点附近的可能性时偶然预期的两倍。CLQ<sub>A-&gt;B</sub>表示A对B的吸引力是单向的，因为依赖于可能是不对称的最近邻关系。如果存在，A最近邻居是B，但B最近邻居不是A，那么C<sub>A-&gt;B</sub> &gt; C<sub>B-&gt;A</sub>，因此CLQ<sub>A-&gt;B</sub> &gt; CLQ<sub>B-&gt;A</sub></p>
 <p>在逻辑上，表示A对B的吸引力大于B对A的吸引力。同类别的CLQ是类似的。例如：C<sub>A-&gt;A</sub>=0.67表明，考虑到A在整个亲本群体中所占的比例，A成为自己最近邻居的可能性仅为预期值的三分之二；在这种情况下，吸引力是双向的(对称的)。</p>
 <p>CLQ可以看成是对连接计数统计信息或交叉K函数的简单修改。区别于连接计数统计信息，CLQ是通过用最近邻近计数替换成对连接得来的。区别于交叉K函数，CLQ是通过替换绝对距离的邻居作为确定相对概率的基础而得到的。CLQ也是度量标准的扩展，用于度量类别于特定位置或位置类型的关联程度。<strong>区位商衡量的是，当地经济在某一特定部门的经济活动比例与所在国家或地区的经济活动比例之比</strong>。位置商将大于或小于1的值分配给在特定部门中大小或小于平均活动的地方，类似于林业应用中的保真度，描述了给定物种与特定群落类型的关联程度。<strong>CLQ描述的是一类对象与另一类对象的空间关联，不是与一个区域或一组区域的空间关联</strong>。</p>
-<p>和经典的位置商一样，CLQ值为1具有语义重要性。当B类个体在A类个体最近邻中的比例等于B类个体在其总体中的比例(不包括一个A类个体)，该值为1。如果CLQ<sub>A-&gt;B</sub>大于1，表示B类的近邻数量比预期的要多；如果小于1，则表示B组中的点与A组中的点最近邻的频率比预期的要低，且最低值可能为0。当B类中没有任何点与A类中任何点接近时，就会出现这种情况。每个高于1的整数值都表示"接近度"比预期高几倍。<em>如果任何类别的点数少于两个，则同一类别CLQ是未定义的</em>
-？</p>
-<p>CLQ有一个最大值，取决于类别在总体人口中的比例，以及某些几何限制。忽略这些几何约束，比例化最大CLQ<sub>A-&gt;B</sub>是指A的邻居都是B，即C<sub>A-&gt;B</sub>=N<sub>A</sub>，结论是
-<span class="math display">\[
-CLQ_{A-&gt;B} =
-\frac{C_{A-&gt;B}/N_A}{N&#39;_B/(N-1)}=\frac{1}{N&#39;_B/(N-1)} =
-\frac{N-1}{N&#39;_B}
-\]</span>
-这个公式表明，A与B的最大吸引程度取决于B的总体。B的总体越多，对A的吸引力就越小。原因是如果B在总人口中占很大比例，那么人们就会期望很大比例的A型个体靠近B型个体，但这仅仅是偶然的。例如：B型人口占总人口1001人的500人；不管A型人数量是多少，人们都会期望一半的A型人有一个B型人作为最近的邻居。这样的话根据公式1,假设A型人数量为X，那么预期值为
-<span class="math display">\[
-CLQ_{A-&gt;B} = \frac{C_{A-&gt;B}/N_A}{N&#39;_B/(N-1)}=
-\frac{0.5x/x}{500/1000}=1
-\]</span>
-每个A型个体都有一个B型个体作为它最近的邻居，那么CLQ<sub>A-&gt;B</sub><sup>max</sup>=1000/500=2。即为预期值的两倍。</p>
-<p>几何也限制了最大的CLQ值，当B类的每个点都有一个A类点作为它最近的邻居时，最大值出现。这个最大值随着B在总人口中所占比例的增加而增加。当A类的每个点都被5个B类点所包围时，就会出现几何极限。<em>这5个B类点都以A类点为最近的邻居。在这种情况下，任何额外的B类点与现有的B类点的距离相比它与中心A点的距离一样近或更近，或许因此以A为最近邻居的B类点的比例不会进一步增加</em>。因此5N<sub>B</sub>取代了C<sub>A-&gt;B</sub>来确定几何最大值，如下图公式：(未懂)
-<span class="math display">\[
-CLQ_{A-&gt;B} = \frac{5N_B/N_A}{N_B/(N-1)}= \frac{5(N-1)}{N_A}
-\]</span>
-用于非同类别分析。对于同类别分析，几何最大值不适用，因为当一组点比环中的其他点更接近中心点时，不会获得最高的值，而当N<sub>A</sub>大于N<sub>B</sub>的五倍时，CLQ的最大值是几何最大值，不是比例最大值。</p>
-<p>考虑到数值和几何约束，公式4给出了CLQ最大值的公式，该公式对多类别和二类别都成立。
-<span class="math display">\[
-Max(CLQ_{A-&gt;B}) =Min( \frac{N-1}{N&#39;_B}, \frac{5(N-1)}{N_A})
-\]</span>
-这个最大值表达了CLQ<sub>A-&gt;B</sub>值的两个约束。首先，随着B相对人口的增加，A被B吸引的程度在数字上是有限的，这种限制是因为如果B太常见，那么B类点作为最近的邻居就不那么稀奇了。其次，如果A的比例增加，A被B吸引的程度在几何上是有限的。这种约束的出现是因为每个B类点周围只能有那么多A类点。</p>
-<p>由于CLQ在语义上表示观察到的与期望的比率，因此证明其期望是统一的非常重要。给定N，N<sub>A</sub>，N<sub>B</sub>的值，类别的随机分配决定了预期计数C<sub>A-&gt;B</sub>的A类点最近的B类点等于N<sub>A</sub>乘以在A类点已经被选中的情况下，选择B类点的条件概率。
-<span class="math display">\[
-E(C_{A-&gt;B})=N_A E(\rho_{B|A})=(\frac{N_AN&#39;_B}{N-1})
-\]</span> 用期望的E(C<sub>A-&gt;B</sub>)代入公式1，则CLQ的期望变成了：
-<span class="math display">\[
-E(CLQ_{A-&gt;B})=E(\frac{C_{A-&gt;B}/N_A}{N&#39;_B/(N-1)})=(\frac{N-1}{N_AN&#39;_B})E(C_{A-&gt;B})=(\frac{N-1}{N_AN&#39;_B})(\frac{N_AN&#39;_B}{N-1})=1
-\]</span>
-<strong>因此，如果类别在固定点模式上进行随机分配，则CLQ的期望值为1</strong>。(假设每个A类点只有一个最近的邻居)</p>
-<p>然而，通常一个点有几个距离相等的近邻。当多个点共存或似乎共存于一个位置，可能会发生这种情况，例如：当几个零售商店共享相同的邮政地址时，点排列在规则网格的条件下，等距近邻也很常见。通过定义公式1中的C<sub>A-&gt;B</sub>，CLQ可以很容易的适应这种情况。因为CLQ<sub>A-&gt;B</sub>表示A被B吸引的程度，每个A点类别的权重，通过定义的C<sub>A-&gt;B</sub>，如公式所示。
-<span class="math display">\[
-C_{A-&gt;B} = \sum_{i=1}^{N_A} \sum_{j=1}^{v} \frac{B_{ij}(1,0)}{v}
-\]</span>
-在上式中，v为某点的等距近邻个数，B<sub>ij</sub>为第i类A点的第j个等距近邻是否为B类的0-1决策规则变量。因此，每个A类点对总近邻数的贡献正好为1，而不是由等距近邻数决定的。</p>
-<p>不对称性是由CLQ<sub>A-&gt;B</sub> $ = $
-CLQ<sub>B-&gt;A</sub>表现的，由公式1可知，是C<sub>A-&gt;B</sub> $ = $
-C<sub>B-&gt;A</sub>时。这意味着CLQ的不对称性当且仅当存在不对称的空间配置时才会产生，其中一个个体的最近邻居没有将该个体作为自己的最近邻居。</p>
+<p>和经典的位置商一样，CLQ值为1具有语义重要性。当B类个体在A类个体最近邻中的比例等于B类个体在其总体中的比例(不包括一个A类个体)，该值为1。如果CLQ<sub>A-&gt;B</sub>大于1，表示B类的近邻数量比预期的要多；如果小于1，则表示B组中的点与A组中的点最近邻的频率比预期的要低，且最低值可能为0。当B类中没有任何点与A类中任何点接近时，就会出现这种情况。每个高于1的整数值都表示”接近度”比预期高几倍。<em>如果任何类别的点数少于两个，则同一类别CLQ是未定义的</em> ？</p>
+<p>CLQ有一个最大值，取决于类别在总体人口中的比例，以及某些几何限制。忽略这些几何约束，比例化最大CLQ<sub>A-&gt;B</sub>是指A的邻居都是B，即C<sub>A-&gt;B</sub>=N<sub>A</sub>，结论是</p>
+<script type="math/tex; mode=display">
+CLQ_{A->B} = \frac{C_{A->B}/N_A}{N'_B/(N-1)}=\frac{1}{N'_B/(N-1)} = \frac{N-1}{N'_B}</script><p>这个公式表明，A与B的最大吸引程度取决于B的总体。B的总体越多，对A的吸引力就越小。原因是如果B在总人口中占很大比例，那么人们就会期望很大比例的A型个体靠近B型个体，但这仅仅是偶然的。例如：B型人口占总人口1001人的500人；不管A型人数量是多少，人们都会期望一半的A型人有一个B型人作为最近的邻居。这样的话根据公式1,假设A型人数量为X，那么预期值为</p>
+<script type="math/tex; mode=display">
+CLQ_{A->B} = \frac{C_{A->B}/N_A}{N'_B/(N-1)}= \frac{0.5x/x}{500/1000}=1</script><p>每个A型个体都有一个B型个体作为它最近的邻居，那么CLQ<sub>A-&gt;B</sub><sup>max</sup>=1000/500=2。即为预期值的两倍。</p>
+<p>几何也限制了最大的CLQ值，当B类的每个点都有一个A类点作为它最近的邻居时，最大值出现。这个最大值随着B在总人口中所占比例的增加而增加。当A类的每个点都被5个B类点所包围时，就会出现几何极限。<em>这5个B类点都以A类点为最近的邻居。在这种情况下，任何额外的B类点与现有的B类点的距离相比它与中心A点的距离一样近或更近，或许因此以A为最近邻居的B类点的比例不会进一步增加</em>。因此5N<sub>B</sub>取代了C<sub>A-&gt;B</sub>来确定几何最大值，如下图公式：(未懂)</p>
+<script type="math/tex; mode=display">
+CLQ_{A->B} = \frac{5N_B/N_A}{N_B/(N-1)}= \frac{5(N-1)}{N_A}</script><p>用于非同类别分析。对于同类别分析，几何最大值不适用，因为当一组点比环中的其他点更接近中心点时，不会获得最高的值，而当N<sub>A</sub>大于N<sub>B</sub>的五倍时，CLQ的最大值是几何最大值，不是比例最大值。</p>
+<p>考虑到数值和几何约束，公式4给出了CLQ最大值的公式，该公式对多类别和二类别都成立。</p>
+<script type="math/tex; mode=display">
+Max(CLQ_{A->B}) =Min( \frac{N-1}{N'_B}, \frac{5(N-1)}{N_A})</script><p>这个最大值表达了CLQ<sub>A-&gt;B</sub>值的两个约束。首先，随着B相对人口的增加，A被B吸引的程度在数字上是有限的，这种限制是因为如果B太常见，那么B类点作为最近的邻居就不那么稀奇了。其次，如果A的比例增加，A被B吸引的程度在几何上是有限的。这种约束的出现是因为每个B类点周围只能有那么多A类点。</p>
+<p>由于CLQ在语义上表示观察到的与期望的比率，因此证明其期望是统一的非常重要。给定N，N<sub>A</sub>，N<sub>B</sub>的值，类别的随机分配决定了预期计数C<sub>A-&gt;B</sub>的A类点最近的B类点等于N<sub>A</sub>乘以在A类点已经被选中的情况下，选择B类点的条件概率。</p>
+<script type="math/tex; mode=display">
+E(C_{A->B})=N_A E(\rho_{B|A})=(\frac{N_AN'_B}{N-1})</script><p>用期望的E(C<sub>A-&gt;B</sub>)代入公式1，则CLQ的期望变成了：</p>
+<script type="math/tex; mode=display">
+E(CLQ_{A->B})=E(\frac{C_{A->B}/N_A}{N'_B/(N-1)})=(\frac{N-1}{N_AN'_B})E(C_{A->B})=(\frac{N-1}{N_AN'_B})(\frac{N_AN'_B}{N-1})=1</script><p><strong>因此，如果类别在固定点模式上进行随机分配，则CLQ的期望值为1</strong>。(假设每个A类点只有一个最近的邻居)</p>
+<p>然而，通常一个点有几个距离相等的近邻。当多个点共存或似乎共存于一个位置，可能会发生这种情况，例如：当几个零售商店共享相同的邮政地址时，点排列在规则网格的条件下，等距近邻也很常见。通过定义公式1中的C<sub>A-&gt;B</sub>，CLQ可以很容易的适应这种情况。因为CLQ<sub>A-&gt;B</sub>表示A被B吸引的程度，每个A点类别的权重，通过定义的C<sub>A-&gt;B</sub>，如公式所示。</p>
+<script type="math/tex; mode=display">
+C_{A->B} = \sum_{i=1}^{N_A} \sum_{j=1}^{v} \frac{B_{ij}(1,0)}{v}</script><p>在上式中，v为某点的等距近邻个数，B<sub>ij</sub>为第i类A点的第j个等距近邻是否为B类的0-1决策规则变量。因此，每个A类点对总近邻数的贡献正好为1，而不是由等距近邻数决定的。</p>
+<p>不对称性是由CLQ<sub>A-&gt;B</sub> $ \not= $ CLQ<sub>B-&gt;A</sub>表现的，由公式1可知，是C<sub>A-&gt;B</sub>  $ \not= $ C<sub>B-&gt;A</sub>时。这意味着CLQ的不对称性当且仅当存在不对称的空间配置时才会产生，其中一个个体的最近邻居没有将该个体作为自己的最近邻居。</p>
 <p>在Figure1-1中，CLQ<sub>A-&gt;B</sub>为0.95，CLQ<sub>B-&gt;A</sub>为1.9。B是A最近的邻居，只是比完全随机混合物期望要小，而A是B最近的邻居，比随机混合物要大的多。这一结果说明了，B的出现依赖于A的出现。最大的CLQ值是CLQ<sub>B-&gt;A</sub>=1.9。需要注意的是，CLQ<sub>B-&gt;B</sub>为0，而CLQ<sub>A-&gt;A</sub>为1.05。这些相同类别的CLQ表明，B似乎避免把自己作为最近的邻居，而A将自己作为其最近的邻居仅略高于平均水平。</p>
 <p>在Figure1-2中，CLQ<sub>A-&gt;B</sub>=CLQ<sub>B-&gt;A</sub>=1.4。这些CLQ在语义上表明，A和B比随机分布更倾向于相反类别的40%。跨类别CLQ并不是随着B类积分的移除而改变的唯一值：而CLQ<sub>B-&gt;B</sub>=0，CLQ<sub>A-&gt;A</sub>=0.77。在Figure1-2中，A的数量占总体的比例要大得多，对同类连接的期望也增加了。然而，由于从A类到A类的同类别近邻的实际数目保持不变，CLQ<sub>A-&gt;A</sub>在Figure1-1到Figure1-2中减少。这个例子说明，一个类别子集对另一个类别子集的空间吸引力不仅受到观察的最近邻数量的影响，还受到影响最近邻预期数量的父种群中类别类型的比例的影响。</p>
-<p>虽然成对CLQ矩阵提供了一种识别重要分类关系的方法，但全局统计量有助于显著性检验。全局CLQ定义为在类别之间没有空间关联的零假设下，观察到的同类别最近邻对数与期望数的比值。这个全局CLQ公式为：
-<span class="math display">\[
-CLQ_{Global} = \frac{\sum_{A\in{X}}
-C_{A-&gt;A}}{\sum_{A\in{X}}N_A(\frac{N_A-1}{N-1})}
-\]</span> 分母表示在无空间关联的零假设下，同类别最近邻的期望数目。</p>
-<p>为了确定哪些模式在统计上与随机不同，如果分类分配是随机的，我们需要知道在给定的空间模式中观察到CLQ发生的可能性。对空间自相关统计数据(如连接数)的研究表明，比例差异的简单t检验的假设不成立，非正态性随数据集的大小而变化。我们遵循空间统计学的最新发展，如LISA、网络交叉K函数和Ripley‘s
-k函数，在使用<em>蒙特卡罗模拟</em>时，除了在研究区域内的位置行为相似外，对预期分布没有任何假设。在每次模拟实验中，分配给每个类别的总体比例保持不变，但这些类别分配在总体中随机重新分布，并且重新计算每个成对的CLQ以及CLQ<sub>global</sub>。经过预定数量的排列，配对和全局CLQ的模拟样本分布用于确定观察到的CLQ的显著性。双尾显著性是通过取模拟CLQ大于或等于或小于观察到的CLQ的试验数中较小者乘以2来确定的。</p>
-<p>使用软件Visual
-Basic，创建了一个空间索引，包括创建索引在内，在O(nlogn)的时间内完成了最近邻的高效计算，其中n为总体中的点数，每个<strong><em>蒙特卡洛模拟</em></strong>需要在现有点之间分配O(n)个类别，但不需要重新计算最近邻。因此，总体计算效率为O(nlogn)和O(mn)较大的一个，其中m为模拟次数。</p>
+<p>虽然成对CLQ矩阵提供了一种识别重要分类关系的方法，但全局统计量有助于显著性检验。全局CLQ定义为在类别之间没有空间关联的零假设下，观察到的同类别最近邻对数与期望数的比值。这个全局CLQ公式为：</p>
+<script type="math/tex; mode=display">
+CLQ_{Global} = \frac{\sum_{A\in{X}} C_{A->A}}{\sum_{A\in{X}}N_A(\frac{N_A-1}{N-1})}</script><p>分母表示在无空间关联的零假设下，同类别最近邻的期望数目。</p>
+<p>为了确定哪些模式在统计上与随机不同，如果分类分配是随机的，我们需要知道在给定的空间模式中观察到CLQ发生的可能性。对空间自相关统计数据(如连接数)的研究表明，比例差异的简单t检验的假设不成立，非正态性随数据集的大小而变化。我们遵循空间统计学的最新发展，如LISA、网络交叉K函数和Ripley‘s k函数，在使用<em>蒙特卡罗模拟</em>时，除了在研究区域内的位置行为相似外，对预期分布没有任何假设。在每次模拟实验中，分配给每个类别的总体比例保持不变，但这些类别分配在总体中随机重新分布，并且重新计算每个成对的CLQ以及CLQ<sub>global</sub>。经过预定数量的排列，配对和全局CLQ的模拟样本分布用于确定观察到的CLQ的显著性。双尾显著性是通过取模拟CLQ大于或等于或小于观察到的CLQ的试验数中较小者乘以2来确定的。</p>
+<p>使用软件Visual Basic，创建了一个空间索引，包括创建索引在内，在O(nlogn)的时间内完成了最近邻的高效计算，其中n为总体中的点数，每个<strong><em>蒙特卡洛模拟</em></strong>需要在现有点之间分配O(n)个类别，但不需要重新计算最近邻。因此，总体计算效率为O(nlogn)和O(mn)较大的一个，其中m为模拟次数。</p>
 <p>最后，该方法能够很容易的将基于点的数据集整合到CLQ中，这是非常重要的，因为不需要使用预定义的面积单位，这些单位是为识别所讨论的现象之外的目的而设计的，例如：用于检查大都市就业的交通分析区或用于分析生态数据的市政乡镇。点数据不具有典型的位置商对尺度的敏感性。但是将CLQ应用于计数较少的类别时，需要谨慎。当一个类别的人数少于10人时，不建议使用CLQ进行计算，因为测试的有效性会很低。如果理论上合适的话，聚合类别会解决这个问题。</p>
-<h2 id="实验验证与结果分析">实验验证与结果分析</h2>
-<p>为了说明所建议的度量，确定了来自不同领域的两个数据集的全局和成对CLQ。第一个数据集是Phoenix
-metropolitan
-region36909家商业机构，按经济部门分类。第二个数据集包括368122万棵树，这些树分布在巴拿马运河Barro
-Colorado岛一块50公顷的土地上，根据健康和与健康有关的地貌特征进行分类。对于每个数据集，运行了10000次模拟，以确定全局和成对CLQ的显著值。两个数据集的全局CLQ都是强正的，并且非常显著（P&lt;0.001）。</p>
-<h3 id="phoenix">Phoenix</h3>
-<p>哪些类型的企业彼此相邻？企业是在自己行业的企业附近还是在不同行业的企业附近？虽然这个主题已经被解决，但增加的同类协会以及部门部门内联系提供了一个比较更深入的了解凤凰城的情况。凤凰城是一个平坦的城市，围绕汽车发展，并为郊区居民分散。在部门内部，凤凰城有三个部门：第二部门、批发和运输以及行政支持；金融、保险、生产性服务业；以及拥有娱乐和住宿设施的零售商。在Leslie
-and O´ hUallacha´in的分析中，有提到同类联想的影响，但没有研究。</p>
+<h2 id="实验验证与结果分析"><a href="#实验验证与结果分析" class="headerlink" title="实验验证与结果分析"></a>实验验证与结果分析</h2><p>为了说明所建议的度量，确定了来自不同领域的两个数据集的全局和成对CLQ。第一个数据集是Phoenix metropolitan region36909家商业机构，按经济部门分类。第二个数据集包括368122万棵树，这些树分布在巴拿马运河Barro Colorado岛一块50公顷的土地上，根据健康和与健康有关的地貌特征进行分类。对于每个数据集，运行了10000次模拟，以确定全局和成对CLQ的显著值。两个数据集的全局CLQ都是强正的，并且非常显著（P&lt;0.001）。</p>
+<h3 id="Phoenix"><a href="#Phoenix" class="headerlink" title="Phoenix"></a>Phoenix</h3><p>哪些类型的企业彼此相邻？企业是在自己行业的企业附近还是在不同行业的企业附近？虽然这个主题已经被解决，但增加的同类协会以及部门部门内联系提供了一个比较更深入的了解凤凰城的情况。凤凰城是一个平坦的城市，围绕汽车发展，并为郊区居民分散。在部门内部，凤凰城有三个部门：第二部门、批发和运输以及行政支持；金融、保险、生产性服务业；以及拥有娱乐和住宿设施的零售商。在Leslie and O´ hUallacha´in的分析中，有提到同类联想的影响，但没有研究。</p>
 <p>使用MAG创建的点级建立数据集。根据该地区的雇主进行业务分组，如表1。这些数据在空间上聚类，最近邻r值为0.24(在0.01水平上显得非随机)。对该数据集进行交叉K函数分析可能会发现许多两两分类关联，因为数据集本身是高度聚类的。</p>
-<p><strong><em>全局CLQ为强正(CLQ<sub>global</sub>=2.53)。同一类别的成对CLQ显著大于1的存在突出了这一发现</em></strong>。这表明所有类别的企业都强烈倾向于与同一类别的其他企业合作。这种影响在NAICS
-92公共行政机构中最为强烈。与随机分布相比，其邻居属于同一类别的可能性要高14倍。这种影响在NAICS
-56行政支持机构中最弱，这些机构最近的邻居有同行业的可能性仅为1.5倍。同类别值表明，一般来说，大多数企业类型位于类似企业旁边的可能性是随机混合的2.5倍。</p>
-<p><em>由逐个行业的考察表明，一般来说，地点偏好倾向于对称，并揭示了大量的类别分组。自然资源的经典分组和后续处理是存在的。初级部门(农业、矿业、公用事业和建筑业[NAICS
-11-23])、制造业(NAICS 31-33)、批发部门(NAICS
-42-43)、运输和仓储部门(NAICS
-48-49)都对彼此有很高的偏好，但批发部门、运输和仓储部门与初级部门没有关联联系是一个意外的例外。初级部门在行政支持(NAICS
-56)和教育(NAICS
-61)方面也有相互较高的CLQ，尽管制造业、批发、运输和仓储部门没有。零售业(NAICS
-44)的clq几乎所有类别都明显低于1，除了零售业和住宿和食品服务业(NAICS
-72)，这可能是凤凰城零售场所位于商业街和购物中心的结果。其他服务(NAICS
-81)更倾向于将零售作为最近的邻居，尽管相反情况并非如此。生产者服务也有一个分组;信息(NAICS
-51)、金融保险(NAICS 52)和专业、科学、技术和管理服务(NAICS
-54-55)的clq互高。被排除在外的是房地产行业(NAICS
-53)，该行业只对金融和保险行业有强烈的区位偏好，而对信息或专业、科学、技术和管理服务没有强烈的区位偏好。专业、科学、技术和管理服务与行政支持是相互密切联系的，但信息和金融保险服务却没有这种联系。最后，住宿和餐饮服务与其他服务有联系，这也可能是在整个大都市地区的大型购物中心进行托管的结果。</em></p>
-<p><em>除了前面提到的，重要的不对称也是存在的。初级和其他服务部门都有大量的不对称关联。公共管理(NAICS
-92)也有几个不对称的关联。不对称似乎反映的不是供应链机制，而是类别集，其中一个部门可能是集群的基础(如医疗[NAICS
-62]、零售或政府综合体)，其他机构类型围绕着它排列。这种模式导致高度的同类别关联，支持服务(管理支持、其他服务)不对称。有些部门似乎在两个方向上都没有多少托管要求。公共行政和艺术、娱乐和休闲部门(NAICS
-71)在其同一部门偏好之外只有三到四个重要的协会。</em></p>
-<h3 id="岛的树木状况">岛的树木状况</h3>
-<p><em>巴罗科罗拉多岛案例的数据来自热带森林科学中心(Hubbell, Condit, and
-Foster,
-2005)。这个岛以前与更大的森林相连，是在20世纪初巴拿马运河建设期间，周围地区被洪水淹没时形成的。自1982年以来，该地块内的所有树木都进行了统计。2005年收集的最新数据包括对健康和生长条件的观察。如果活树是有支撑的(即，在底部有扩大的树干)，多茎，或从垂直位置明显倾斜，或者如果主干在树冠以下断裂，则需要注意。有支撑的树木在地面附近的树干明显变宽，这可能是由于土壤潮湿或不稳定或内部腐烂造成的。此外，自上次人口普查以来死亡的树木被记录为仍然站立，倒下或失踪。许多树木记录了不止一种情况;在这些情况下，我们使用最严重的条件进行分析。通过这种方式，将树分配给八个可能的类别之一。</em></p>
+<p><strong><em>全局CLQ为强正(CLQ<sub>global</sub>=2.53)。同一类别的成对CLQ显著大于1的存在突出了这一发现</em></strong>。这表明所有类别的企业都强烈倾向于与同一类别的其他企业合作。这种影响在NAICS 92公共行政机构中最为强烈。与随机分布相比，其邻居属于同一类别的可能性要高14倍。这种影响在NAICS 56行政支持机构中最弱，这些机构最近的邻居有同行业的可能性仅为1.5倍。同类别值表明，一般来说，大多数企业类型位于类似企业旁边的可能性是随机混合的2.5倍。</p>
+<p><em>由逐个行业的考察表明，一般来说，地点偏好倾向于对称，并揭示了大量的类别分组。自然资源的经典分组和后续处理是存在的。初级部门(农业、矿业、公用事业和建筑业[NAICS 11-23])、制造业(NAICS 31-33)、批发部门(NAICS 42-43)、运输和仓储部门(NAICS 48-49)都对彼此有很高的偏好，但批发部门、运输和仓储部门与初级部门没有关联联系是一个意外的例外。初级部门在行政支持(NAICS 56)和教育(NAICS 61)方面也有相互较高的CLQ，尽管制造业、批发、运输和仓储部门没有。零售业(NAICS 44)的clq几乎所有类别都明显低于1，除了零售业和住宿和食品服务业(NAICS 72)，这可能是凤凰城零售场所位于商业街和购物中心的结果。其他服务(NAICS 81)更倾向于将零售作为最近的邻居，尽管相反情况并非如此。生产者服务也有一个分组;信息(NAICS 51)、金融保险(NAICS 52)和专业、科学、技术和管理服务(NAICS 54-55)的clq互高。被排除在外的是房地产行业(NAICS 53)，该行业只对金融和保险行业有强烈的区位偏好，而对信息或专业、科学、技术和管理服务没有强烈的区位偏好。专业、科学、技术和管理服务与行政支持是相互密切联系的，但信息和金融保险服务却没有这种联系。最后，住宿和餐饮服务与其他服务有联系，这也可能是在整个大都市地区的大型购物中心进行托管的结果。</em></p>
+<p><em>除了前面提到的，重要的不对称也是存在的。初级和其他服务部门都有大量的不对称关联。公共管理(NAICS 92)也有几个不对称的关联。不对称似乎反映的不是供应链机制，而是类别集，其中一个部门可能是集群的基础(如医疗[NAICS 62]、零售或政府综合体)，其他机构类型围绕着它排列。这种模式导致高度的同类别关联，支持服务(管理支持、其他服务)不对称。有些部门似乎在两个方向上都没有多少托管要求。公共行政和艺术、娱乐和休闲部门(NAICS 71)在其同一部门偏好之外只有三到四个重要的协会。</em></p>
+<h3 id="岛的树木状况"><a href="#岛的树木状况" class="headerlink" title="岛的树木状况"></a>岛的树木状况</h3><p><em>巴罗科罗拉多岛案例的数据来自热带森林科学中心(Hubbell, Condit, and Foster, 2005)。这个岛以前与更大的森林相连，是在20世纪初巴拿马运河建设期间，周围地区被洪水淹没时形成的。自1982年以来，该地块内的所有树木都进行了统计。2005年收集的最新数据包括对健康和生长条件的观察。如果活树是有支撑的(即，在底部有扩大的树干)，多茎，或从垂直位置明显倾斜，或者如果主干在树冠以下断裂，则需要注意。有支撑的树木在地面附近的树干明显变宽，这可能是由于土壤潮湿或不稳定或内部腐烂造成的。此外，自上次人口普查以来死亡的树木被记录为仍然站立，倒下或失踪。许多树木记录了不止一种情况;在这些情况下，我们使用最严重的条件进行分析。通过这种方式，将树分配给八个可能的类别之一。</em></p>
 <p><em>从这些数据中自然产生了一些关于生长和死亡率空间格局的假设。例如，一种假设是所有类型的死亡率都是共存的。另一种假设是，风控制的死亡事件表现出与衰老、疾病和其他类型的死亡不同的空间模式。其他假说与某些形态特征的原因有关。例如，支撑和多茎生长是有利生长条件的结果，或者相反，是对不利条件的反应。空间格局为这些假设提供了直接和间接的证据。</em></p>
 <p><em>图2描绘了数据的一部分。最近邻统计量表明，总体空间格局呈轻微聚类(R=0.982;P&lt;0.01)。就其本身而言，这种对随机性的轻微偏离并不是一个大问题。然而，对图2的仔细检查显示，这种模式更加微妙:明显的聚类是包含很少或没有树木的大空隙的结果，可能是由道路、河流或最近的干扰造成的。如果排除这些间隙，其余地区的树木格局可能会呈现出稍微分散的格局。当计算这些数据的CLQ矩阵时，几个重要的模式脱颖而出。</em></p>
-<p><em>首先，同类别CLQ在8个类别中有7个类别显著为正。同一类别的树在一起的这种趋势导致了一个弱但非常显著的全局CLQ
-(CLQ<sub>global</sub>=1.13)。其次，树木的分布模式表明了常见的干扰，可能是风造成的:倾斜或折断的活树彼此紧密地分布在一起，也与倒下的死树分布在一起。同类别空间自相关的最强测量也出现在这三个类别中，它们也与缺失的树木有一定的重合，但与站立的枯死树木没有重合。直立枯死的树木不属于任何其他类别，这种模式表明，大多数死亡是由衰老或当地疾病爆发造成的，而不是由风吹造成的。此外，支撑和多茎生长似乎都与干扰负相关。的确，在倾斜和倒下的树木和站立的死树附近，没有支撑的树木是值得注意的。即使是正常的活树也有轻微的倾向于与有支撑和多茎的树共存。因此，生活在肥沃、有遮蔽的地方的健康树木似乎更有能力长出多个茎和有支撑的基部。</em></p>
-<p>尽管这个例子中的大多数关系都是对称的，但在涉及支撑树的关系中存在明显的不对称。倾斜和倒下的树木避免在有支撑的树木附近定位。CLQ<sub>leaning-&gt;buttressed</sub>=0.56，P&lt;0.01；CLQ<sub>downed-&gt;buttressed</sub>=0.71，P=0.04。相比之下，有支撑的树位于倾斜和倒下的树附近，只比偶然预期的要少一点。CLQ<sub>buttressed-&gt;leaning</sub>=0.91,P=0.45;CLQ<sub>buttressed-&gt;downed</sub>
-=0.95,P=0.78。这一发现表明，有支撑的树木倾向于排斥其他树木，更喜欢孤立。</p>
-<h2 id="分析总结与研究启示">分析总结与研究启示</h2>
-<p>文章思路：在介绍中简要介绍了CLQ与其他度量区别的地方，并简单的对CLQ做了一个定义。而后在动机中，针对</p>
-<p>CLQ是对点集空间关联的重新设想，它提供了一种描述空间关联程度的整体和两两方法。两两信息描述了关系的强度，并且作为发生概率的乘法因子有一个自然的解释。双向CLQ对进一步提供了点类型之间潜在不对称的信息。对每对的联系进行了简单的描述，最后结果描述了控制整体数据集的聚类水平后的空间关联。这是对交叉K函数分析的改进。最后增加了同类别关联，正确计算同样位置的多个点的能力，以及统计显著性的量化是Leslie
-and
-O‘hUallacha’in的实质性改进。CLQ统计是在评估最大比率值和产生具有语义意义的比较变量方面的工作的拓展。</p>
+<p><em>首先，同类别CLQ在8个类别中有7个类别显著为正。同一类别的树在一起的这种趋势导致了一个弱但非常显著的全局CLQ (CLQ<sub>global</sub>=1.13)。其次，树木的分布模式表明了常见的干扰，可能是风造成的:倾斜或折断的活树彼此紧密地分布在一起，也与倒下的死树分布在一起。同类别空间自相关的最强测量也出现在这三个类别中，它们也与缺失的树木有一定的重合，但与站立的枯死树木没有重合。直立枯死的树木不属于任何其他类别，这种模式表明，大多数死亡是由衰老或当地疾病爆发造成的，而不是由风吹造成的。此外，支撑和多茎生长似乎都与干扰负相关。的确，在倾斜和倒下的树木和站立的死树附近，没有支撑的树木是值得注意的。即使是正常的活树也有轻微的倾向于与有支撑和多茎的树共存。因此，生活在肥沃、有遮蔽的地方的健康树木似乎更有能力长出多个茎和有支撑的基部。</em></p>
+<p>尽管这个例子中的大多数关系都是对称的，但在涉及支撑树的关系中存在明显的不对称。倾斜和倒下的树木避免在有支撑的树木附近定位。CLQ<sub>leaning-&gt;buttressed</sub>=0.56，P<0.01；CLQ<sub>downed-&gt;buttressed&lt;/sub&gt;=0.71，P=0.04。相比之下，有支撑的树位于倾斜和倒下的树附近，只比偶然预期的要少一点。CLQ<sub>buttressed-&gt;leaning</sub>=0.91,P=0.45;CLQ<sub>buttressed-&gt;downed</sub> =0.95,P=0.78。这一发现表明，有支撑的树木倾向于排斥其他树木，更喜欢孤立。</0.01；CLQ<sub></p>
+<h2 id="分析总结与研究启示"><a href="#分析总结与研究启示" class="headerlink" title="分析总结与研究启示"></a>分析总结与研究启示</h2><p>文章思路：在介绍中简要介绍了CLQ与其他度量区别的地方，并简单的对CLQ做了一个定义。而后在动机中，针对</p>
+<p>CLQ是对点集空间关联的重新设想，它提供了一种描述空间关联程度的整体和两两方法。两两信息描述了关系的强度，并且作为发生概率的乘法因子有一个自然的解释。双向CLQ对进一步提供了点类型之间潜在不对称的信息。对每对的联系进行了简单的描述，最后结果描述了控制整体数据集的聚类水平后的空间关联。这是对交叉K函数分析的改进。最后增加了同类别关联，正确计算同样位置的多个点的能力，以及统计显著性的量化是Leslie and O‘hUallacha’in的实质性改进。CLQ统计是在评估最大比率值和产生具有语义意义的比较变量方面的工作的拓展。</p>
 <p>虽然我们CLQ的目标之一是捕获不对称关系，但在开发CLQ的过程中，我们发现不对称的定义比我们最初预期的要微妙得多。CLQ特别捕获了空间配置中的不对称性，当一个点的最近邻居的最近邻居不是原始点时，这种情况就会发生。CLQ描述了与随机分布相比，某些类别如何或多或少地定位，并支持发现不对称关系，其中一个类别似乎有更大的机会定位在类别X旁边，而类别X点没有相互作用，这可以导致对潜在模式的有意义的见解。</p>
-<p><em>CLQ在两个非常不同的数据集上的应用说明了它的一般适用性。从经验上看，配对clq揭示了三种类型的信息，这两种数据集的Colocation商Timothy
-F. Leslie和Barry J.
-Kronenfeld是相似的。首先，在两个数据集中，显著的同类型自相关性很强。凤凰城的商业机构和巴罗科罗拉多岛的树木都更有可能拥有相同部门或类别的邻居，而不是随机分布所显示的。其次，类别之间的对称关联揭示了主要的分组或数据簇。凤凰城主要有两大类:一类是资源和运输行业，另一类是包括信息、金融和保险、专业、科学、技术和管理服务在内的高级服务业，但不包括房地产行业。在巴罗科罗拉多岛，还发现了两大类:一类是健康的、有支撑的、多茎的树木，另一类是倾斜的、折断的、倒下的、缺失的树木，但没有站立的死树。有些类别，如凤凰城的零售和巴罗科罗拉多岛的枯树，没有显示出这种群体亲和力，因为它们与任何其他类别的搭配倾向相对较弱或没有积极的搭配倾向。第三，成对clq的不对称揭示了每个类别施加的影响程度的不平等。在凤凰城，令人惊讶的是，不对称似乎并没有遵循供应链机制，而是表明某些行业形成了核心集群，在这个核心周围混合了其他行业类型。在巴罗科罗拉多岛，不对称表明，导致树木在基部支撑自己的力量也将这些树木与其他树木隔离开来。</em></p>
+<p><em>CLQ在两个非常不同的数据集上的应用说明了它的一般适用性。从经验上看，配对clq揭示了三种类型的信息，这两种数据集的Colocation商Timothy F. Leslie和Barry J. Kronenfeld是相似的。首先，在两个数据集中，显著的同类型自相关性很强。凤凰城的商业机构和巴罗科罗拉多岛的树木都更有可能拥有相同部门或类别的邻居，而不是随机分布所显示的。其次，类别之间的对称关联揭示了主要的分组或数据簇。凤凰城主要有两大类:一类是资源和运输行业，另一类是包括信息、金融和保险、专业、科学、技术和管理服务在内的高级服务业，但不包括房地产行业。在巴罗科罗拉多岛，还发现了两大类:一类是健康的、有支撑的、多茎的树木，另一类是倾斜的、折断的、倒下的、缺失的树木，但没有站立的死树。有些类别，如凤凰城的零售和巴罗科罗拉多岛的枯树，没有显示出这种群体亲和力，因为它们与任何其他类别的搭配倾向相对较弱或没有积极的搭配倾向。第三，成对clq的不对称揭示了每个类别施加的影响程度的不平等。在凤凰城，令人惊讶的是，不对称似乎并没有遵循供应链机制，而是表明某些行业形成了核心集群，在这个核心周围混合了其他行业类型。在巴罗科罗拉多岛，不对称表明，导致树木在基部支撑自己的力量也将这些树木与其他树木隔离开来。</em></p>
 <p><em>CLQ似乎是健壮和稳定的。我们建议使用CLQ来检查由单一类型实体(如树或企业)的多个子类别组成的点数据集。相反，cross-k函数应该用于量化概念上不同的实体类型之间的关系，这些实体类型的联合总体不形成一个语义上有意义的单位。在联合总体聚类可能混淆结果的情况下，CLQ应该用来代替cross-k函数，尽管我们意识到概念类别类型和子类别之间的区别并不总是那么明确。在许多现实世界的情况下，联合种群具有表明相似空间分布的特征，分析的目的是识别超出联合种群预期的两两分类关系。在人文地理领域，城市、住宅、商业和政治机构的空间格局受到总体人口分布和交通基础设施的控制，并表现出与其他人类活动中心不同程度接近的趋势。类似地，地衣、鸟类和火成岩等自然类别具有不同的空间模式，这些空间模式可以进一步分解为子类别，这些子类别之间可能表现出不同程度的空间相关性。在这些情况下，CLQ可以揭示有趣的关联模式，这可能会揭示潜在的吸引、排斥、依赖和资源需求过程。</em></p>
-<h1 id="文献精读">文献精读</h1>
-<h2 id="空间关联">空间关联</h2>
-<p>空间关联的含义：不同种群或分布之间的空间关系。也是指在单个总体内(空间自相关)、或两个或多个总体之间的空间模式。空间关系包括空间自相关和空间互相关。</p>
+<h1 id="文献精读"><a href="#文献精读" class="headerlink" title="文献精读"></a>文献精读</h1><h2 id="空间关联"><a href="#空间关联" class="headerlink" title="空间关联"></a>空间关联</h2><p>空间关联的含义：不同种群或分布之间的空间关系。也是指在单个总体内(空间自相关)、或两个或多个总体之间的空间模式。空间关系包括空间自相关和空间互相关。</p>
 <p>空间关联是指不同类型的点在空间上如何相关。简单说：A在空间上一个位置出现了，B在附近也出现了，这就是空间关联的一种表示。例如：抢劫附近总有斗殴，这就是空间上的关联，“附近”就是用来表征空间。</p>
-<h3 id="空间自相关">空间自相关</h3>
-<p>空间自相关：指一些变量在同一个区域内的观测数据之间潜在的相互依赖性。</p>
-<h3 id="空间互相关">空间互相关</h3>
-<p>本篇文章中将空间关联的定为在多个总体之间的模式。</p>
-<h2 id="零假设">零假设</h2>
-<p>零假设：统计学术语，又称原假设，指进行统计检验时预先建立的假设。零假设成立时，有关统计量应服从已知的某种概率分布。</p>
+<h3 id="空间自相关"><a href="#空间自相关" class="headerlink" title="空间自相关"></a>空间自相关</h3><p>空间自相关：指一些变量在同一个区域内的观测数据之间潜在的相互依赖性。</p>
+<h3 id="空间互相关"><a href="#空间互相关" class="headerlink" title="空间互相关"></a>空间互相关</h3><p>本篇文章中将空间关联的定为在多个总体之间的模式。</p>
+<h2 id="零假设"><a href="#零假设" class="headerlink" title="零假设"></a>零假设</h2><p>零假设：统计学术语，又称原假设，指进行统计检验时预先建立的假设。零假设成立时，有关统计量应服从已知的某种概率分布。</p>
 
     </div>
 
@@ -481,7 +388,7 @@ Kronenfeld是相似的。首先，在两个数据集中，显著的同类型自�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91"><span class="nav-number">1.</span> <span class="nav-text">文献翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">应用背景与研究动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">研究动机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE%E4%B8%8E%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">研究回顾与问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.3.1.</span> <span class="nav-text">连接计数统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89k%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">交叉K函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E6%8C%87%E6%A0%87"><span class="nav-number">1.3.3.</span> <span class="nav-text">其他相关指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">实验验证与结果分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#phoenix"><span class="nav-number">1.4.1.</span> <span class="nav-text">Phoenix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B2%9B%E7%9A%84%E6%A0%91%E6%9C%A8%E7%8A%B6%E5%86%B5"><span class="nav-number">1.4.2.</span> <span class="nav-text">岛的树木状况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%90%AF%E7%A4%BA"><span class="nav-number">1.5.</span> <span class="nav-text">分析总结与研究启示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E7%B2%BE%E8%AF%BB"><span class="nav-number">2.</span> <span class="nav-text">文献精读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%85%B3%E8%81%94"><span class="nav-number">2.1.</span> <span class="nav-text">空间关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E8%87%AA%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.1.</span> <span class="nav-text">空间自相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E4%BA%92%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.2.</span> <span class="nav-text">空间互相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E5%81%87%E8%AE%BE"><span class="nav-number">2.2.</span> <span class="nav-text">零假设</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91"><span class="nav-number">1.</span> <span class="nav-text">文献翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">应用背景与研究动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E8%83%8C%E6%99%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">研究动机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%9B%9E%E9%A1%BE%E4%B8%8E%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">研究回顾与问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E8%AE%A1%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">1.3.1.</span> <span class="nav-text">连接计数统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89K%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">交叉K函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E6%8C%87%E6%A0%87"><span class="nav-number">1.3.3.</span> <span class="nav-text">其他相关指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E4%B8%8E%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">研究思路与研究方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">1.5.</span> <span class="nav-text">实验验证与结果分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Phoenix"><span class="nav-number">1.5.1.</span> <span class="nav-text">Phoenix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B2%9B%E7%9A%84%E6%A0%91%E6%9C%A8%E7%8A%B6%E5%86%B5"><span class="nav-number">1.5.2.</span> <span class="nav-text">岛的树木状况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93%E4%B8%8E%E7%A0%94%E7%A9%B6%E5%90%AF%E7%A4%BA"><span class="nav-number">1.6.</span> <span class="nav-text">分析总结与研究启示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E7%B2%BE%E8%AF%BB"><span class="nav-number">2.</span> <span class="nav-text">文献精读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%85%B3%E8%81%94"><span class="nav-number">2.1.</span> <span class="nav-text">空间关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E8%87%AA%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.1.</span> <span class="nav-text">空间自相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E4%BA%92%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.2.</span> <span class="nav-text">空间互相关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E5%81%87%E8%AE%BE"><span class="nav-number">2.2.</span> <span class="nav-text">零假设</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -495,7 +402,7 @@ Kronenfeld是相似的。首先，在两个数据集中，显著的同类型自�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -508,7 +415,7 @@ Kronenfeld是相似的。首先，在两个数据集中，显著的同类型自�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
